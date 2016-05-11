@@ -5,7 +5,7 @@ const char* ssid = "************";
 const char* password = "**********";
  
 const char* server= "www.cs14.net";
-#define DHTPIN 12 // what pin we're connected to
+#define DHTPIN 12 // which means pin no.6 from nodemcu
  
 DHT dht(DHTPIN, DHT22,15);
 WiFiClient client;
