@@ -1,6 +1,6 @@
 # dht22-nodemcu
 
-Temperaturprojekt
+Sensorprojekt
 
 Ziel
 - Die Bereitstellung eines Dockerimages einen Webserver + Datenbank, so konfiguriert, dass leicht neue Temperatursensoren in die Weboberfläche integriert werden können und die Daten dazu angezeigt werden.
