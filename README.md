@@ -2,16 +2,23 @@
 
 Temperaturprojekt
 
-Ziele
+Ziel
 - Die Bereitstellung eines Dockerimages einen Webserver + Datenbank, so konfiguriert, dass leicht neue Temperatursensoren in die Weboberfläche integriert werden können und die Daten dazu angezeigt werden.
 
-Startpunkt:
+Technologien (Vorschlag)
+- Dockerimage mit Apache + MariaDb
+- Datenvisualisierung mit D3.js: https://d3js.org/
+- responsive WebDesign mit Bootstrap: http://getbootstrap.com/
+- PHP-Framework a la Symfony: https://symfony.com/  oder https://framework.zend.com/ 
+
+
+Startpunkt
 - Dockerimage von wadmiraal: https://github.com/wadmiraal/docker-drupal
 - DS18B20 Temperature Sensor + Docker + REST: https://github.com/bgulla/hypriot-ds18b20
 - Internet of Things, The Open Data platform for the Internet of things (in Cloud): https://thingspeak.com/
 - EasyIoT, DIY Cloud for the Internet of Things:  http://iot-playground.com/
 
-ESP8266 / NodeMCU:
+ESP8266 / NodeMCU
 - ESP8266 + DHT22 + MySQL + HighCharts: http://www.instructables.com/id/ESP8266-DHT22-to-MYSQL/
 
 
