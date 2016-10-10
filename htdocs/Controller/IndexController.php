@@ -21,7 +21,7 @@ class IndexController implements Controller
     public function indexAction()
     {
         $this->view->setVars([
-            'name' => 'Stefan',
+            'name' => 'Stefann',
         ]);
     }
     public function showUserAction()
