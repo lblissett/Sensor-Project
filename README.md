@@ -30,6 +30,8 @@ Startpunkt
 
 ESP8266 / NodeMCU
 - ESP8266 + DHT22 + MySQL + HighCharts: http://www.instructables.com/id/ESP8266-DHT22-to-MYSQL/
+- ESP8266 + DHT22 https://blog.thesen.eu/wlan-lufttemperatur-und-feuchte-logger-mit-grafischer-darstellung-fuer-esp8266/
+
 
 
 
