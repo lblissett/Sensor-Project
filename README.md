@@ -34,8 +34,10 @@ ESP8266 / NodeMCU
 - ESP8266 + DHT22 + MySQL + HighCharts: http://www.instructables.com/id/ESP8266-DHT22-to-MYSQL/
 - ESP8266 + DHT22 https://blog.thesen.eu/wlan-lufttemperatur-und-feuchte-logger-mit-grafischer-darstellung-fuer-esp8266/
 
-
-
+Dockerize your project
+- Out-of-the-box LAMP image (PHP+MySQL): https://hub.docker.com/r/tutum/lamp/
+- Dockerize a PHP Application: https://semaphoreci.com/community/tutorials/dockerizing-a-php-application
+- Docker Support in PhpStorm: https://confluence.jetbrains.com/display/PhpStorm/Docker+Support+in+PhpStorm#DockerSupportinPhpStorm-Dockerinstallation
 
 // veraltet 
 
