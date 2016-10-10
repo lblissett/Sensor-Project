@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -20,6 +21,7 @@ spl_autoload_register(function ($className) {
 // get the requested url
 $url      = (isset($_GET['_url']) ? $_GET['_url'] : '');
 $urlParts = explode('/', $url);
+
 
 // build the controller class
 $controllerName      = (isset($urlParts[0]) && $urlParts[0] ? $urlParts[0] : 'index');
