@@ -11,9 +11,19 @@ Technologien (Vorschlag)
 - responsive WebDesign mit Bootstrap: http://getbootstrap.com/
 - PHP-Framework a la Symfony: https://symfony.com/  oder https://framework.zend.com/ 
 
+Features
+- Nutzerverwaltung, Login + Rechteabstufung
+- (REST)Api um Sensordaten zu integrieren
+- Datenvisualisierung: aktuelle Sensordaten, Verlauf über die Zeit, Lage?
+
+More Features
+- NagiosPlugin 
+- unterschiedliche Loggerdaten integrieren z.B. Feinstaubmessung a la OpenData Stuttgart Projekt: https://github.com/opendata-stuttgart/meta/wiki bzw. http://luftdaten.info/
+- Android App
+- Integration in ein CMS a la Drupal, Wordpress
+
 
 Startpunkt
-- Dockerimage von wadmiraal: https://github.com/wadmiraal/docker-drupal
 - DS18B20 Temperature Sensor + Docker + REST: https://github.com/bgulla/hypriot-ds18b20
 - Internet of Things, The Open Data platform for the Internet of things (in Cloud): https://thingspeak.com/
 - EasyIoT, DIY Cloud for the Internet of Things:  http://iot-playground.com/
