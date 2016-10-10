@@ -18,9 +18,9 @@ Features
 
 More Features
 - NagiosPlugin 
-- unterschiedliche Loggerdaten integrieren z.B. Feinstaubmessung a la OpenData Stuttgart Projekt: https://github.com/opendata-stuttgart/meta/wiki bzw. http://luftdaten.info/
+- unterschiedliche Loggerdaten integrieren z.B. Feinstaubmessung wie beim OpenData Projekt in Stuttgart https://github.com/opendata-stuttgart/meta/wiki bzw. http://luftdaten.info/
 - Android App
-- Integration in ein CMS a la Drupal, Wordpress
+- Integration in ein CMS z.B. Drupal, Wordpress
 
 
 Startpunkt
