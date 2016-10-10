@@ -12,6 +12,7 @@ Startpunkt:
 - EasyIoT, DIY Cloud for the Internet of Things:  http://iot-playground.com/
 
 ESP8266 / NodeMCU:
+- ESP8266 + DHT22 + MySQL + HighCharts: http://www.instructables.com/id/ESP8266-DHT22-to-MYSQL/
 
 
 
