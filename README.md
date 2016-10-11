@@ -13,9 +13,11 @@ Technologien (Vorschlag)
 - automatisierte Testumgebung für PHP, PHPUnit: https://phpunit.de/ oder https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#PHP
 
 Features
-- Nutzerverwaltung, Login + Rechteabstufung
+- Nutzerverwaltung: (sicherer) Login + Rechteabstufung
+- Localisation: Englisch/Deutsch
 - (REST)Api um Sensordaten zu integrieren
-- Datenvisualisierung: aktuelle Sensordaten, Verlauf über die Zeit, Lage?
+- Datenvisualisierung: aktuelle Sensordaten, Verlauf über die Zeit, geographische Lage?
+- Portabilität: Appentwicklung in Dockercontainer
 
 More Features
 - NagiosPlugin 
