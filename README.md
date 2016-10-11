@@ -41,6 +41,9 @@ Dockerize your project
 - Dockerize a PHP Application: https://semaphoreci.com/community/tutorials/dockerizing-a-php-application
 - Docker Support in PhpStorm: https://confluence.jetbrains.com/display/PhpStorm/Docker+Support+in+PhpStorm#DockerSupportinPhpStorm-Dockerinstallation
 
+Datenbank transfer
+http://www.sysadminslife.com/linux/mysql-datenbank-transferieren-sichern-und-wiederherstellen-kopieren-linux-konsole/
+
 // veraltet 
 
 Testeintrag in die Datenbank:
