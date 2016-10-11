@@ -13,9 +13,11 @@ Technologien (Vorschlag)
 - automatisierte Testumgebung für PHP, PHPUnit: https://phpunit.de/ oder https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#PHP
 
 Features
-- Nutzerverwaltung, Login + Rechteabstufung
+- Nutzerverwaltung: (sicherer) Login + Rechteabstufung
+- Localisation: Englisch/Deutsch
 - (REST)Api um Sensordaten zu integrieren
-- Datenvisualisierung: aktuelle Sensordaten, Verlauf über die Zeit, Lage?
+- Datenvisualisierung: aktuelle Sensordaten, Verlauf über die Zeit, geographische Lage?
+- Portabilität: Appentwicklung in Dockercontainer
 
 More Features
 - NagiosPlugin 
@@ -34,8 +36,10 @@ ESP8266 / NodeMCU
 - ESP8266 + DHT22 + MySQL + HighCharts: http://www.instructables.com/id/ESP8266-DHT22-to-MYSQL/
 - ESP8266 + DHT22 https://blog.thesen.eu/wlan-lufttemperatur-und-feuchte-logger-mit-grafischer-darstellung-fuer-esp8266/
 
-
-
+Dockerize your project
+- Out-of-the-box LAMP image (PHP+MySQL): https://hub.docker.com/r/tutum/lamp/
+- Dockerize a PHP Application: https://semaphoreci.com/community/tutorials/dockerizing-a-php-application
+- Docker Support in PhpStorm: https://confluence.jetbrains.com/display/PhpStorm/Docker+Support+in+PhpStorm#DockerSupportinPhpStorm-Dockerinstallation
 
 // veraltet 
 
