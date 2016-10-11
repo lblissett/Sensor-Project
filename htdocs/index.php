@@ -20,15 +20,16 @@ spl_autoload_register(function ($className) {
 });
 // get the requested url
 $url      = (isset($_GET['_url']) ? $_GET['_url'] : '');
+echo $url;
 $urlParts = explode('/', $url);
 
 
 // build the controller class
-$controllerName      = (isset($urlParts[0]) && $urlParts[0] ? $urlParts[0] : '');
+$controllerName      = (isset($urlParts[0]) && $urlParts[0] ? $urlParts[0] : 'index');
 $controllerClassName = '\\Mvc\\Controller\\'.ucfirst($controllerName).'Controller';
 
 // build the action method
-$actionName       = (isset($urlParts[1]) && $urlParts[1] ? $urlParts[1] : '');
+$actionName       = (isset($urlParts[1]) && $urlParts[1] ? $urlParts[1] : 'index');
 $actionMethodName = $actionName.'Action';
 try {
     if (!class_exists($controllerClassName)) {
