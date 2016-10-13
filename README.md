@@ -35,11 +35,18 @@ Startpunkt
 ESP8266 / NodeMCU
 - ESP8266 + DHT22 + MySQL + HighCharts: http://www.instructables.com/id/ESP8266-DHT22-to-MYSQL/
 - ESP8266 + DHT22 https://blog.thesen.eu/wlan-lufttemperatur-und-feuchte-logger-mit-grafischer-darstellung-fuer-esp8266/
+- Arduino Reference: https://www.arduino.cc/en/Reference/HomePage und besonders: https://www.arduino.cc/en/Reference/WiFi
+- NodeMCU + Lua: https://github.com/nodemcu/nodemcu-firmware
+- Esp8266 SDK: https://espressif.com/en/support/download/sdks-demos?keys=&field_type_tid%=14?
+- Everything about Esp8266 in a forum: http://www.esp8266.com/
 
 Dockerize your project
-- Out-of-the-box LAMP image (PHP+MySQL): https://hub.docker.com/r/tutum/lamp/
+- Out-of-the-box LAMP image (PHP+MySQL): https://hub.docker.com/r/tutum/lamp/ und https://github.com/tutumcloud/lamp
 - Dockerize a PHP Application: https://semaphoreci.com/community/tutorials/dockerizing-a-php-application
 - Docker Support in PhpStorm: https://confluence.jetbrains.com/display/PhpStorm/Docker+Support+in+PhpStorm#DockerSupportinPhpStorm-Dockerinstallation
+
+Datenbank transfer
+http://www.sysadminslife.com/linux/mysql-datenbank-transferieren-sichern-und-wiederherstellen-kopieren-linux-konsole/
 
 // veraltet 
 
