@@ -20,7 +20,6 @@ spl_autoload_register(function ($className) {
 });
 // get the requested url
 $url      = (isset($_GET['_url']) ? $_GET['_url'] : '');
-echo $url;
 $urlParts = explode('/', $url);
 
 
@@ -51,14 +50,3 @@ try {
     echo 'Exception: <b>'.$e->getMessage().'</b><br><pre>'.$e->getTraceAsString().'</pre>';
 }
 ?>
-<script src="/assets/jquery3.1.1.min.js"></script>
-<script src="/jQueryUI/v1_10_4/js/jquery-ui-1.10.4.custom.min.js"></script>
-<link rel="stylesheet" href="/jQueryUI/v1_10_4/css/smoothness/jquery-ui-1.10.4.custom.css">
-<link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="/bootstrap-3.3.7-dist/table/v1.11.0/bootstrap-table.css">
-<link rel="stylesheet" href="/assets/font-awesome/4_4_0/css/font-awesome.css">
-<link rel="stylesheet" href="/assets/default.css">
-<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="/bootstrap-3.3.7-dist/table/v1.11.0/bootstrap-table.js"></script>
-<script src="/bootstrap-3.3.7-dist/table/v1.11.0/locale/bootstrap-table-de-DE.js"></script>
-<script src="/assets/default.js"></script>

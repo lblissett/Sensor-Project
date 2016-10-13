@@ -20,9 +20,13 @@ class IndexController implements Controller
     }
     public function indexAction()
     {
-        $this->view->setVars([
-            'name' => 'Stefann',
-        ]);
+        $users = new User();
+        $users->name = "leo";
+        $users->id = 1;
+        $users->created = "test";
+
+        $this->view->setVars($users);
+
     }
     public function showUserAction()
     {
@@ -34,7 +38,6 @@ class IndexController implements Controller
         if (!$user instanceof User) {
             throw new NotFoundException();
         }
-        $this->view->setVars(['name' => $user->name]);
     }
     public function createUserAction()
 	{
@@ -55,4 +58,14 @@ class IndexController implements Controller
 
         die('ok');
     	}
+
+    public function testAction()
+    {
+        $users = new User();
+        $users->name = "leo";
+        $users->id = 1;
+        $users->created = "test";
+
+        $this->view->setVars($users);
+    }
 }

@@ -24,15 +24,13 @@ class View
         $this->action     = $actionName;
     }
     /**
-     * Set view vars. The keys will be added, to existing keys.
+     * Set view vars. The object is given to the view.
      *
-     * @param array $vars
+     * @param object $obj
      */
-    public function setVars(array $vars)
+    public function setVars($obj)
     {
-        foreach ($vars as $key => $val) {
-            $this->vars[$key] = $val;
-        }
+        $this->vars = ($obj);
     }
     /**
      * Render the view.
@@ -42,13 +40,15 @@ class View
     public function render()
     {
         $fileName = $this->path.DIRECTORY_SEPARATOR.$this->controller.DIRECTORY_SEPARATOR.$this->action.'.phtml';
-        if (!file_exists($fileName)) {
-            throw new NotFoundException();
+         if (!file_exists($fileName)) {
+            echo json_encode($this->vars);
         }
-        // spare the view the bloat of using "$this->vars[]" for every variable
-        foreach ($this->vars as $key => $val) {
-            $$key = $val;
+        else {
+            include $this->path.DIRECTORY_SEPARATOR.'layout.phtml';
+            include $fileName;
         }
-        include $fileName;
+
+
+
     }
 }
