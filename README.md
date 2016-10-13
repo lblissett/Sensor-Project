@@ -47,9 +47,8 @@ Dockerize your project
 
 Docker + MariaDB:
 - Import SQL: http://stackoverflow.com/questions/29145370/docker-initialize-mysql-database-with-schema
-
-Datenbank transfer
-http://www.sysadminslife.com/linux/mysql-datenbank-transferieren-sichern-und-wiederherstellen-kopieren-linux-konsole/
+- Tutum/mysql: https://github.com/tutumcloud/mysql
+- Datenbank transfer: http://www.sysadminslife.com/linux/mysql-datenbank-transferieren-sichern-und-wiederherstellen-kopieren-linux-konsole/
 
 // veraltet 
 
