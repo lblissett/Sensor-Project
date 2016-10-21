@@ -9,8 +9,12 @@
 namespace Mvc\Controller;
 
 use Mvc\Library\NotFoundException;
+use Mvc\Model\ModelBase;
+use Mvc\Model\SensorData;
 use Mvc\Model\User;
-class IndexController implements Controller
+use Mvc\Model\Sensor;
+use Mvc\Model\Site;
+class IndexController extends BaseController implements Controller
 {
     /** @var \Mvc\Library\View */
     protected $view;
@@ -21,51 +25,164 @@ class IndexController implements Controller
     public function indexAction()
     {
         $users = new User();
-        $users->name = "leo";
-        $users->id = 1;
-        $users->created = "test";
-
+        session_start();
+        $_SESSION['language'] = $this->getParamGet('language');
         $this->view->setVars($users);
 
     }
-    public function showUserAction()
+    public function registerAction()
     {
-        $uid = (int)(isset($_GET['uid']) ? $_GET['uid'] : '');
-        if (!$uid) {
-            throw new NotFoundException();
-        }
-        $user = User::findFirst($uid);
-        if (!$user instanceof User) {
-            throw new NotFoundException();
-        }
-    }
-    public function createUserAction()
-	{
-		$user       = new User();
-		$user->name = 'tester with space';
-		$user->save();
+        include '/password/password.php';
+        $namesensorfield = $this->getParam('username');
+        $locationfield = $this->getParam('email');
+        $passwordfield = $this->getParam('password');
+        $confirmpasswordfield = $this->getParam('confirmpassword');
+        $timestamp = new \DateTime();
+        $created = $timestamp->format("Y.m.d H:i:s");
 
-		die('ok '.$user->id);
+        if (!$namesensorfield || !$locationfield || !$passwordfield || !$confirmpasswordfield) {
+            throw new \Exception();
+        }
+        else {
+            if (($namesensorfield == "")||($locationfield == "")||($passwordfield == "")||($confirmpasswordfield == "")){
+                throw new \Exception();
+            }
+            else {
+                if ($passwordfield == $confirmpasswordfield){
+                    $passwort_hash = password_hash($passwordfield, PASSWORD_DEFAULT);
+
+                    $user       = new User();
+                    $user->username = $namesensorfield;
+                    $user->email = $locationfield;
+                    $user->password = $passwort_hash;
+                    $user->created = $created;
+                    $user->save();
+
+
+                }
+                else {
+                    throw new \Exception();
+                }
+            }
+        }
+
+        header('Location: /index/index');
+
+
+    }
+
+    public function createSensorAction()
+    {
+        session_start();
+        $namesensorfield = $this->getParam('sensorname');
+        $locationfield = $this->getParam('location');
+        $timestamp = new \DateTime();
+        $created = $timestamp->format("Y.m.d H:i:s");
+        $userid = $_SESSION['userid'];
+
+        if (!$namesensorfield || !$locationfield || !$userid) {
+            throw new \Exception();
+        }
+        else {
+            if (($namesensorfield == "")||($locationfield == "")|| ($userid == "")){
+                throw new \Exception();
+            }
+            else {
+                $sensor = new Sensor();
+                $sensor->name = $namesensorfield;
+                $sensor->location = $locationfield;
+                $sensor->created = $created;
+                $sensor->userID = $userid;
+                $sensor->save();
+
+            }
+        }
+        header('Location: /index/showLogin?site=table');
+    }
+
+    public function showLoginAction()
+	{
+        $site = new Site();
+        $site->site = $this->getParamGet('site');
+        $this->view->setVars($site);
+
 	}
 
-	public function updateUserAction()
-	{
-        $uid = (int)(isset($_GET['uid']) ? $_GET['uid'] : '');
-
-        $user       = User::findFirst($uid);
-        $user->name = 'tester updated';
-        $user->save();
-
-        die('ok');
-    	}
-
-    public function testAction()
+    public function getDataAction()
     {
-        $users = new User();
-        $users->name = "leo";
-        $users->id = 1;
-        $users->created = "test";
+        /** @var Sensor $sensors */
+        $sensors = Sensor::findAll();
+        $this->view->setVars($sensors);
 
-        $this->view->setVars($users);
+    }
+
+    public function testUserAction()
+    {
+        session_start();
+        include '/password/password.php';
+        $username = $this->getParam('loginuser');
+        $password = $this->getParam('loginpw');
+        $site = new Site();
+
+        if (!$username || !$password) {
+            throw new \Exception();
+        }
+        else {
+            if (($username == "") || ($password == "")) {
+                throw new \Exception();
+            }
+            else {
+                /** @var User $user */
+                $user = User::findOne("username = '" . $username . "'");
+                if (empty($user)){
+                    $site->usererror = "Falscher Benutzer!";
+
+                } else {
+                    if (password_verify($password,$user->password)){
+                        $_SESSION['userid'] = $user->username;
+                    }
+                    else {
+                        $site->pwerror = "Falsches Passwort!";
+                    }
+                }
+
+            }
+
+        }
+        $this->view->setVars($site);
+    }
+
+    public function logoutAction()
+    {
+        session_start();
+        session_destroy();
+        header('Location: /index/index');
+    }
+
+    public function returnParametersAction()
+    {
+        $idsensor = $this->getParamGet('sensor_id');
+        $temp = $this->getParamGet('temperature');
+        $humi = $this->getParamGet('humidity');
+        $timestamp = new \DateTime();
+        $created = $timestamp->format("Y.m.d H:i:s");
+
+        if (!$idsensor || !$temp || !$humi) {
+            throw new \Exception();
+        }
+        else {
+            if (($idsensor == "")||($temp == "")||($humi == "")){
+                throw new \Exception();
+            }
+            else{
+                $sensordata = new SensorData();
+                $sensordata->id_sensor = $idsensor;
+                $sensordata->temperature = $temp;
+                $sensordata->humidity = $humi;
+                $sensordata->time = $created;
+
+                $sensordata->save();
+            }
+        }
     }
 }

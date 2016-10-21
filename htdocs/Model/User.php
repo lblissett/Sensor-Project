@@ -1,28 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Leo
- * Date: 10.10.2016
- * Time: 12:57
- */
-
 namespace Mvc\Model;
-
 class User extends ModelBase
 {
-	public $name, $created;
-
+    public $pkid, $username, $email, $password, $created;
     public function getSource()
     {
-        return 'users';
+        return 'user';
     }
 
-	public function beforeCreate()
-	{
-		$this->created = date('Y-m-d H:i:s');
-	}
 }
-
 /*
 /*
 }

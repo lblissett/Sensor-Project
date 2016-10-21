@@ -5,9 +5,10 @@
  * Date: 10.10.2016
  * Time: 14:41
  */
+use Mvc\Library\AppTexts;
 ?>
 
-<form id="formdata" action="admin.php?de=90002&adm_app=141&nf_data=Event/create" method="post">
+<form id="formdata" action="index/register" method="post">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -16,43 +17,71 @@
                     <h4 class="modal-title" id="myModalLabel">Create new Account</h4>
                 </div>
                 <div class="modal-body form-horizontal">
-                    <div class="form-group">
-                        <label for="username" class="col-md-4 control-label label-element">Username</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
+                    <div class="form-group" id="usernamegroup">
+                        <label for="username" class="col-md-4 control-label label-element">Username
+                            <i class="fa fa-info-circle"
+                               data-original-title="Enter the username"
+                               data-toggle="popover"
+                               title=""
+                               data-content="">
+                            </i></label>
+                        <div class="col-md-6" id="colusername">
+                            <div class="input-group" >
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+                                <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"
+                                onblur="validateUsername()"/>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="col-md-4 control-label label-element">Your Email</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
+                    <div class="form-group" id="emailgroup">
+                        <label for="email" class="col-md-4 control-label label-element">Your Email
+                            <i class="fa fa-info-circle"
+                               data-original-title="Enter the email"
+                               data-toggle="popover"
+                               title=""
+                               data-content="">
+                            </i></label>
+                        <div class="col-md-6" id="colemail">
+                            <div class="input-group" >
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                                <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"
+                                onblur="validateEmail()"/>
                             </div>
                         </div>
                     </div>
 
 
 
-                    <div class="form-group">
-                        <label for="password" class="col-md-4 control-label label-element">Password</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
+                    <div class="form-group" id="passwordgroup">
+                        <label for="password" class="col-md-4 control-label label-element">Password
+                            <i class="fa fa-info-circle"
+                               data-original-title="Enter the password"
+                               data-toggle="popover"
+                               title=""
+                               data-content="">
+                            </i></label>
+                        <div class="col-md-6" id="colpassword">
+                            <div class="input-group" >
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"
+                                onblur="validatePassword()"/>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="confirm" class="col-md-4 control-label label-element">Confirm Password</label>
-                        <div class="col-md-6">
+                    <div class="form-group" id="confirmpasswordgroup">
+                        <label for="confirm" class="col-md-4 control-label label-element">Confirm Password
+                            <i class="fa fa-info-circle"
+                               data-original-title="Confirm your password"
+                               data-toggle="popover"
+                               title=""
+                               data-content="">
+                            </i></label>
+                        <div class="col-md-6" id="colconfirmpassword">
                             <div class="input-group">
                                 <span class="input-group-addon "><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                                <input type="password" class="form-control" name="confirmpassword" id="confirmpassword"  placeholder="Confirm your Password"
+                                onblur="validateConfPassword()"/>
                             </div>
                         </div>
                     </div>

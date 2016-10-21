@@ -44,7 +44,7 @@ class View
             echo json_encode($this->vars);
         }
         else {
-            include $this->path.DIRECTORY_SEPARATOR.'layout.phtml';
+            include $this->path.DIRECTORY_SEPARATOR.'layouteng.phtml';
             include $fileName;
         }
 

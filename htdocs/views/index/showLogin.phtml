@@ -1,0 +1,51 @@
+<?php
+session_start();
+?>
+<?php
+    if (isset($_SESSION['userid'])){
+        echo file_get_contents("./Views/index/includes/modalsensor.html.php");
+        ?>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <ul class="nav nav-pills nav-stacked">
+                        <?php
+                        if ($this->vars->site == "home"){
+                            echo '<li class="active"><a href="/index/showLogin?site=home"><i class="fa fa-home fa-fw"></i>Home</a></li>';
+                        }
+                        else {
+                            echo '<li><a href="/index/showLogin?site=home"><i class="fa fa-home fa-fw"></i>Home</a></li>';
+                        }
+                        if ($this->vars->site == "table"){
+                            echo '<li class="active"><a href="/index/showLogin?site=table"><i class="fa fa-cube fa-fw"></i>Sensors</a></li>';
+                        }
+                        else {
+                            echo '<li><a href="/index/showLogin?site=table"><i class="fa fa-cube fa-fw"></i>Sensors</a></li>';
+                        }
+                        if ($this->vars->site == "settings"){
+                            echo '<li class="active"><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i>Account Settings</a></li>';
+                        }
+                        else {
+                            echo '<li><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i>Account Settings</a></li>';
+                        }
+                        ?>
+                        <li><a href="/index/logout"><i class="fa fa-power-off fa-fw"></i>Logout</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9 well">
+                    <div class="col-md-12 col-md-offset-1" style="margin-left:auto">
+                        <?php echo file_get_contents("./Views/index/includes/".$this->vars->site.".html.php")?>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <?php }
+     else {
+         echo "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";
+     }?>
+
+
+<?php
+echo file_get_contents("./Views/index/includes/footer.html.php");
+?>
