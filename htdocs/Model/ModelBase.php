@@ -11,7 +11,7 @@ abstract class ModelBase
     public function getPdo()
     {
         if (self::$pdo === null) {
-            self::$pdo = new \PDO('mysql:host=localhost;dbname=website', 'root', '');
+            self::$pdo = new \PDO('mysql:host=mysql;dbname=vorlage', 'root', '');
         }
         return self::$pdo;
     }
