@@ -1,9 +1,7 @@
-<?php
-session_start();
-?>
+
 <?php
     if (isset($_SESSION['userid'])){
-        echo file_get_contents("./Views/index/includes/modalsensor.html.php");
+        echo file_get_contents("./views/index/includes/modalsensor.html.php");
         ?>
         <div class="container-fluid">
             <div class="row">

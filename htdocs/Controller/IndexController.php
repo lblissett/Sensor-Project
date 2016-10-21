@@ -22,7 +22,6 @@ class IndexController extends BaseController implements Controller
     }
     public function indexAction()
     {
-        session_start();
         $users = new User();
 
         $_SESSION['language'] = $this->getParamGet('language');
@@ -72,7 +71,6 @@ class IndexController extends BaseController implements Controller
 
     public function createSensorAction()
     {
-        session_start();
         $namesensorfield = $this->getParam('sensorname');
         $locationfield = $this->getParam('location');
         $timestamp = new \DateTime();
@@ -117,7 +115,6 @@ class IndexController extends BaseController implements Controller
 
     public function testUserAction()
     {
-        session_start();
         include '/password/password.php';
         $username = $this->getParam('loginuser');
         $password = $this->getParam('loginpw');
