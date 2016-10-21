@@ -5,7 +5,6 @@
  * Date: 10.10.2016
  * Time: 14:41
  */
-use Mvc\Library\AppTexts;
 ?>
 
 <form id="formdata" action="index/register" method="post">

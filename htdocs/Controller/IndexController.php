@@ -24,8 +24,8 @@ class IndexController extends BaseController implements Controller
     }
     public function indexAction()
     {
-        $users = new User();
         session_start();
+        $users = new User();
         $_SESSION['language'] = $this->getParamGet('language');
         $this->view->setVars($users);
 
@@ -175,13 +175,20 @@ class IndexController extends BaseController implements Controller
                 throw new \Exception();
             }
             else{
-                $sensordata = new SensorData();
-                $sensordata->id_sensor = intval($idsensor);
-                $sensordata->temperature = doubleval($temp);
-                $sensordata->humidity = doubleval($humi);
-                $sensordata->time = $created;
+                $sensors = Sensor::findOne("pkid = ".$idsensor);
+                if (empty($sensors)){
+                    throw new \Exception();
+                }
+                else {
+                    $sensordata = new SensorData();
+                    $sensordata->id_sensor = intval($idsensor);
+                    $sensordata->temperature = doubleval($temp);
+                    $sensordata->humidity = doubleval($humi);
+                    $sensordata->time = $created;
 
-                $sensordata->save();
+                    $sensordata->save();
+                }
+
             }
         }
     }
