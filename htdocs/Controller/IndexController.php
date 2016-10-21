@@ -24,6 +24,7 @@ class IndexController extends BaseController implements Controller
     }
     public function indexAction()
     {
+        ob_start();
         session_start();
         $users = new User();
         $_SESSION['language'] = $this->getParamGet('language');
