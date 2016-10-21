@@ -8,8 +8,6 @@
 
 namespace Mvc\Controller;
 
-use Mvc\Library\NotFoundException;
-use Mvc\Model\ModelBase;
 use Mvc\Model\SensorData;
 use Mvc\Model\User;
 use Mvc\Model\Sensor;
@@ -24,7 +22,6 @@ class IndexController extends BaseController implements Controller
     }
     public function indexAction()
     {
-        ob_start();
         session_start();
         $users = new User();
 
