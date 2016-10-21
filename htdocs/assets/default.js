@@ -5,53 +5,51 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
 
-    $('#btn-loginpage').off('click').on('click', function () {
+
+
+    $('#loginform').submit( function () {
         var testing = true;
         testing = validateUserLogin() && testing;
         testing = validatePasswordLogin() && testing;
 
         if (testing){
-            $('#loginform').submit();
+            var data = {
+                'loginuser': $('#login-username').val(),
+                'loginpw': $('#login-password').val()
+            };
+            $.ajax({
+                type: "POST",
+                url: '/index/testUser',
+                data: data
+            }).done(function (response) {
+                response = jQuery.parseJSON(response);
+                if (response.usererror != null) {
+                    var textErr = response.usererror;
+                    $('#colloginuser').removeClass("has-success has-feedback").addClass("has-error has-feedback");
+                    removeglyphicon("#glyphiusernamelogin");
+                    $('#colloginuser').append(createglyphiconfailure("glyphiusernamelogin"));
+                    var label = $('<span></span>').addClass("help-block").attr('id', 'usernameloginfail')
+                        .text(textErr);
+                    $('#colloginuser').append(label);
+                    $('#colpasswordlogin').removeClass("has-success has-feedback").addClass("has-error has-feedback");
+                    removeglyphicon("#glyphipasswordlogin");
+                    $('#colpasswordlogin').append(createglyphiconfailure("glyphipasswordlogin"));
+                }
+                if (response.pwerror != null) {
+                    var textErr = response.pwerror;
+                    $('#colpasswordlogin').removeClass("has-success has-feedback").addClass("has-error has-feedback");
+                    removeglyphicon("#glyphipasswordlogin");
+                    $('#colpasswordlogin').append(createglyphiconfailure("glyphipasswordlogin"));
+                    var label = $('<span></span>').addClass("help-block").attr('id', 'passwordloginfail')
+                        .text(textErr);
+                    $('#colpasswordlogin').append(label);
+                }
+                if ((response.usererror == null)&&(response.pwerror == null)){
+                    window.location.replace('/index/showLogin?site=home');
+                }
+            });
         }
-    });
 
-    $('#loginform').submit( function () {
-
-        var data = {
-            'loginuser': $('#login-username').val(),
-            'loginpw': $('#login-password').val()
-        };
-        $.ajax({
-            type: "POST",
-            url: '/index/testUser',
-            data: data
-        }).done(function (response) {
-            response = jQuery.parseJSON(response);
-            if (response.usererror != null) {
-                var textErr = response.usererror;
-                $('#colloginuser').removeClass("has-success has-feedback").addClass("has-error has-feedback");
-                removeglyphicon("#glyphiusernamelogin");
-                $('#colloginuser').append(createglyphiconfailure("glyphiusernamelogin"));
-                var label = $('<span></span>').addClass("help-block").attr('id', 'usernameloginfail')
-                    .text(textErr);
-                $('#colloginuser').append(label);
-                $('#colpasswordlogin').removeClass("has-success has-feedback").addClass("has-error has-feedback");
-                removeglyphicon("#glyphipasswordlogin");
-                $('#colpasswordlogin').append(createglyphiconfailure("glyphipasswordlogin"));
-            }
-            if (response.pwerror != null) {
-                var textErr = response.pwerror;
-                $('#colpasswordlogin').removeClass("has-success has-feedback").addClass("has-error has-feedback");
-                removeglyphicon("#glyphipasswordlogin");
-                $('#colpasswordlogin').append(createglyphiconfailure("glyphipasswordlogin"));
-                var label = $('<span></span>').addClass("help-block").attr('id', 'passwordloginfail')
-                    .text(textErr);
-                $('#colpasswordlogin').append(label);
-            }
-            if ((response.usererror == null)&&(response.pwerror == null)){
-                window.location.replace('/index/showLogin?site=home');
-            }
-        });
 
 
 

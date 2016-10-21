@@ -49,6 +49,12 @@
                 <thead>
                 <tr>
                     <th
+                        data-field="pkid"
+                        data-sortable="true"
+                        data-halign="center"
+                        data-valign="middle">sensorID
+                    </th>
+                    <th
                         data-field="name"
                         data-sortable="true"
                         data-halign="center"

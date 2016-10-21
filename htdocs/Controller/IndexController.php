@@ -176,9 +176,9 @@ class IndexController extends BaseController implements Controller
             }
             else{
                 $sensordata = new SensorData();
-                $sensordata->id_sensor = $idsensor;
-                $sensordata->temperature = $temp;
-                $sensordata->humidity = $humi;
+                $sensordata->id_sensor = intval($idsensor);
+                $sensordata->temperature = doubleval($temp);
+                $sensordata->humidity = doubleval($humi);
                 $sensordata->time = $created;
 
                 $sensordata->save();

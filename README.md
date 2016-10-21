@@ -64,3 +64,12 @@ Chart 2 bei chipid = 2800
 
 // veraltet 
 
+API:
+
+Aufruf über : 
+IPderWebseite/index/returnParameters?sensor_id=..&temperature=..&humidity=..
+
+Erläuterung Parameter:
+sensor_id - ID des Sensors aus Tabelle ablesen
+temperature - Temperatur im Format 25.5
+humidity - Feuchtigkeit im Format 70.9
