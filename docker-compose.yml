@@ -23,7 +23,7 @@ phpmyadmin:
     - MYSQL_PASSWORD=mypass
 
 php:
-  image: php:5.6.24-apache
+  build: .
   container_name: php-apache
   ports:
     - 80:80
