@@ -27,7 +27,5 @@ php:
   container_name: php-apache
   ports:
     - 80:80
-  volumes:
-    - $PWD/htdocs:/var/www/html
   links:
     - mariadb:mysql
