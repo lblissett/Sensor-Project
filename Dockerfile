@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install mysqli \
         pdo \
         pdo_mysql mcrypt \
-        pdo_mysql 
+        pdo_mysql \
+        json
 
 RUN a2enmod rewrite
