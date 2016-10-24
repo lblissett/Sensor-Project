@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 ?>
 <?php
@@ -9,7 +8,6 @@ session_start();
  * Date: 10.10.2016
  * Time: 12:39
  */
-//session_start();
 // simple autoloader
 spl_autoload_register(function ($className) {
     if (substr($className, 0, 4) !== 'Mvc\\') {

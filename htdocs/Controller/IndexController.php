@@ -30,7 +30,7 @@ class IndexController extends BaseController implements Controller
     }
     public function registerAction()
     {
-        include '/password/password.php';
+        include './Library/password/password.php';
         $namesensorfield = $this->getParam('username');
         $locationfield = $this->getParam('email');
         $passwordfield = $this->getParam('password');
@@ -115,7 +115,7 @@ class IndexController extends BaseController implements Controller
 
     public function testUserAction()
     {
-        include '/password/password.php';
+        include './Library/password/password.php';
         $username = $this->getParam('loginuser');
         $password = $this->getParam('loginpw');
         $site = new Site();

@@ -1,7 +1,9 @@
 
 <?php
+use Mvc\Library\AppTexts;
+$text = new AppTexts();
     if (isset($_SESSION['userid'])){
-        echo file_get_contents("./views/index/includes/modalsensor.html.php");
+        include("./views/index/includes/modalsensor.html.php");
         ?>
         <div class="container-fluid">
             <div class="row">
@@ -28,22 +30,28 @@
                             echo '<li><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i>Account Settings</a></li>';
                         }
                         ?>
-                        <li><a href="/index/logout"><i class="fa fa-power-off fa-fw"></i>Logout</a></li>
+                        <li><a href="/index/logout"><i class="fa fa-power-off fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                    echo $text->logout;
+                                } else {
+                                    echo $text->logoutEN; }  ?></a></li>
                     </ul>
                 </div>
                 <div class="col-md-9 well">
                     <div class="col-md-12 col-md-offset-1" style="margin-left:auto">
-                        <?php echo file_get_contents("./views/index/includes/".$this->vars->site.".html.php")?>
+                        <?php include("./views/index/includes/".$this->vars->site.".html.php")?>
                     </div>
                 </div>
             </div>
         </div>
      <?php }
      else {
-         echo "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";
+          if ($_SESSION['language'] == "de") {
+             echo $text->notloggedin;
+         } else {
+             echo $text->notloggedinEN; }
      }?>
 
 
 <?php
-echo file_get_contents("./views/index/includes/footer.html.php");
+include("./views/index/includes/footer.html.php");
 ?>

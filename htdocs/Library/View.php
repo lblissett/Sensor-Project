@@ -44,7 +44,12 @@ class View
             echo json_encode($this->vars);
         }
         else {
-            include $this->path.DIRECTORY_SEPARATOR.'layouteng.phtml';
+
+            if ($_SESSION['language'] == "de") {
+                include $this->path.DIRECTORY_SEPARATOR.'layout.phtml';
+            } else {
+                include $this->path.DIRECTORY_SEPARATOR.'layouteng.phtml';
+            }
             include $fileName;
         }
 

@@ -5,14 +5,28 @@
  * Date: 10.10.2016
  * Time: 12:47
  */
-echo file_get_contents("./views/index/includes/modalregister.html.php");
+use Mvc\Library\AppTexts;
+include("./views/index/includes/modalregister.html.php");
+$text = new AppTexts();
 ?>
 
 <div class="container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info" >
             <div class="panel-heading">
-                <div class="panel-title" id="hallo">Login</div>
+                <div class="panel-title" id="hallo"><?php if ($_SESSION['language'] == "de") {
+                        echo $text->login;
+                    } else {
+                        echo $text->loginEN; }  ?>
+                    <a href="/index/index?language=de">
+                        <img src="/assets/flags/blank.gif" class="flag flag-de" alt="Deutsch"/>
+                    </a>
+                    <a href="/index/index?language=en">
+                        <img src="/assets/flags/blank.gif" class="flag flag-us" alt="Englisch"/>
+                    </a>
+
+                </div>
+
             </div>
 
             <div style="padding-top:30px" class="panel-body" >
@@ -23,28 +37,45 @@ echo file_get_contents("./views/index/includes/modalregister.html.php");
                     <div id="colloginuser" style="margin-bottom: 25px">
                     <div class="input-group" id="usernamelogingroup">
                         <span class="input-group-addon"><i class="fa fa-user fa"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username">
+                        <input id="login-username" type="text" class="form-control" name="username" value=""
+                               placeholder="<?php if ($_SESSION['language'] == "de") {
+                                            echo $text->username;
+                                            } else {
+                                            echo $text->usernameEN; }  ?>">
                     </div>
                     </div>
                     <div id="colpasswordlogin" style="margin-bottom: 25px">
                     <div  class="input-group" id="passwordlogingroup">
                         <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                        <input id="login-password" type="password" class="form-control" name="password"
+                               placeholder="<?php if ($_SESSION['language'] == "de") {
+                                            echo $text->password;
+                                            } else {
+                                            echo $text->passwordEN; }  ?>">
                     </div>
                     </div>
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
 
                         <div class="col-sm-12 controls">
-                            <button type="submit" class="btn btn-primary" >Login</button>
+                            <button type="submit" class="btn btn-primary" ><?php if ($_SESSION['language'] == "de") {
+                                    echo $text->login;
+                                } else {
+                                    echo $text->loginEN; }  ?></button>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                Don't have an account!
+                                <?php if ($_SESSION['language'] == "de") {
+                                    echo $text->noaccount;
+                                } else {
+                                    echo $text->noaccountEN; }  ?>
                                 <a href="#" id="newDataModal">
-                                    Register Here
+                                    <?php if ($_SESSION['language'] == "de") {
+                                        echo $text->registerhere;
+                                    } else {
+                                        echo $text->registerhereEN; }  ?>
                                 </a>
                             </div>
                         </div>
