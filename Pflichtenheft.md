@@ -1,4 +1,4 @@
-# Zielbestimmung
+# 1 Zielbestimmung
 Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
 notwendige Funktionen.
  
@@ -15,7 +15,7 @@ Kapazitäten vorhanden sind.
 ## Abgrenzungskriterien
 Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
 
-# Einsatz
+# 2 Einsatz
 Der geplante Einsatz des Systems ist die Grundlage für Benutzungsoberfläche und
 Qualitätsanforderungen.
  
@@ -32,7 +32,7 @@ Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
 Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
 beabsichtigt ist.
  
-# Umgebung
+# 3 Umgebung
  
 ## Software
 Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
@@ -46,7 +46,7 @@ Hardware: Hardware-Anforderungen des Systems.
 Orgware: Angabe der organisatorische Rahmenbedingungen, die vor Projektstart
 erfüllt sein müssen.
  
-# Funktionalität
+# 4 Funktionalität
 Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
 detaillierter Beschreibung.
  
@@ -54,13 +54,13 @@ detaillierter Beschreibung.
 * Keine Angabe von typischen Verwaltungsfunktionen (Create, Read, Update, Delete)
 
  
-# Daten
+# 5 Daten
 Daten: Angabe der Daten, die langfristig aus Benutzersicht zu speichern sind.
  
-# Leistungen
+# 6 Leistungen
 Leistungen: Anforderungen bezüglich Zeit und Genauigkeit
  
-# Benutzungsoberfläche
+# 7 Benutzungsoberfläche
 Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
  
 \begin{figure}[ht]
@@ -69,10 +69,10 @@ Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
   \caption{Dies könnte ein Bild der Benutzungsoberfläche sein}
 \end{figure}
  
-# Qualitätsziele
+# 8 Qualitätsziele
 Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
 Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
  
-# Ergänzungen 
+# 9 Ergänzungen 
 Hier ist Platz für nicht im Pflichtenheft abgedeckte Themengebiete oder ein
 Glossar.
