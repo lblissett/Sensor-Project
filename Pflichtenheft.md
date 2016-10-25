@@ -15,7 +15,7 @@ Kapazitäten vorhanden sind.
 ## Abgrenzungskriterien
 Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
 
-# 2 Einsatz
+# 2 Einsatz (Martin)
 Der geplante Einsatz des Systems ist die Grundlage für Benutzungsoberfläche und
 Qualitätsanforderungen.
  
@@ -32,7 +32,7 @@ Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
 Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
 beabsichtigt ist.
  
-# 3 Umgebung
+# 3 Umgebung 
  
 ## Software
 Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
@@ -54,7 +54,7 @@ detaillierter Beschreibung.
 * Keine Angabe von typischen Verwaltungsfunktionen (Create, Read, Update, Delete)
 
  
-# 5 Daten
+# 5 Daten (Martin)
 Daten: Angabe der Daten, die langfristig aus Benutzersicht zu speichern sind.
  
 # 6 Leistungen
@@ -69,7 +69,7 @@ Benutzungsoberfläche: grundlegende Anforderungen, Zugriffsrechte
   \caption{Dies könnte ein Bild der Benutzungsoberfläche sein}
 \end{figure}
  
-# 8 Qualitätsziele
+# 8 Qualitätsziele (Martin)
 Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
 Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
  
