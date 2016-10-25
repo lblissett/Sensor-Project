@@ -11,7 +11,7 @@ namespace Mvc\Model;
 
 class Sensor extends ModelBase
 {
-    public $pkid, $name, $location, $userID, $created;
+    public $pkid, $name, $location, $userID, $created, $modified;
     public function getSource()
     {
         return 'sensor';

@@ -11,7 +11,7 @@ abstract class ModelBase
     public function getPdo()
     {
         if (self::$pdo === null) {
-            self::$pdo = new \PDO('mysql:host=mysql;dbname=vorlage', 'root', 'mypass');
+            self::$pdo = new \PDO('mysql:host=localhost;dbname=vorlage', 'root', '');
         }
         return self::$pdo;
     }
@@ -66,7 +66,7 @@ abstract class ModelBase
 
     }
     /**
-     * Create/update data.
+     * Create data.
      */
     public function save()
     {
@@ -77,8 +77,20 @@ abstract class ModelBase
            if (!$pdo->exec('INSERT INTO `'.$table.'` SET '.implode(',', $this->getFields()))) {
                 throw new \RuntimeException('Could not create '.get_class($this).': '.$pdo->errorInfo()[2]);
             }
+    }
 
+    /**
+     * Update data
+     */
+    public function update($pkid)
+    {
+        $table = $this->getSource();
+        /** @var \PDO $pdo */
+        $pdo = $this->getPdo();
 
+        if ($pdo->exec('UPDATE `'.$table.'` SET '.implode(',', $this->getFields()).' WHERE `pkid` = '.($pkid)) === FALSE) {
+            throw new \RuntimeException('Could not update '.get_class($this).': '.$pdo->errorInfo()[2]);
+        }
     }
     /**
      * Build fields data.

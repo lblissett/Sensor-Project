@@ -95,6 +95,16 @@ use Mvc\Library\AppTexts;
                         } else {
                             echo $text->createdEN; }  ?>
                     </th>
+                    <th
+                        data-field="modified"
+                        data-sortable="true"
+                        data-halign="center"
+                        data-valign="middle"
+                        data-sorter="dateSorter"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->modified;
+                        } else {
+                            echo $text->modifiedEN; }  ?>
+                    </th>
                 </tr>
                 </thead>
             </table>

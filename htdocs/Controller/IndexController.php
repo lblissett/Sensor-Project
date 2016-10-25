@@ -54,6 +54,7 @@ class IndexController extends BaseController implements Controller
                     $user->email = $locationfield;
                     $user->password = $passwort_hash;
                     $user->created = $created;
+                    $user->modified = $created;
                     $user->save();
 
 
@@ -116,9 +117,19 @@ class IndexController extends BaseController implements Controller
                 $sensor = new Sensor();
                 $sensor->name = $namesensorfield;
                 $sensor->location = $locationfield;
-                $sensor->created = $created;
                 $sensor->userID = $userid;
-                $sensor->save();
+                $sensor->modified = $created;
+
+                if ($this->getParam('field') == "edit") {
+                    $sensor->created = $this->getParam('created');
+                    $sensor->pkid = $this->getParam('pkid');
+                    $sensor->update($this->getParam('pkid'));
+
+                } else {
+                    $sensor->created = $created;
+                    $sensor->save();
+                }
+
 
             }
         }
@@ -215,6 +226,20 @@ class IndexController extends BaseController implements Controller
 
             }
         }
+    }
+
+    public function editAction()
+    {
+        $pkid = $this->getParamGet('pkid');
+        $site = new Site();
+
+        $sensor = Sensor::findOne("pkid = ".$pkid);
+        $site->name = $sensor->name;
+        $site->location = $sensor->location;
+        $site->pkid = $sensor->pkid;
+        $site->created = $sensor->created;
+
+        $this->view->setVars($site);
     }
 }
 ?>

@@ -5,6 +5,11 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
 
+    addLoading($(".fixed-table-loading"));
+    $('body').on('click', function () {
+        removeContextMenu();
+    });
+
     $('#formdata').submit( function () {
 
         if (validateAll()) {
@@ -114,6 +119,7 @@ $(document).ready(function () {
         var $modal = $('#sensorModal');
         // ---- Modal neu initialisieren ----
         resetfieldsfeedbackSensor();
+        setModalCreate();
         $modal.modal();
         $('#formsensor')[0].reset();
 
@@ -121,7 +127,15 @@ $(document).ready(function () {
 
 
     $('#formsensor').submit(function () {
+        if (validateAllSensor()){
+            var load = $('<i></i>').addClass("fa fa-spinner fa-spin");
+            $('#modalSubmitsensor').text('Wird gespeichert ').append(load);
+            return true;
 
+        }
+        else {
+            return false;
+        }
     });
 
 
@@ -200,8 +214,159 @@ $(document).ready(function () {
     });
 
 
+    /* ---- Tabelle > Rechtsklick-Kontextmenü ---- */
+
+        $('#overviewTable').off('mousedown').on('mousedown', function (e) {
+            $(this).on('contextmenu', function () {
+                return false;
+            });
+
+            if (!$(e.target).closest('#js_ContextMenu').length) {
+                // ---- Kontextmenü entfernen, wenn der Fokus verloren geht ----
+                removeContextMenu();
+            }
+
+            // ---- Rechtsklick behandeln ----
+            if (e.which == 3) {
+
+                // ---- Standardverhalten unterdrücken ----
+                e.preventDefault();
+
+                if ($(e.target).closest('#js_ContextMenu').length > 0) {
+                    return false;
+                }
+
+                var uniqueid = $(e.target).parent().data('uniqueid'),
+                    row = $('#overviewTable').bootstrapTable('getRowByUniqueId', uniqueid),
+                    selectedRow = $('#overviewTable').find('tr[data-uniqueid="' + uniqueid + '"]');
+
+
+                /**
+                 * Kontextmenü erstellen
+                 * @type {*|HTMLElement}
+                 */
+                var ul = $([
+                    '<div id="js_ContextMenu" class="open" data-unique-rowid="' + uniqueid + '">',
+                    '<ul class="dropdown-menu" role="menu">',
+                    '<li role="presentation" class="dropdown-header">Sensorverwaltung</li>',
+                    '<li role="presentation">',
+                    '<a class="edit modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
+                    '<i class="fa fa-fw fa-info-circle"></i> Informationen',
+                    '</a>',
+                    '</li>',
+                    '<li class="divider"></li>',
+                    '<li role="presentation">',
+                    '<a class="edit modalActionButton" href="javascript:void(0)" data-function="edit" tabindex="-1" role="menuitem">',
+                    '<i class="fa fa-fw fa-pencil"></i> Bearbeiten',
+                    '</a>',
+                    '</li>',
+                    '<li role="presentation">',
+                    '<a class="remove ml10" href="javascript:void(0)" data-function="remove" tabindex="-1" role="menuitem">',
+                    '<i class="fa fa-fw fa-trash"></i> Löschen',
+                    '</a>',
+                    '</li>',
+                    '</div>'
+                ].join(''));
+
+                // ---- Kontextmenü hinzufügen ----
+                $('#overviewTable').append(ul);
+
+                var $parentOffset = $(this).parent().offset();
+                var $pos = $(this).parent().position();
+                var relX = e.pageX - $parentOffset.left + $pos.left;
+                var relY = e.pageY - $parentOffset.top + $pos.top;
+
+                // ---- Wenn das Kontextmenü zu weit am rechten Bildschirmrand ist -> Darstellung ändern ----
+                if (relX > ($(window).width() * 0.85)) {
+                    relX = relX - $('.dropdown-header').outerWidth();
+                }
+
+                $('#js_ContextMenu').css({
+                    'top': relY,
+                    'left': relX,
+                    'position': 'absolute'
+                });
+
+                // ---- Aktuell ausgewählte Zeile zur besseren Übersicht markieren ----
+                $('#js_ContextMenu').find('ul').on('mouseenter', function () {
+                    selectedRow.css('background-color', '#d9edf7');
+                }).on('mouseleave', function () {
+                    selectedRow.css('background-color', '');
+                });
+
+                $('#js_ContextMenu').on('editButtonEvent', function (e, row, uniqueid) {
+                    var pkidedit = uniqueid;
+                    var data = {
+                        'action': 'edit',
+                        'pkid': pkidedit
+                    };
+                    $.ajax({
+                        type: "GET",
+                        url: '/index/edit',
+                        data: data
+                    }).done(function(response) {
+                        response = jQuery.parseJSON(response);
+                        var $modal = $('#sensorModal');
+                        // ---- Modal neu initialisieren ----
+                        $modal.modal();
+                        $('#formsensor')[0].reset();
+                        resetfieldsfeedbackSensor();
+                        setModalEdit(response);
+                    });
+
+                }).on('click', '.edit', function () {
+                    $(this).trigger('editButtonEvent', [row, uniqueid]);
+                })
+                    .on('removeButtonEvent', function (e, row, uniqueid) {
+                        var pkiddelete = uniqueid;
+                        var data = {
+                            'nf_id[action]': 'delete',
+                            'nf_id[pkid]': pkiddelete
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: $('#NF').data('adminarea_basic_url')+'&nf_data=Event/deleteOne',
+                            data: data
+                        }).done(function() {
+                            window.location = "admin.php?de=90002&adm_app=141";
+                        });
+
+                    }).on('click', '.remove', function () {
+                    if (window.confirm("Datensatz wirklich löschen?")) {
+                        $(this).trigger('removeButtonEvent', [row, uniqueid]);
+                    }
+                })
+                    .on('infosButtonEvent', function (e, row, uniqueid) {
+                        var pkiddelete = uniqueid;
+                        var data = {
+                            'nf_id[action]': 'delete',
+                            'nf_id[pkid]': pkiddelete
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: $('#NF').data('adminarea_basic_url')+'&nf_data=Event/deleteOne',
+                            data: data
+                        }).done(function() {
+                            var $modal = $('#myModal');
+                            // ---- Modal neu initialisieren ----
+                            $modal.modal();
+                            $('#formdata')[0].reset();
+                            updatePrefixlen();
+                            resetfieldsfeedback();
+                            setModalEdit(response);
+                        });
+
+                    }).on('click', '.infos', function () {
+                    $(this).trigger('infosButtonEvent', [row, uniqueid]);
+                })
+            }
+        });
+        /* ---- Tabelle > Rechtsklick-Kontextmenü ---- */
+
+
 }); /** document ready **/
-var avail = false;
+
+
 //Hilfsfunktionen
 
 function createglyphiconsuccess(name) {
@@ -438,7 +603,7 @@ function validateSensorname() {
         isValid = false;
     }
     else {
-        var regexdate = /^[-a-zA-Z0-9_]{8,}$/;
+        var regexdate = /^[-a-zA-Z0-9_]{4,}$/;
         if (regexdate.test($('#sensorname').val())) {
             isValid = true;
         }
@@ -470,7 +635,7 @@ function validateLocation() {
         isValid = false;
     }
     else {
-        var regexdate = /^[-a-zA-Z0-9_]{8,}$/;
+        var regexdate = /^[-a-zA-Z0-9_]{3,}$/;
         if (regexdate.test($('#location').val())) {
             isValid = true;
         }
@@ -612,7 +777,33 @@ function dateSorter(a, b) {
     return 0;
 }
 
-function checkUsernameAvailable() {
+function setModalEdit(response){
 
+    $('#labelSensorModal').text('Sensor bearbeiten');
+    $('#modalSubmitsensor').text('Speichern');
+    $('#sensorname').val(response.name);
+    $('#location').val(response.location);
+    var lis = $('<input>').attr('id','fieldedit').attr('type','hidden').attr('value','edit').attr('name','field');
+    $('#formsensor').prepend(lis);
+    var pk = $('<input>').attr('id','fieldpk').attr('type','hidden').attr('value',response.pkid).attr('name','pkid');
+    $('#formsensor').prepend(pk);
+    var create = $('<input>').attr('id','fieldcreate').attr('type','hidden').attr('value',response.created).attr('name','created');
+    $('#formsensor').prepend(create);
+}
 
+function setModalCreate() {
+    $('#myModalLabel').text('Neuen Sensor anlegen');
+    $('#modalSubmitsensor').text('Erstellen');
+    $('#fieldedit').remove();
+    $('#fieldpk').remove();
+}
+
+/**
+ * @brief   Entfernt das Kontextmenü, sofern es vorhanden ist
+ */
+function removeContextMenu() {
+    var $contextMenu = $('#js_ContextMenu');
+    if ($contextMenu.length > 0) {
+        $contextMenu.remove();
+    }
 }

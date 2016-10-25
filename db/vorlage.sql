@@ -28,6 +28,7 @@ CREATE TABLE `sensor` (
   `name` varchar(20) NOT NULL,
   `userID` varchar(40) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `location` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +45,8 @@ CREATE TABLE `user` (
   `password` varchar(500) NOT NULL,
   `username` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `sensor`

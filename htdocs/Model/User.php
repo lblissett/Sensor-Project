@@ -2,7 +2,7 @@
 namespace Mvc\Model;
 class User extends ModelBase
 {
-    public $pkid, $username, $email, $password, $created;
+    public $pkid, $username, $email, $password, $created, $modified;
     public function getSource()
     {
         return 'user';
