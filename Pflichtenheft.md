@@ -1,4 +1,4 @@
-# 1 Zielbestimmung
+# 1 Zielbestimmung(Richard)
 Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
 notwendige Funktionen.
  
