@@ -69,6 +69,34 @@ class IndexController extends BaseController implements Controller
 
     }
 
+    public function existsUserAction()
+    {
+        $username = $this->getParam('user');
+        $site = new Site();
+
+        if (!$username) {
+            throw new \Exception();
+        }
+        else {
+            if (($username == "")) {
+                throw new \Exception();
+            }
+            else {
+                /** @var User $user */
+                $user = User::findOne("username = '" . $username . "'");
+                if (empty($user)){
+                    $site->usererror = null;
+                } else {
+                    $site->usererror = "Benutzer existiert bereits!";
+                }
+
+            }
+
+        }
+        $this->view->setVars($site);
+
+    }
+
     public function createSensorAction()
     {
         $namesensorfield = $this->getParam('sensorname');

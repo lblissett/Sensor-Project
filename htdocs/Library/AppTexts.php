@@ -50,6 +50,29 @@ class AppTexts
     public $actualversionEN = "current version:";
     public $from = "vom";
     public $fromEN = "from";
+    public $newsensor = "Neuen Sensor erstellen";
+    public $newsensorEN = "Create new sensor";
+    public $sensorname = "Sensor Name";
+    public $sensornameEN = "sensor name";
+    public $location = "Standort";
+    public $locationEN = "location";
+    public $entersensorname = "Name des Sensors";
+    public $entersensornameEN = "Enter the sensor name";
+    public $enterlocationsensor = "Standort des Sensors";
+    public $enterlocationsensorEN = "Enter your sensor location";
+    public $create = "Erstellen";
+    public $createEN = "Create";
+    public $created = "Erstellt am";
+    public $createdEN = "created";
+    public $createsensor = "Neuen Sensor anlegen";
+    public $createsensorEN = "create new sensor";
+    public $home = "Start";
+    public $homeEN = "Home";
+    public $sensors = "Sensoren";
+    public $sensorsEN = "Sensors";
+    public $accsettings = "Benutzer Einstellungen";
+    public $accsettingsEN = "Account Settings";
+
 
     public $notloggedin = "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";
     public $notloggedinEN = "You have to be logged in to access the protected area.";

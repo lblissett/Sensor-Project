@@ -5,13 +5,17 @@
  * Date: 18.10.2016
  * Time: 11:24
  */
+use Mvc\Library\AppTexts;
 ?>
 <div class="panel panel-default panel-table">
     <div class="panel-body">
         <div id="openModalSensor">
             <button type="button" class="btn btn-default modalActionButton" id="newDataModalSensor">
                 <span class="glyphicon btn-glyphicon glyphicon-plus"></span>
-                create new sensor
+                <?php if ($_SESSION['language'] == "de") {
+                    echo $text->createsensor;
+                } else {
+                    echo $text->createsensorEN; }  ?>
             </button>
         </div>
 
@@ -52,32 +56,44 @@
                         data-field="pkid"
                         data-sortable="true"
                         data-halign="center"
-                        data-valign="middle">sensorID
+                        data-valign="middle">SensorID
                     </th>
                     <th
                         data-field="name"
                         data-sortable="true"
                         data-halign="center"
-                        data-valign="middle">name
+                        data-valign="middle"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->sensorname;
+                        } else {
+                            echo $text->sensornameEN; }  ?>
                     </th>
                     <th
                         data-field="location"
                         data-sortable="true"
                         data-halign="center"
-                        data-valign="middle">location
+                        data-valign="middle"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->location;
+                        } else {
+                            echo $text->locationEN; }  ?>
                     </th>
                     <th
                         data-field="userID"
                         data-sortable="true"
                         data-halign="center"
-                        data-valign="middle">user
+                        data-valign="middle"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->username;
+                        } else {
+                            echo $text->usernameEN; }  ?>
                     </th>
                     <th
                         data-field="created"
                         data-sortable="true"
                         data-halign="center"
                         data-valign="middle"
-                        data-sorter="dateSorter">created
+                        data-sorter="dateSorter"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->created;
+                        } else {
+                            echo $text->createdEN; }  ?>
                     </th>
                 </tr>
                 </thead>

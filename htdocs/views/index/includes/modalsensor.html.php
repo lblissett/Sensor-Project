@@ -13,13 +13,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="labelSensorModal">Create new sensor</h4>
+                    <h4 class="modal-title" id="labelSensorModal"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->newsensor;
+                        } else {
+                            echo $text->newsensorEN; }  ?></h4>
                 </div>
                 <div class="modal-body form-horizontal">
                     <div class="form-group" id="sensornamegroup">
-                        <label for="sensorname" class="col-md-4 control-label label-element">sensor name
+                        <label for="sensorname" class="col-md-4 control-label label-element"><?php if ($_SESSION['language'] == "de") {
+                                echo $text->sensorname;
+                            } else {
+                                echo $text->sensornameEN; }  ?>
                             <i class="fa fa-info-circle"
-                               data-original-title="Enter the sensor name"
+                               data-original-title="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->entersensorname;
+                               } else {
+                                   echo $text->entersensornameEN; }  ?>"
                                data-toggle="popover"
                                title=""
                                data-content="">
@@ -27,15 +36,24 @@
                         <div class="col-md-6" id="colsensorname">
                             <div class="input-group" >
                                 <span class="input-group-addon"><i class="fa fa-cube fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="sensorname" id="sensorname"  placeholder="Enter your sensor name"
+                                <input type="text" class="form-control" name="sensorname" id="sensorname"  placeholder="<?php if ($_SESSION['language'] == "de") {
+                                    echo $text->entersensorname;
+                                } else {
+                                    echo $text->entersensornameEN; }  ?>"
                                 onblur="validateSensorname()"/>
                             </div>
                         </div>
                     </div>
                     <div class="form-group" id="locationgroup">
-                        <label for="location" class="col-md-4 control-label label-element">sensor location
+                        <label for="location" class="col-md-4 control-label label-element"><?php if ($_SESSION['language'] == "de") {
+                                echo $text->location;
+                            } else {
+                                echo $text->locationEN; }  ?>
                             <i class="fa fa-info-circle"
-                               data-original-title="Enter the sensor location"
+                               data-original-title="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->enterlocationsensor;
+                               } else {
+                                   echo $text->enterlocationsensorEN; }  ?>"
                                data-toggle="popover"
                                title=""
                                data-content="">
@@ -43,7 +61,10 @@
                         <div class="col-md-6" id="collocation">
                             <div class="input-group" >
                                 <span class="input-group-addon"><i class="fa fa-map-marker fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="location" id="location"  placeholder="Enter your sensor location"
+                                <input type="text" class="form-control" name="location" id="location"  placeholder="<?php if ($_SESSION['language'] == "de") {
+                                    echo $text->enterlocationsensor;
+                                } else {
+                                    echo $text->enterlocationsensorEN; }  ?>"
                                 onblur="validateLocation()"/>
                             </div>
                         </div>
@@ -51,8 +72,14 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="modalSubmitsensor" >Create</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->cancel;
+                        } else {
+                            echo $text->cancelEN; }  ?></button>
+                    <button type="submit" class="btn btn-primary" id="modalSubmitsensor" ><?php if ($_SESSION['language'] == "de") {
+                            echo $text->create;
+                        } else {
+                            echo $text->createEN; }  ?></button>
                 </div>
             </div>
         </div>

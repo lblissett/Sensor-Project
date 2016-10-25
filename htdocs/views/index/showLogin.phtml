@@ -11,24 +11,42 @@ $text = new AppTexts();
                 <div class="col-md-3">
                     <ul class="nav nav-pills nav-stacked">
                         <?php
-                        if ($this->vars->site == "home"){
-                            echo '<li class="active"><a href="/index/showLogin?site=home"><i class="fa fa-home fa-fw"></i>Home</a></li>';
-                        }
-                        else {
-                            echo '<li><a href="/index/showLogin?site=home"><i class="fa fa-home fa-fw"></i>Home</a></li>';
-                        }
-                        if ($this->vars->site == "table"){
-                            echo '<li class="active"><a href="/index/showLogin?site=table"><i class="fa fa-cube fa-fw"></i>Sensors</a></li>';
-                        }
-                        else {
-                            echo '<li><a href="/index/showLogin?site=table"><i class="fa fa-cube fa-fw"></i>Sensors</a></li>';
-                        }
-                        if ($this->vars->site == "settings"){
-                            echo '<li class="active"><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i>Account Settings</a></li>';
-                        }
-                        else {
-                            echo '<li><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i>Account Settings</a></li>';
-                        }
+                        if ($this->vars->site == "home"){ ?>
+                            <li class="active"><a href="/index/showLogin?site=home"><i class="fa fa-home fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                        echo $text->home;
+                                    } else {
+                                        echo $text->homeEN; }  ?></a></li>
+                        <?php }
+                        else { ?>
+                            <li><a href="/index/showLogin?site=home"><i class="fa fa-home fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                        echo $text->home;
+                                    } else {
+                                        echo $text->homeEN; }  ?></a></li>
+                        <?php }
+                        if ($this->vars->site == "table"){ ?>
+                            <li class="active"><a href="/index/showLogin?site=table"><i class="fa fa-cube fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                        echo $text->sensors;
+                                    } else {
+                                        echo $text->sensorsEN; }  ?></a></li>
+                        <?php }
+                        else { ?>
+                            <li><a href="/index/showLogin?site=table"><i class="fa fa-cube fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                        echo $text->sensors;
+                                    } else {
+                                        echo $text->sensorsEN; }  ?></a></li>
+                        <?php }
+                        if ($this->vars->site == "settings"){ ?>
+                            <li class="active"><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                        echo $text->accsettings;
+                                    } else {
+                                        echo $text->accsettingsEN; }  ?></a></li>
+                        <?php }
+                        else { ?>
+                            <li><a href="/index/showLogin?site=settings"><i class="fa fa-cogs fa-fw"></i><?php if ($_SESSION['language'] == "de") {
+                                        echo $text->accsettings;
+                                    } else {
+                                        echo $text->accsettingsEN; }  ?></a></li>
+                        <?php }
                         ?>
                         <li><a href="/index/logout"><i class="fa fa-power-off fa-fw"></i><?php if ($_SESSION['language'] == "de") {
                                     echo $text->logout;

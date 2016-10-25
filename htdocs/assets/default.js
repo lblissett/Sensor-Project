@@ -5,7 +5,54 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
 
+    $('#formdata').submit( function () {
 
+        if (validateAll()) {
+            /**
+             * Button Ladeanzeige hinzufügen
+             */
+            var data = {
+                'user': $('#username').val()
+            };
+            $.ajax({
+                type: "POST",
+                url: '/index/existsUser',
+                data: data
+            }).done(function (response) {
+                response = jQuery.parseJSON(response);
+                if (response.usererror != null) {
+                    var textErr = response.usererror;
+                    $('#usernamegroup').removeClass("has-success has-feedback").addClass("has-error has-feedback");
+                    removeglyphicon("#glyphiusername");
+                    $('#colusername').append(createglyphiconfailure("glyphiusername"));
+                    var label = $('<span></span>').addClass("help-block").attr('id', 'usernamefail')
+                        .text(textErr);
+                    $('#colusername').append(label);
+                }
+                if ((response.usererror == null)){
+                    var load = $('<i></i>').addClass("fa fa-spinner fa-spin");
+                    $('#modalSubmit').text('Wird gespeichert ').append(load);
+                    var dataa = {
+                        'username': $('#username').val(),
+                        'email' : $('#email').val(),
+                        'password' : $('#password').val(),
+                        'confirmpassword' : $('#confirmpassword').val()
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: '/index/register',
+                        data: dataa
+                    }).done(function () {
+                        window.location.replace('/index/index');
+                    });
+
+                }
+            });
+        }
+    return false;
+
+
+    });
 
     $('#loginform').submit( function () {
         var testing = true;
@@ -49,12 +96,6 @@ $(document).ready(function () {
                 }
             });
         }
-
-
-
-
-
-
         return false;
 
     });
@@ -81,35 +122,8 @@ $(document).ready(function () {
 
     $('#formsensor').submit(function () {
 
-        if (validateAllSensor()) {
-            /**
-             * Button Ladeanzeige hinzufügen
-             */
-            var load = $('<i></i>').addClass("fa fa-spinner fa-spin");
-            $('#modalSubmitsensor').text('Wird gespeichert ').append(load);
-            return true;
-        }
-        else {
-            return false;
-        }
-
     });
 
-    $('#formdata').submit(function () {
-
-        if (validateAll()) {
-            /**
-             * Button Ladeanzeige hinzufügen
-             */
-            var load = $('<i></i>').addClass("fa fa-spinner fa-spin");
-            $('#modalSubmit').text('Wird gespeichert ').append(load);
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    });
 
     /**
      * Bootstrap-Table-Toolbar um eigene Funktionen erweitern
@@ -187,7 +201,7 @@ $(document).ready(function () {
 
 
 }); /** document ready **/
-
+var avail = false;
 //Hilfsfunktionen
 
 function createglyphiconsuccess(name) {
@@ -596,4 +610,9 @@ function dateSorter(a, b) {
         return -1;
     }
     return 0;
+}
+
+function checkUsernameAvailable() {
+
+
 }
