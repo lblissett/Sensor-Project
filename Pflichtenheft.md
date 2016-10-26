@@ -37,7 +37,7 @@ beabsichtigt ist.
 Um die Werte der Temperatur und der Luftfeuchtigkeit zu ermitteln, wird der Sensor DHT22 benutzt. Dieser wird mit dem Microcontroller "ESP8266 NodeMCU" verbunden. 
 
 <img src="/Bilder/dht22.jpg" alt="DHT22" />
-<img src="/Bilder/esp8266.jpg" alt="ESP8266" />
+<img src="/Bilder/esp8266.jpg" alt="ESP8266" height="400px" width="230px" />
 
 <!--![Alternativer Text](/Bilder/dht22.jpg "DHT22")-->
 <!--![Alternativer Text](/Bilder/esp8266.jpg "ESP8266")-->
