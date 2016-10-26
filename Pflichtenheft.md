@@ -60,12 +60,11 @@ Daten: Angabe der Daten, die langfristig aus Benutzersicht zu speichern sind.
 # 6 Leistungen
 Leistungen: Anforderungen bezüglich Zeit und Genauigkeit
  
-# 7 Benutzungsoberfläche
-Aufbau des Webfrontends
+# 7 Aufbau des Webfrontends
 
 Für den grundlegenden Aufbau des Webfrontends wurde sich am MVC (Model View Controller) Muster orientiert. 
 
-Bild1
+![Alternativer Text](/Bilder/Leo_1.png "MVC Muster")
 
 Hierbei kann man auch sagen, dass es bereits viele vorgefertigte Lösungen gibt, welche man einfach verwenden kann, jedoch sind diese meistens zu komplex bzw. schwierig zu verstehen und zu erweitern. Desweiteren ist man mit diesen Lösungen zu eingeschränkt und kann nicht genau nach seinen eigenen Vorstellungen arbeiten. Aus diesen Gründen wurde ein eigenes „Framework“ erstellt, welches sich am MVC orientiert. 
 
@@ -136,11 +135,7 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
 
 
  
-\begin{figure}[ht]
-  \centering
-  \rule{8cm}{6cm}
-  \caption{Dies könnte ein Bild der Benutzungsoberfläche sein}
-\end{figure}
+
  
 # 8 Qualitätsziele (Martin)
 Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
