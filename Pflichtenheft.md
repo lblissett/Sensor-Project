@@ -41,34 +41,34 @@ Bild dht22 bidl esp8266
 ![Alternativer Text](/Bilder/esp8266.jpg "ESP8266")
 
 Technische Daten des DHT22:
--Digital Temperatur und Luftfeuchtigkeit ermitteln
--Chip Typ DHT22
--Betriebsspannung: DC 3.3-5.5V
--Luftfeuchtigkeitsmessbereich : 0 bis 100% relative Luftfeuchte
--Feuchtemessgenauigkeit: ±2% RH
--Temperaturbereich: -40 bis +80 C
--Temperaturmessgenauigkeit ±0.5
--Single-Bus – Digitalsignalausgang, bidirektionale serielle Daten
--zahlreiche Beispielprogramme für gängige Board im Internet verfügbar
--Maße: 28mm x 12mm x 10mm
+- Digital Temperatur und Luftfeuchtigkeit ermitteln
+- Chip Typ DHT22
+- Betriebsspannung: DC 3.3-5.5V
+- Luftfeuchtigkeitsmessbereich : 0 bis 100% relative Luftfeuchte
+- Feuchtemessgenauigkeit: ±2% RH
+- Temperaturbereich: -40 bis +80 C
+- Temperaturmessgenauigkeit ±0.5
+- Single-Bus – Digitalsignalausgang, bidirektionale serielle Daten
+- zahlreiche Beispielprogramme für gängige Board im Internet verfügbar
+- Maße: 28mm x 12mm x 10mm
 
 Das ESP8266 von dem Hersteller Espressif ist ein programmierbarer WLAN-SoC mit UART- und SPI-Schnittstelle.
 
 Technische Daten des ESP8266
--802.11 b/g/n
--Wi-Fi Direct (P2P), soft-AP
--Integrated TCP/IP protocol stack
--Integrated TR switch, balun, LNA, power amplifier and matching network
--Integrated PLLs, regulators, DCXO and power management units
--+19.5dBm output power in 802.11b mode
--Power down leakage current of <10uA
--Integrated low power 32-bit CPU could be used as application processor
--SDIO 1.1/2.0, SPI, UART
--STBC, 1×1 MIMO, 2×1 MIMO
--A-MPDU & A-MSDU aggregation & 0.4ms guard interval
--Wake up and transmit packets in < 2ms
--Standby power consumption of < 1.0mW (DTIM3)
--VCC: 3,3V (Achtung: Eingänge sind NICHT 5V TOLERANT!)
+- 802.11 b/g/n
+- Wi-Fi Direct (P2P), soft-AP
+- Integrated TCP/IP protocol stack
+- Integrated TR switch, balun, LNA, power amplifier and matching network
+- Integrated PLLs, regulators, DCXO and power management units
+- +19.5dBm output power in 802.11b mode
+- Power down leakage current of <10uA
+- Integrated low power 32-bit CPU could be used as application processor
+- SDIO 1.1/2.0, SPI, UART
+- STBC, 1×1 MIMO, 2×1 MIMO
+- A-MPDU & A-MSDU aggregation & 0.4ms guard interval
+- Wake up and transmit packets in < 2ms
+- Standby power consumption of < 1.0mW (DTIM3)
+- VCC: 3,3V (Achtung: Eingänge sind NICHT 5V TOLERANT!)
 
 
 ### 3.1.3 Server Hardware
@@ -82,16 +82,16 @@ Technische Daten des ESP8266
 ## 3.2 Software
 ### 3.2.1 Server Software
 Betriebssystem: 
--CentOS 7.1/7.2 & RHEL 7.0/7.1/7.2 (YUM-based systems)
--Ubuntu 14.04 LTS
--SUSE Linux Enterprise 12
+- CentOS 7.1/7.2 & RHEL 7.0/7.1/7.2 (YUM-based systems)
+- Ubuntu 14.04 LTS
+- SUSE Linux Enterprise 12
 
--Docker Version 1.12.2
+- Docker Version 1.12.2
 
 ### 3.2.2 Client Software
 
--Arduino IDE Version 1.6.12
--Webbrowser neueste stabile Version(Firefox, Chrome,Opera,...)
+- Arduino IDE Version 1.6.12
+- Webbrowser neueste stabile Version(Firefox, Chrome,Opera,...)
  
 ## Orgware
 Orgware: Angabe der organisatorische Rahmenbedingungen, die vor Projektstart
