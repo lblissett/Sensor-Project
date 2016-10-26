@@ -31,73 +31,21 @@ Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
 Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
 beabsichtigt ist.
  
-# 3 System Vorraussetzungen
-## 3.1 Hardware
-### 3.1.1 Sensor und Microcontroller
-Um die Werte der Temperatur und der Luftfeuchtigkeit zu ermitteln, wird der Sensor DHT22 benutzt. Dieser wird mit dem Microcontroller "ESP8266 NodeMCU" verbunden. 
-
-Bild dht22 bidl esp8266
-![Alternativer Text](/Bilder/dht22.jpg "DHT22")
-![Alternativer Text](/Bilder/esp8266.jpg "ESP8266")
-
-Technische Daten des DHT22:
-- Digital Temperatur und Luftfeuchtigkeit ermitteln
-- Chip Typ DHT22
-- Betriebsspannung: DC 3.3-5.5V
-- Luftfeuchtigkeitsmessbereich : 0 bis 100% relative Luftfeuchte
-- Feuchtemessgenauigkeit: ±2% RH
-- Temperaturbereich: -40 bis +80 C
-- Temperaturmessgenauigkeit ±0.5
-- Single-Bus – Digitalsignalausgang, bidirektionale serielle Daten
-- zahlreiche Beispielprogramme für gängige Board im Internet verfügbar
-- Maße: 28mm x 12mm x 10mm
-
-Das ESP8266 von dem Hersteller Espressif ist ein programmierbarer WLAN-SoC mit UART- und SPI-Schnittstelle.
-
-Technische Daten des ESP8266
-- 802.11 b/g/n
-- Wi-Fi Direct (P2P), soft-AP
-- Integrated TCP/IP protocol stack
-- Integrated TR switch, balun, LNA, power amplifier and matching network
-- Integrated PLLs, regulators, DCXO and power management units
-- +19.5dBm output power in 802.11b mode
-- Power down leakage current of <10uA
-- Integrated low power 32-bit CPU could be used as application processor
-- SDIO 1.1/2.0, SPI, UART
-- STBC, 1×1 MIMO, 2×1 MIMO
-- A-MPDU & A-MSDU aggregation & 0.4ms guard interval
-- Wake up and transmit packets in < 2ms
-- Standby power consumption of < 1.0mW (DTIM3)
-- VCC: 3,3V (Achtung: Eingänge sind NICHT 5V TOLERANT!)
-
-
-### 3.1.3 Server Hardware
-- Prozessor Architektur x86
-- beachte Anforderungen für Betriebssysteme
-
-### 3.1.4 Client Hardware
-- Betriebssystem: Windows, Mac OS X, Linux 32bit/64bit
-
-
-## 3.2 Software
-### 3.2.1 Server Software
-Betriebssystem: 
-- CentOS 7.1/7.2 & RHEL 7.0/7.1/7.2 (YUM-based systems)
-- Ubuntu 14.04 LTS
-- SUSE Linux Enterprise 12
-
-- Docker Version 1.12.2
-
-### 3.2.2 Client Software
-
-- Arduino IDE Version 1.6.12
-- Webbrowser neueste stabile Version(Firefox, Chrome,Opera,...)
+# 3 Umgebung (Richard)
+ 
+## Software
+Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
+Aufteilung für Server und Client ist ggf. sinnvoll. Weiterhin sind unbedingt die
+kleinsten benötigten Versionsnummern anzugeben.
+ 
+## Hardware
+Hardware: Hardware-Anforderungen des Systems.
  
 ## Orgware
 Orgware: Angabe der organisatorische Rahmenbedingungen, die vor Projektstart
 erfüllt sein müssen.
  
-# 4 Funktionalität
+# 4 Funktionalität (Jörg)
 Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
 detaillierter Beschreibung.
  
@@ -191,7 +139,51 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
 # 8 Qualitätsziele (Martin)
 Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
 Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
- 
-# 9 Ergänzungen 
+
+# 9 Integration in die Monitoringsoftware "Icinga2" (Jörg)
+
+Ein mögliches Anwendungsgebiet des Temperatursensors ist die Überwachung bspw. der Kühlung von Serverräumen. Dafür ist es sinnvoll, ihn in bestehende Monitoringsoftwarelösungen zu integrieren. Zu diesem Zweck wird ein Plugin für Icinga2, einer Weiterentwicklung von Nagios, entwickelt. Mithilfe des Addons Graphite werden die Daten innerhalb von Icinga2 visualisiert. Die Daten werden aus der bestehenden Datenbank entnommen.
+
+## 9.1 Realisierung mit Bash-Script
+
+Das Icinga2-Plugin wird mithilfe eines Bashscriptes realisiert, dass vom Icinga2-Server in wohldefinierten Intervallen aufgerufen wird und mit einem von folgenden Exitcodes schließt:
+
+_________________________
+| Exit Code | Status    |
+_________________________
+| 0         | OK        |
+_________________________
+| 1         | Warning   |
+_________________________
+| 2         | Critcal   |
+_________________________
+| 3         | Unknown   |
+_________________________
+
+Neben dem Exit-Code wird der Temperaturwert an Icinga2 übermittelt. Wenn die Temperatur über einen bestimmten Schwellwert steigt, wird ein „Warning“ bzw. ein „Critical“ ausgegeben. Dabei können die einzelnen Werte diskuttiert und angepasst werden.
+
+__________________________
+| Temperatur | Status    |
+__________________________
+| < 29° C    | OK        |
+__________________________
+| 29 - 35° C | Warning   |
+__________________________
+| > 35° C    | Critcal   |
+__________________________
+| kaputt     | Unknown   |
+__________________________
+
+## 9.2 Einfache Installation und Erweiterbarkeit
+
+Die Integration eines neuen Temperatursensors in Icinga2 soll so einfach wie möglich sein. Pro Sensor soll es nur ein einzelnes Script geben. D.h. wird ein weiterer Raum und/oder Sensor in die Überwachung aufgenommen, muss ein weitgehend geklontes Script in Icinga2 integriert werden. Dazu werden die Scripte der Übersichtlichkeit halber in ein seperates Verzeichnis kopiert. Es wird vermieden, lange Scripte vorhalten zu müssen, deren Konfiguration und Erweiterung unübersichtlich ist. Es gilt der Grundsatz „One Service – One File“.
+
+## 9.3 Visualisierung mit Graphite
+
+Dafür wird die Software „Graphite“ eingesetzt. Sie speichert die ermittelten Daten in einer weiteren Datenbank und gewährt so Einblicke in den zeitlichen Verlauf der Temperaturen in den Serverräumen. Graphite ist eine eigenständige Software, die dank vordefinierter Schnittstellen als Plugin in Icinga2 integriert werden kann. Zu beachten ist, dass die Maschine, auf der der Icinga2-Server mit Graphite läuft, mindestens 1 GB RAM vorweist. Graphite benötigt viel Hauptspeicher um seine Grafiken anzuzeigen. 
+
+![Alternativer Text](/Bilder/Joerg_1.png "Icinga2Graphite")
+
+# 10 Ergänzungen 
 Hier ist Platz für nicht im Pflichtenheft abgedeckte Themengebiete oder ein
 Glossar.
