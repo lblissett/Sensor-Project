@@ -79,7 +79,7 @@ Um dann die Daten darstellen zu können, muss sich hinter dem Controller im Ordn
 
 ### 7.2.1 Workflow
 
-Bild2
+![Alternativer Text](/Bilder/Leo_2.png "Workflow")
 
 ### 7.2.2 Login
 
@@ -87,7 +87,7 @@ Bild2
 - Auswahl der Sprache (Mehrsprachigkeit)
 - Link zum Registrieren
 
-Bild3
+![Alternativer Text](/Bilder/Leo_3.png "Login")
 
 ### 7.2.3 Registrieren
 
@@ -95,13 +95,13 @@ Bild3
 - RegEx Überprüfung hinter jedem Feld mit Erläuterung im Infofeld jeder Zeile (Frontend und Backend)
 - Überprüfung, dass Benutzername nur einmalig ist (Frontend und Backend)
 
-Bild4
+![Alternativer Text](/Bilder/Leo_4.png "Registrieren")
 
 ### 7.2.4 Loginseite
 - geschützt durch Login, ohne diesen nicht erreichbar
 - Menü, um verschiedene Funktionalitäten aufzurufen
 
-Bild5
+![Alternativer Text](/Bilder/Leo_5.png "Menue")
 
 Homebildschirm
 - kleine Begrüßung, Übersicht
@@ -115,7 +115,7 @@ Informationen: Diagramm mit eingetragenen Daten und die dazu gehörige API
 Bearbeiten: Bearbeiten des Sensors z.B. Ort ändern
 Löschen: Sensor und dazu gehörige Daten löschen
 
-Bild6
+![Alternativer Text](/Bilder/Leo_6.png "Home")
 
 
 Benutzereinstellungen
