@@ -148,31 +148,11 @@ Ein mögliches Anwendungsgebiet des Temperatursensors ist die Überwachung bspw.
 
 Das Icinga2-Plugin wird mithilfe eines Bashscriptes realisiert, dass vom Icinga2-Server in wohldefinierten Intervallen aufgerufen wird und mit einem von folgenden Exitcodes schließt:
 
-_________________________
-| Exit Code | Status    |
-_________________________
-| 0         | OK        |
-_________________________
-| 1         | Warning   |
-_________________________
-| 2         | Critcal   |
-_________________________
-| 3         | Unknown   |
-_________________________
+![Alternativer Text](/Bilder/Joerg_1.png "Exit-Codes")
 
 Neben dem Exit-Code wird der Temperaturwert an Icinga2 übermittelt. Wenn die Temperatur über einen bestimmten Schwellwert steigt, wird ein „Warning“ bzw. ein „Critical“ ausgegeben. Dabei können die einzelnen Werte diskuttiert und angepasst werden.
 
-__________________________
-| Temperatur | Status    |
-__________________________
-| < 29° C    | OK        |
-__________________________
-| 29 - 35° C | Warning   |
-__________________________
-| > 35° C    | Critcal   |
-__________________________
-| kaputt     | Unknown   |
-__________________________
+![Alternativer Text](/Bilder/Joerg_2.png "Temperaturwertuebergabe")
 
 ## 9.2 Einfache Installation und Erweiterbarkeit
 
