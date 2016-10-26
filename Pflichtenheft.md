@@ -32,7 +32,7 @@ Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
 Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
 beabsichtigt ist.
  
-# 3 Umgebung 
+# 3 Umgebung (Richard)
  
 ## Software
 Software: Gibt an, welche Software zum Betrieb vorhanden sein muss. Eine
