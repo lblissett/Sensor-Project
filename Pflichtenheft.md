@@ -148,11 +148,11 @@ Ein mögliches Anwendungsgebiet des Temperatursensors ist die Überwachung bspw.
 
 Das Icinga2-Plugin wird mithilfe eines Bashscriptes realisiert, dass vom Icinga2-Server in wohldefinierten Intervallen aufgerufen wird und mit einem von folgenden Exitcodes schließt:
 
-![Alternativer Text](/Bilder/Joerg_1.png "Exit-Codes")
+![Alternativer Text](/Bilder/Tabelle_1.png "Exit-Codes")
 
 Neben dem Exit-Code wird der Temperaturwert an Icinga2 übermittelt. Wenn die Temperatur über einen bestimmten Schwellwert steigt, wird ein „Warning“ bzw. ein „Critical“ ausgegeben. Dabei können die einzelnen Werte diskuttiert und angepasst werden.
 
-![Alternativer Text](/Bilder/Joerg_2.png "Temperaturwertuebergabe")
+![Alternativer Text](/Bilder/Tabelle_2.png "Temperaturwertuebergabe")
 
 ## 9.2 Einfache Installation und Erweiterbarkeit
 
@@ -162,7 +162,7 @@ Die Integration eines neuen Temperatursensors in Icinga2 soll so einfach wie mö
 
 Dafür wird die Software „Graphite“ eingesetzt. Sie speichert die ermittelten Daten in einer weiteren Datenbank und gewährt so Einblicke in den zeitlichen Verlauf der Temperaturen in den Serverräumen. Graphite ist eine eigenständige Software, die dank vordefinierter Schnittstellen als Plugin in Icinga2 integriert werden kann. Zu beachten ist, dass die Maschine, auf der der Icinga2-Server mit Graphite läuft, mindestens 1 GB RAM vorweist. Graphite benötigt viel Hauptspeicher um seine Grafiken anzuzeigen. 
 
-![Alternativer Text](/Bilder/Joerg_1.png "Icinga2Graphite")
+![Alternativer Text](/Bilder/Icinga2Graphite.png "Icinga2Graphite")
 
 # 10 Ergänzungen 
 Hier ist Platz für nicht im Pflichtenheft abgedeckte Themengebiete oder ein
