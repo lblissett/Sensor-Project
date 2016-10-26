@@ -60,7 +60,7 @@ Daten: Angabe der Daten, die langfristig aus Benutzersicht zu speichern sind.
 # 6 Leistungen
 Leistungen: Anforderungen bezüglich Zeit und Genauigkeit
  
-# 7 Aufbau des Webfrontends
+# 7 Aufbau des Webfrontends (Leo)
 
 Für den grundlegenden Aufbau des Webfrontends wurde sich am MVC (Model View Controller) Muster orientiert. 
 
