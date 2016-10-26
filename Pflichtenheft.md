@@ -1,16 +1,15 @@
 # 1 Zielbestimmung(Richard)
-Dieses Kapitel dient der Bestimmung von Zielen und nicht für deren Verwendung
-notwendige Funktionen.
- 
+Die Bereitstellung eines Dockerimages mit einen Webserver + Datenbank, so konfiguriert, dass leicht neue Temperatursensoren in die Weboberfläche integriert werden können und die Daten dazu angezeigt werden.
+
 ## Musskriterien
-Musskriterien: Für das Produkt unabdingbare Leistungen, die in jedem Fall
-erfüllt werden müssen. Das System ist ohne diese Funktionen für seinen
-gedachten Zweck nicht einsetzbar.
- 
+Es soll, ein funktionfähiges Skript für den Microcontroller, zur Verfügung gestellt werden, sodass dieser Daten vom Temperatursensor erhält und an einen Server schickt.
+
+Der Sever der die ermittelten Daten erhält speichert diese in eine Datenbank.
+
+Die Messdaten soll man in der Weboberfläche anschaulich einsehen können.
+
 ## Kannkriterien
-Kannkriterien: Die Erfüllung der Kannkriterien ist erwünscht, jedoch nicht
-unbedingt notwendig. Sie sollten nur angestrebt werden, falls noch ausreichend
-Kapazitäten vorhanden sind.
+Für die komplette Infrastruktur soll ein Icinga Plugin zur Verfügung gestellt werden, welches die Bereitschaft überprüft.
  
 ## Abgrenzungskriterien
 Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
