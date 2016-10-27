@@ -22,6 +22,11 @@ $text = new AppTexts();
             <div class="modal-body form-horizontal">
 
 
+            <!-- Hier kannst du deins reinmachen Martin im modal-body */ -->
+
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php if ($_SESSION['language'] == "de") {
