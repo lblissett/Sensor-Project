@@ -15,21 +15,19 @@ Für die komplette Infrastruktur soll ein Icinga Plugin zur Verfügung gestellt 
 Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
 
 # 2 Einsatz (Martin)
-Der geplante Einsatz des Systems ist die Grundlage für Benutzungsoberfläche und
-Qualitätsanforderungen.
+
+Die Organisation der Sensoren sowie die Anzeige der Daten der Sensoren soll clientseitig passieren. Moderne Webbrowser sollen dazu in der Lage sein.
  
 ## Anwendungsbereiche
-Ein Pflichtenheft wird bspw. in einer IT-Abteilung genutzt.
+Die Anwendung kann überall eingesetzt werden wo Strom und ein Wlan Netz zur Verfügung stellt, d.h. es kann für die Messung von Temperaturen im Wohnbereich, in Serverräumen, in öffentlichen Gebäuden, etc. eingesetzt werden. 
  
 ## Zielgruppen
-Die Zielgruppe besteht also aus Informatikern, die mit der Projektplanung
-beauftragt wurden.
+Informatiker (und Informatikaffine Nutzer) die den ESP8266 zur Messung und Anzeige von Temperaturdaten nutzen wollen. Die größte Hürde stellt dabei die Programmierung des Microcontrollers dar. Ist der Microcontroller erst einmal korrekt in das System eingebunden sollen auch Laien dazu in der Lage sein sich den Temperaturverlauf in einer Weboberfläche anzeigen zu lassen. 
  
 ## Betriebsbedingungen
-Betriebsbedingungen: Die Betriebsbedingungen spezifiziert die physikalische
-Umgebung des Systems, die tägliche Betriebszeit, und ob das System ständiger
-Beobachtung durch Bediener ausgesetzt ist, oder ein unbeaufsichtigter Betrieb
-beabsichtigt ist.
+- Betriebsbedingungen: der Einsatz der Technik sollte drinnen geschehen und aus Sicherheitsaspekten lediglich im Intranet betrieben werden
+- Betriebszeit: dauerhafter Betrieb 24 Stunden 7 Tage in der Woche
+- Beobachtung: unbesichtigter Betrieb
  
 # 3 System Vorraussetzungen
 ## 3.1 Hardware
