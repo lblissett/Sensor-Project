@@ -93,6 +93,20 @@ abstract class ModelBase
         }
     }
     /**
+     * Delete data.
+     */
+    public static function delete($where)
+    {
+        $model = new static();
+        $table = $model->getSource();
+        /** @var \PDO $pdo */
+        $pdo = $model->getPdo();
+
+        if (!$pdo->exec('DELETE FROM`'.$table.'` WHERE '.$where)) {
+            throw new \RuntimeException('Could not delete '.get_class($model).': '.$pdo->errorInfo()[2]);
+        }
+    }
+    /**
      * Build fields data.
      *
      * @return array

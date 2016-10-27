@@ -320,27 +320,27 @@ $(document).ready(function () {
                     .on('removeButtonEvent', function (e, row, uniqueid) {
                         var pkiddelete = uniqueid;
                         var data = {
-                            'nf_id[action]': 'delete',
-                            'nf_id[pkid]': pkiddelete
+                            'action': 'delete',
+                            'pkid': pkiddelete
                         };
                         $.ajax({
                             type: "POST",
-                            url: $('#NF').data('adminarea_basic_url')+'&nf_data=Event/deleteOne',
+                            url: '/index/delete',
                             data: data
                         }).done(function() {
-                            window.location = "admin.php?de=90002&adm_app=141";
+                            window.location.replace('/index/showLogin?site=table');
                         });
 
                     }).on('click', '.remove', function () {
-                    if (window.confirm("Datensatz wirklich löschen?")) {
+                    if (window.confirm("Sensor und dazugehörige Daten wirklich löschen?")) {
                         $(this).trigger('removeButtonEvent', [row, uniqueid]);
                     }
                 })
                     .on('infosButtonEvent', function (e, row, uniqueid) {
                         var pkiddelete = uniqueid;
                         var data = {
-                            'nf_id[action]': 'delete',
-                            'nf_id[pkid]': pkiddelete
+                            'action': 'infos',
+                            'pkid': pkiddelete
                         };
                         $.ajax({
                             type: "POST",
@@ -351,7 +351,6 @@ $(document).ready(function () {
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
                             $('#formdata')[0].reset();
-                            updatePrefixlen();
                             resetfieldsfeedback();
                             setModalEdit(response);
                         });
@@ -362,6 +361,13 @@ $(document).ready(function () {
             }
         });
         /* ---- Tabelle > Rechtsklick-Kontextmenü ---- */
+
+    /**
+     * Hintergrundfarbe der ausgewählten Zeile wieder entfernen
+     */
+    $('#overviewTable').on('click', function (e) {
+        $('#overviewTable').find('tr[data-uniqueid="' + $('#js_ContextMenu').data('unique-rowid') + '"]').css('background-color', '');
+    });
 
 
 }); /** document ready **/

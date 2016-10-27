@@ -241,5 +241,19 @@ class IndexController extends BaseController implements Controller
 
         $this->view->setVars($site);
     }
+
+    public function deleteAction()
+    {
+        $pkid = $this->getParam('pkid');
+        Sensor::delete("pkid = ".$pkid);
+        $sensordata = SensorData::find("id_sensor = ".$pkid);
+        if (empty($sensordata)){
+
+        } else {
+        SensorData::delete("id_sensor = ".$pkid);
+    }
+
+
+    }
 }
 ?>
