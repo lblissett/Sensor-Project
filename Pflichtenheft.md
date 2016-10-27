@@ -196,8 +196,14 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
 
  
 # 8 Qualitätsziele (Martin)
-Qualiätsziele: Allgemeine Ziele sind meistens Änderbarkeit und Wartbarkeit.
-Ziele sollten jedoch grundsätzlich messbar, spezifisch und relevant sein.
+
+- Zuverlässigkeit: das Sytem soll in der Lage sein Temperaturen innerhalb des Toleranzbereiches des eingesetzten Sensores (DHT22) von +- 0.5 °C anzuzeigen und zu speichern
+- Benutzerfreundlichkeit: 
+- Modularität: modularer Aufbau durch den Einsatz Docker, so dass die MariaDB Datenbank durch eine MySQL Datenbank mit geringfügigen Änderungen ausgetauscht werden kann. 
+- Preis/Leisung: Einsatz von Standardkomponenten mit geringen Energieverbrauch und geringen Kosten
+- Portierbarkeit: 
+- Robustheit: das System soll innerhalb von Gebäuden ohne Störung konstant funktionieren
+
 
 # 9 Integration in die Monitoringsoftware "Icinga2" (Jörg)
 
