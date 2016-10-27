@@ -74,6 +74,8 @@ class AppTexts
     public $accsettingsEN = "Account Settings";
     public $modified = "Geändert am";
     public $modifiedEN = "modified";
+    public $infosensor = "Informationen zum Sensor";
+    public $infosensorEN = "informations about the sensor";
 
 
     public $notloggedin = "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";

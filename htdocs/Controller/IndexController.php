@@ -252,8 +252,12 @@ class IndexController extends BaseController implements Controller
         } else {
         SensorData::delete("id_sensor = ".$pkid);
     }
+    }
 
-
+    public function getInfosAction()
+    {
+        $sensor = Sensor::findOne('pkid = '.$this->getParamGet('pkid'));
+        $this->view->setVars($sensor);
     }
 }
 ?>

@@ -250,7 +250,7 @@ $(document).ready(function () {
                     '<ul class="dropdown-menu" role="menu">',
                     '<li role="presentation" class="dropdown-header">Sensorverwaltung</li>',
                     '<li role="presentation">',
-                    '<a class="edit modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
+                    '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
                     '<i class="fa fa-fw fa-info-circle"></i> Informationen',
                     '</a>',
                     '</li>',
@@ -317,7 +317,7 @@ $(document).ready(function () {
                 }).on('click', '.edit', function () {
                     $(this).trigger('editButtonEvent', [row, uniqueid]);
                 })
-                    .on('removeButtonEvent', function (e, row, uniqueid) {
+                .on('removeButtonEvent', function (e, row, uniqueid) {
                         var pkiddelete = uniqueid;
                         var data = {
                             'action': 'delete',
@@ -336,23 +336,22 @@ $(document).ready(function () {
                         $(this).trigger('removeButtonEvent', [row, uniqueid]);
                     }
                 })
-                    .on('infosButtonEvent', function (e, row, uniqueid) {
-                        var pkiddelete = uniqueid;
+               .on('infosButtonEvent', function (e, row, uniqueid) {
+                        var pkid = uniqueid;
                         var data = {
                             'action': 'infos',
-                            'pkid': pkiddelete
+                            'pkid': pkid
                         };
                         $.ajax({
-                            type: "POST",
-                            url: $('#NF').data('adminarea_basic_url')+'&nf_data=Event/deleteOne',
+                            type: "GET",
+                            url: '/index/getInfos',
                             data: data
-                        }).done(function() {
-                            var $modal = $('#myModal');
+                        }).done(function(response) {
+                            response = jQuery.parseJSON(response);
+                            var $modal = $('#InfoModal');
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
-                            $('#formdata')[0].reset();
-                            resetfieldsfeedback();
-                            setModalEdit(response);
+                            $('#labelInfoModal').text('Informationen zum Sensor "'+response.name+'"');
                         });
 
                     }).on('click', '.infos', function () {
