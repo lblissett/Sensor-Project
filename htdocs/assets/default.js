@@ -5,9 +5,17 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
 
+    $(" tbody ").awesomeCursor('hand-o-up');
+
     addLoading($(".fixed-table-loading"));
-    $('body').on('click', function () {
-        removeContextMenu();
+
+    $('body').on('click', function (event) {
+        if (event.target.nodeName.split(" ")[0] == "TD") {
+        } else {
+            removeContextMenu();
+        }
+
+
     });
 
     $('#formdata').submit( function () {
@@ -227,7 +235,7 @@ $(document).ready(function () {
             }
 
             // ---- Rechtsklick behandeln ----
-            if (e.which == 3) {
+            if (e.which == 1) {
 
                 // ---- Standardverhalten unterdrücken ----
                 e.preventDefault();
@@ -251,7 +259,7 @@ $(document).ready(function () {
                     '<li role="presentation" class="dropdown-header">Sensorverwaltung</li>',
                     '<li role="presentation">',
                     '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
-                    '<i class="fa fa-fw fa-info-circle"></i> Informationen',
+                    '<i class="fa fa-fw fa-bar-chart"></i> Informationen',
                     '</a>',
                     '</li>',
                     '<li class="divider"></li>',
@@ -351,7 +359,7 @@ $(document).ready(function () {
                             var $modal = $('#InfoModal');
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
-                            $('#labelInfoModal').text('Informationen zum Sensor "'+response.name+'"');
+                            $('#labelInfoModal').text('Informationen zum Sensor "'+row.name+'"');
                         });
 
                     }).on('click', '.infos', function () {

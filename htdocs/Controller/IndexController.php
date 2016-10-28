@@ -256,8 +256,8 @@ class IndexController extends BaseController implements Controller
 
     public function getInfosAction()
     {
-        $sensor = Sensor::findOne('pkid = '.$this->getParamGet('pkid'));
-        $this->view->setVars($sensor);
+        $sensordatas = SensorData::find('id_sensor = '.$this->getParamGet('pkid'));
+        $this->view->setVars($sensordatas);
     }
 }
 ?>

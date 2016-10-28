@@ -22,9 +22,6 @@ $text = new AppTexts();
             <div class="modal-body form-horizontal">
 
 
-            <!-- Hier kannst du deins reinmachen Martin im modal-body */ -->
-
-
 
 
             </div>

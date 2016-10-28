@@ -9,7 +9,6 @@
 .flag-de {
     margin-left: 360px;
 }
-
 .well {
     height:700px;
 }
@@ -48,12 +47,11 @@
 
 #tabellenkontext .loadingIcon {
     margin-top: 30px;
-    color: #337ab7;
+    color: #00589c;
     font-weight: 600;
     font-size: 16px;
     text-align: center;
 }
-
 /* Tabellen formatierung */
 
 #tabellenkontext thead {
@@ -66,8 +64,6 @@
     -ms-transition: all 150ms linear; /* IE 10 */
     -moz-transition: all 150ms linear; /* Firefox */
     -webkit-transition: all 150ms linear; /*safari and chrome */
-
-    cursor: default;
 }
 
 #tabellenkontext #overviewTable tr:hover {
