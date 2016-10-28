@@ -16,10 +16,10 @@ Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
 
 # 2 Einsatz (Martin)
 
-Die Organisation der Sensoren sowie die Anzeige der Daten der Sensoren soll clientseitig passieren. Moderne Webbrowser sollen dazu in der Lage sein.
+Das Einbinden und der Abruf von Sensordaten soll duch eine Weboberfläche möglich sein.
  
 ## Anwendungsbereiche
-Die Anwendung kann überall eingesetzt werden wo Strom und ein Wlan Netz zur Verfügung stellt, d.h. es kann für die Messung von Temperaturen im Wohnbereich, in Serverräumen, in öffentlichen Gebäuden, etc. eingesetzt werden. 
+Die Anwendung kann überall eingesetzt werden, sobald Strom und ein Wlan Netz zur Verfügung steht, d.h. es kann für die Messung von Temperaturen im Wohnbereich, in Serverräumen, in öffentlichen Gebäuden, etc. eingesetzt werden. 
  
 ## Zielgruppen
 Informatiker (und Informatikaffine Nutzer) die den ESP8266 zur Messung und Anzeige von Temperaturdaten nutzen wollen. Die größte Hürde stellt dabei die Programmierung des Microcontrollers dar. Ist der Microcontroller erst einmal korrekt in das System eingebunden sollen auch Laien dazu in der Lage sein sich den Temperaturverlauf in einer Weboberfläche anzeigen zu lassen. 
@@ -196,15 +196,13 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
 
 
  
-
- 
 # 8 Qualitätsziele (Martin)
 
 - Zuverlässigkeit: das Sytem soll in der Lage sein Temperaturen innerhalb des Toleranzbereiches des eingesetzten Sensores (DHT22) von +- 0.5 °C anzuzeigen und zu speichern
 - Benutzerfreundlichkeit: 
 - Modularität: modularer Aufbau durch den Einsatz Docker, so dass die MariaDB Datenbank durch eine MySQL Datenbank mit geringfügigen Änderungen ausgetauscht werden kann. 
 - Preis/Leisung: Einsatz von Standardkomponenten mit geringen Energieverbrauch und geringen Kosten
-- Portierbarkeit: 
+- Portierbarkeit: durch den Einsatz von Standardbibliotheken soll Andwendung portierbar gehalten werden
 - Robustheit: das System soll innerhalb von Gebäuden ohne Störung konstant funktionieren
 
 
