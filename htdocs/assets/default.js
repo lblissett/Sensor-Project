@@ -225,146 +225,149 @@ $(document).ready(function () {
     /* ---- Tabelle > Rechtsklick-Kontextmenü ---- */
 
         $('#overviewTable').off('mousedown').on('mousedown', function (e) {
-            $(this).on('contextmenu', function () {
-                return false;
-            });
+            if ($(e.target).parent().data('uniqueid') != undefined) {
 
-            if (!$(e.target).closest('#js_ContextMenu').length) {
-                // ---- Kontextmenü entfernen, wenn der Fokus verloren geht ----
-                removeContextMenu();
-            }
-
-            // ---- Rechtsklick behandeln ----
-            if (e.which == 1) {
-
-                // ---- Standardverhalten unterdrücken ----
-                e.preventDefault();
-
-                if ($(e.target).closest('#js_ContextMenu').length > 0) {
+                $(this).on('contextmenu', function () {
                     return false;
-                }
-
-                var uniqueid = $(e.target).parent().data('uniqueid'),
-                    row = $('#overviewTable').bootstrapTable('getRowByUniqueId', uniqueid),
-                    selectedRow = $('#overviewTable').find('tr[data-uniqueid="' + uniqueid + '"]');
-
-
-                /**
-                 * Kontextmenü erstellen
-                 * @type {*|HTMLElement}
-                 */
-                var ul = $([
-                    '<div id="js_ContextMenu" class="open" data-unique-rowid="' + uniqueid + '">',
-                    '<ul class="dropdown-menu" role="menu">',
-                    '<li role="presentation" class="dropdown-header">Sensorverwaltung</li>',
-                    '<li role="presentation">',
-                    '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
-                    '<i class="fa fa-fw fa-bar-chart"></i> Informationen',
-                    '</a>',
-                    '</li>',
-                    '<li class="divider"></li>',
-                    '<li role="presentation">',
-                    '<a class="edit modalActionButton" href="javascript:void(0)" data-function="edit" tabindex="-1" role="menuitem">',
-                    '<i class="fa fa-fw fa-pencil"></i> Bearbeiten',
-                    '</a>',
-                    '</li>',
-                    '<li role="presentation">',
-                    '<a class="remove ml10" href="javascript:void(0)" data-function="remove" tabindex="-1" role="menuitem">',
-                    '<i class="fa fa-fw fa-trash"></i> Löschen',
-                    '</a>',
-                    '</li>',
-                    '</div>'
-                ].join(''));
-
-                // ---- Kontextmenü hinzufügen ----
-                $('#overviewTable').append(ul);
-
-                var $parentOffset = $(this).parent().offset();
-                var $pos = $(this).parent().position();
-                var relX = e.pageX - $parentOffset.left + $pos.left;
-                var relY = e.pageY - $parentOffset.top + $pos.top;
-
-                // ---- Wenn das Kontextmenü zu weit am rechten Bildschirmrand ist -> Darstellung ändern ----
-                if (relX > ($(window).width() * 0.85)) {
-                    relX = relX - $('.dropdown-header').outerWidth();
-                }
-
-                $('#js_ContextMenu').css({
-                    'top': relY,
-                    'left': relX,
-                    'position': 'absolute'
                 });
 
-                // ---- Aktuell ausgewählte Zeile zur besseren Übersicht markieren ----
-                $('#js_ContextMenu').find('ul').on('mouseenter', function () {
-                    selectedRow.css('background-color', '#d9edf7');
-                }).on('mouseleave', function () {
-                    selectedRow.css('background-color', '');
-                });
+                if (!$(e.target).closest('#js_ContextMenu').length) {
+                    // ---- Kontextmenü entfernen, wenn der Fokus verloren geht ----
+                    removeContextMenu();
+                }
 
-                $('#js_ContextMenu').on('editButtonEvent', function (e, row, uniqueid) {
-                    var pkidedit = uniqueid;
-                    var data = {
-                        'action': 'edit',
-                        'pkid': pkidedit
-                    };
-                    $.ajax({
-                        type: "GET",
-                        url: '/index/edit',
-                        data: data
-                    }).done(function(response) {
-                        response = jQuery.parseJSON(response);
-                        var $modal = $('#sensorModal');
-                        // ---- Modal neu initialisieren ----
-                        $modal.modal();
-                        $('#formsensor')[0].reset();
-                        resetfieldsfeedbackSensor();
-                        setModalEdit(response);
+                // ---- Rechtsklick behandeln ----
+                if (e.which == 1) {
+
+                    // ---- Standardverhalten unterdrücken ----
+                    e.preventDefault();
+
+                    if ($(e.target).closest('#js_ContextMenu').length > 0) {
+                        return false;
+                    }
+
+                    var uniqueid = $(e.target).parent().data('uniqueid'),
+                        row = $('#overviewTable').bootstrapTable('getRowByUniqueId', uniqueid),
+                        selectedRow = $('#overviewTable').find('tr[data-uniqueid="' + uniqueid + '"]');
+
+
+                    /**
+                     * Kontextmenü erstellen
+                     * @type {*|HTMLElement}
+                     */
+                    var ul = $([
+                        '<div id="js_ContextMenu" class="open" data-unique-rowid="' + uniqueid + '">',
+                        '<ul class="dropdown-menu" role="menu">',
+                        '<li role="presentation" class="dropdown-header">Sensorverwaltung</li>',
+                        '<li role="presentation">',
+                        '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
+                        '<i class="fa fa-fw fa-bar-chart"></i> Informationen',
+                        '</a>',
+                        '</li>',
+                        '<li class="divider"></li>',
+                        '<li role="presentation">',
+                        '<a class="edit modalActionButton" href="javascript:void(0)" data-function="edit" tabindex="-1" role="menuitem">',
+                        '<i class="fa fa-fw fa-pencil"></i> Bearbeiten',
+                        '</a>',
+                        '</li>',
+                        '<li role="presentation">',
+                        '<a class="remove ml10" href="javascript:void(0)" data-function="remove" tabindex="-1" role="menuitem">',
+                        '<i class="fa fa-fw fa-trash"></i> Löschen',
+                        '</a>',
+                        '</li>',
+                        '</div>'
+                    ].join(''));
+
+                    // ---- Kontextmenü hinzufügen ----
+                    $('#overviewTable').append(ul);
+
+                    var $parentOffset = $(this).parent().offset();
+                    var $pos = $(this).parent().position();
+                    var relX = e.pageX - $parentOffset.left + $pos.left;
+                    var relY = e.pageY - $parentOffset.top + $pos.top;
+
+                    // ---- Wenn das Kontextmenü zu weit am rechten Bildschirmrand ist -> Darstellung ändern ----
+                    if (relX > ($(window).width() * 0.85)) {
+                        relX = relX - $('.dropdown-header').outerWidth();
+                    }
+
+                    $('#js_ContextMenu').css({
+                        'top': relY,
+                        'left': relX,
+                        'position': 'absolute'
                     });
 
-                }).on('click', '.edit', function () {
-                    $(this).trigger('editButtonEvent', [row, uniqueid]);
-                })
-                .on('removeButtonEvent', function (e, row, uniqueid) {
-                        var pkiddelete = uniqueid;
-                        var data = {
-                            'action': 'delete',
-                            'pkid': pkiddelete
-                        };
-                        $.ajax({
-                            type: "POST",
-                            url: '/index/delete',
-                            data: data
-                        }).done(function() {
-                            window.location.replace('/index/showLogin?site=table');
-                        });
+                    // ---- Aktuell ausgewählte Zeile zur besseren Übersicht markieren ----
+                    $('#js_ContextMenu').find('ul').on('mouseenter', function () {
+                        selectedRow.css('background-color', '#d9edf7');
+                    }).on('mouseleave', function () {
+                        selectedRow.css('background-color', '');
+                    });
 
-                    }).on('click', '.remove', function () {
-                    if (window.confirm("Sensor und dazugehörige Daten wirklich löschen?")) {
-                        $(this).trigger('removeButtonEvent', [row, uniqueid]);
-                    }
-                })
-               .on('infosButtonEvent', function (e, row, uniqueid) {
-                        var pkid = uniqueid;
+                    $('#js_ContextMenu').on('editButtonEvent', function (e, row, uniqueid) {
+                        var pkidedit = uniqueid;
                         var data = {
-                            'action': 'infos',
-                            'pkid': pkid
+                            'action': 'edit',
+                            'pkid': pkidedit
                         };
                         $.ajax({
                             type: "GET",
-                            url: '/index/getInfos',
+                            url: '/index/edit',
                             data: data
-                        }).done(function(response) {
+                        }).done(function (response) {
                             response = jQuery.parseJSON(response);
-                            var $modal = $('#InfoModal');
+                            var $modal = $('#sensorModal');
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
-                            $('#labelInfoModal').text('Informationen zum Sensor "'+row.name+'"');
+                            $('#formsensor')[0].reset();
+                            resetfieldsfeedbackSensor();
+                            setModalEdit(response);
                         });
 
-                    }).on('click', '.infos', function () {
-                    $(this).trigger('infosButtonEvent', [row, uniqueid]);
-                })
+                    }).on('click', '.edit', function () {
+                        $(this).trigger('editButtonEvent', [row, uniqueid]);
+                    })
+                        .on('removeButtonEvent', function (e, row, uniqueid) {
+                            var pkiddelete = uniqueid;
+                            var data = {
+                                'action': 'delete',
+                                'pkid': pkiddelete
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: '/index/delete',
+                                data: data
+                            }).done(function () {
+                                window.location.replace('/index/showLogin?site=table');
+                            });
+
+                        }).on('click', '.remove', function () {
+                        if (window.confirm("Sensor und dazugehörige Daten wirklich löschen?")) {
+                            $(this).trigger('removeButtonEvent', [row, uniqueid]);
+                        }
+                    })
+                        .on('infosButtonEvent', function (e, row, uniqueid) {
+                            var pkid = uniqueid;
+                            var data = {
+                                'action': 'infos',
+                                'pkid': pkid
+                            };
+                            $.ajax({
+                                type: "GET",
+                                url: '/index/getInfos',
+                                data: data
+                            }).done(function (response) {
+                                response = jQuery.parseJSON(response);
+                                var $modal = $('#InfoModal');
+                                // ---- Modal neu initialisieren ----
+                                $modal.modal();
+                                $('#labelInfoModal').text('Informationen zum Sensor "' + row.name + '"');
+                            });
+
+                        }).on('click', '.infos', function () {
+                        $(this).trigger('infosButtonEvent', [row, uniqueid]);
+                    })
+                }
             }
         });
         /* ---- Tabelle > Rechtsklick-Kontextmenü ---- */
