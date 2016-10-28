@@ -4,7 +4,7 @@ mariadb:
   ports:
     - 3306:3306
   volumes:
-    - $PWD/vorlage:/var/lib/mysql/vorlage
+    - $PWD/db:/docker-entrypoint-initdb.d
   environment:
     - MYSQL_ROOT_PASSWORD=mypass
     - MYSQL_USER=admin
@@ -26,7 +26,7 @@ php:
   build: .
   container_name: php-apache
   volumes:
-    - $PWD/htdocs:/var/www/html
+      - $PWD/htdocs:/var/www/html
   ports:
     - 80:80
   links:
