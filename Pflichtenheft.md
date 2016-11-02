@@ -106,6 +106,10 @@ erfüllt sein müssen.
  
 # 4 Funktionalität (Jörg)
 
+![Alternativer Text](/Bilder/ActivityDiagrammSensor Project.jpg "Activity-Diagram")
+
+![Alternativer Text](/Bilder/UseCaseSensorProject.jpg "Activity-Diagram")
+
 
 
 Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
