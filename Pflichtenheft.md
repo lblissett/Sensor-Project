@@ -114,6 +114,8 @@ Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eing
 
 Möchte man einen weiteren (bzw. ersten) Sensor in das Programm einbinden, muss man ihn mit Strom und WLan versorgen und im Webfrontend registrieren. Dabei werden folgende Operationen ausgeführt:
 
+***** Richard: Bitte hier ansetzen *****
+
 
 ## 4.3 Administration im Webfrontend
 
