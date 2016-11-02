@@ -112,9 +112,26 @@ Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eing
 
 ## 4.2 Einbinden neuer Sensoren
 
-Möchte man einen weiteren (bzw. ersten) Sensor in das Programm einbinden, muss man ihn mit Strom und WLan versorgen und im Webfrontend registrieren. Dabei werden folgende Operationen ausgeführt:
+Um neue Sensoren in die Infrasturktur zu integrieren, sind einige Vorbereitungen nötig. Es wird benötigt:
+- Sensor DHT22
+- Wlan-chip esp8266 development board
+- Software Arduino
 
-***** Richard: Bitte hier ansetzen *****
+Als erstes wird ein neuer Sensor in der Weboberfläche erstellt. Dazu logt man sich in der Weboberfläche ein und geht zu der Übersicht aller Sensoren. Dort erstellt man einen neuen Sensor. Nachdem man einen Namen und einen Ort vergeben hat, sieht man in der Tabelle einen neuen Eintrag mit dem erstellten Sensor. In der ersten Spalte steht die Id die ihm zugewiesen wurde, diesen merkt man sich.
+
+Der Wlan-chip wird über die Software Arduino programmiert. In dem Verzeichnis esp8266 findet man den benötigten Code. Am Anfang müssen
+
+`const char* ssid = "************";`
+`const char* password = "**********";`
+
+konfiguriert sein, damit sich der Wlan-Chip mit das vorhandene W-Lan Netzwerk verbinden kann. In der Zeile
+
+`client.println("GET /info.php?chipid=ID&temperature=" + tstring + "&humidity=" + hstring);`
+
+muss noch "ID" mit der gemerkten ID des Sensors ersetzt werden. Nachdem der Sensor richtig mit dem Wlan-Chip verbunden wurde, kann der Wlan-Chip über ein micro USB Kabel mit Strom versorgt werden.
+
+Bild
+abweichungen möglich
 
 
 ## 4.3 Administration im Webfrontend
