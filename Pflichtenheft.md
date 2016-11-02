@@ -106,9 +106,19 @@ erfüllt sein müssen.
  
 # 4 Funktionalität (Jörg)
 
-![Alternativer Text](/Bilder/ActivityDiagrammSensor Project.jpg "Activity-Diagram")
+## 4.1 Installation: Organisation der Programmbestandteile in Docker-Images.
 
-![Alternativer Text](/Bilder/UseCaseSensorProject.jpg "Activity-Diagram")
+Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eingesetzten Server in Docker-Containern ausgerollt werden. Der Nutzer benötigt dafür lediglich Kenntnisse über das Instanziieren von Docker-Containern. Diese können über das Internet leicht beschafft werden und sind überdies im Github-Repository dieses Projektes erklärt. Alles, was der Anwender an Dateien braucht, ist eine "Docker-Compose"-Datei, die er vom Github-Repository herunterladen und dann nach der Installation der Programme "Docker" und "Docker-Compose" einfach per Kommandozeile ausführen kann. Alles weitere geschieht automatisch: Die Docker-Images werden heruntergeladen, in die Dockerüblichen Verzeichnisse kopiert und orchestriert gestartet, so, dass die Anwendung ohne weiteres Zutun und in Gestalt des Webfrontends unter einem festgelegten Socket (Default ist localhost:80) bereit steht.
+
+## 4.2 Einbinden neuer Sensoren
+
+Möchte man einen weiteren (bzw. ersten) Sensor in das Programm einbinden, muss man nichts weiter tun, als ihn mit Strom und einem funktionierenden WLan zu versorgen. Über das Webfrontend kann er dann integriert werden. 
+
+![Activity-Diagram](/Bilder/ActivityDiagrammSensor Project.jpg "Activity-Diagram")
+
+
+
+![Usecase-Diagram](/Bilder/UseCaseSensorProject.jpg "Activity-Diagram")
 
 
 
