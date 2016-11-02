@@ -144,7 +144,7 @@ Die Webseite bietet eine Nutzerverwaltung (Nutzer hinzufügen, entfernen, verän
 
 ## 4.4 Interkommunikation der Dockercontainer
 
-Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet. Konkret geschieht dies über Sockets. Die Dockercontainer kennen gegenseitig ihre IPs bzw. Domainnamen und können gegenseitig per Kombination IP(bzw. Domainname):Port interagieren, da sie per default im selben Subnetz verortet sind. Die DNS-Einträge sind als Links in der "docker-compose.yml" hinterlegt und erlauben eine unabhängige Erreichbarkeit der Container, falls sich die IP-Adressen einmal ändern sollten.
+Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet. Konkret geschieht dies über Sockets. Die Dockercontainer kennen gegenseitig ihre IPs bzw. Domainnamen und können per Kombination IP(bzw. Domainname):Port interagieren, da sie per default im selben Subnetz verortet sind. Die DNS-Einträge sind als Links in der "docker-compose.yml" hinterlegt und erlauben eine unabhängige Erreichbarkeit der Container, falls sich die IP-Adressen einmal ändern sollten.
 
 Auszug aus der "docker-compose.yml":
 
