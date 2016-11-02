@@ -108,7 +108,7 @@ erfüllt sein müssen.
 
 ## 4.1 Installation: Organisation der Programmbestandteile in Docker-Images
 
-Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eingesetzten Server zu Docker-Containern ausgerollt werden. Der Nutzer benötigt dafür lediglich Kenntnisse über das Instanziieren von Docker-Containern. Diese Informationen können über das Internet leicht beschafft werden (https://docs.docker.com/engine/getstarted/) und sind überdies im Github-Repository dieses Projektes erklärt. Alles, was der Anwender an Dateien braucht, ist eine "Docker-Compose"-Datei, die er vom Github-Repository herunterladen und dann nach der Installation der Programme "Docker" und "Docker-Compose" einfach per Kommandozeile ausführen kann. Das Weitere geschieht automatisch: Die Docker-Images werden heruntergeladen, in die Dockerüblichen Verzeichnisse kopiert und orchestriert gestartet, so, dass die Anwendung ohne weiteres Zutun und in Gestalt des Webfrontends unter einem festgelegten Socket (Default ist localhost:80) bereit steht.
+Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eingesetzten Server zu Docker-Containern ausgerollt werden. Der Nutzer benötigt dafür lediglich Kenntnisse über das Instanziieren von Docker-Containern. Diese Informationen können über das Internet leicht beschafft werden (https://docs.docker.com/engine/getstarted/) und sind überdies im Github-Repository dieses Projektes erklärt. Alles, was der Anwender an Dateien braucht, ist eine "Docker-Compose"-Datei, die er vom Github-Repository herunterladen und dann nach der Installation der Programme "Docker" und "Docker-Compose" einfach per Kommandozeile ausführen kann. Das Weitere geschieht automatisch: Die Docker-Images werden heruntergeladen, in die dockerüblichen Verzeichnisse kopiert und orchestriert gestartet, so, dass die Anwendung ohne weiteres Zutun und in Gestalt des Webfrontends unter einem festgelegten Socket (Default ist localhost:80) bereit steht.
 
 ## 4.2 Einbinden neuer Sensoren
 
@@ -144,7 +144,7 @@ Die Webseite bietet eine Nutzerverwaltung (Nutzer hinzufügen, entfernen, verän
 
 ## 4.4 Interkommunikation der Dockercontainer
 
-Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet. Konkret geschieht dies über Sockets. Die Dockercontainer kennen gegenseitig ihre IPs bzw. Namen, denen IPs zugeordnet sind und können gegenseitig per Kombination IP(bzw. Domain-Name):Port interagieren. Die DNS-Einträge sind als Links in der "docker-compose.yml" hinterlegt und erlauben eine unabhängige Erreichbarkeit der Container, falls sich die IP-Adressen einmal ändern sollten.
+Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet. Konkret geschieht dies über Sockets. Die Dockercontainer kennen gegenseitig ihre IPs bzw. Domainnamen und können gegenseitig per Kombination IP(bzw. Domainname):Port interagieren, da sie per default im selben Subnetz verortet sind. Die DNS-Einträge sind als Links in der "docker-compose.yml" hinterlegt und erlauben eine unabhängige Erreichbarkeit der Container, falls sich die IP-Adressen einmal ändern sollten.
 
 Auszug aus der "docker-compose.yml":
 
@@ -173,7 +173,7 @@ php:
    links:
      - mariadb:mysql
 ```
-Die Container Icinga2 und PHP können damit den Container MariaDB per DN erreichen und auf die Datenbank zugreifen.
+Die Container Icinga2 und PHP können damit den Container MariaDB per Domainname erreichen und auf die Datenbank zugreifen.
 
 ## 4.5 Typische Anwendungsabläufe anhand von UML-Diagrammen
 
