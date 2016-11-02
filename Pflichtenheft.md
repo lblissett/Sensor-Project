@@ -121,7 +121,7 @@ Als erstes wird ein neuer Sensor in der Weboberfläche erstellt. Dazu logt man s
 
 Der Wlan-chip wird über die Software Arduino programmiert. In dem Verzeichnis "esp8266" findet man den benötigten Code. Am Anfang müssen
 
-`const char* ssid = "************";`
+`const char* ssid = "************";` <br />
 `const char* password = "**********";`
 
 konfiguriert sein, damit sich der Wlan-Chip mit dem vorhandenen W-Lan-Netzwerk verbinden kann. In der Zeile
@@ -130,10 +130,10 @@ konfiguriert sein, damit sich der Wlan-Chip mit dem vorhandenen W-Lan-Netzwerk v
 
 muss noch "ID" mit der gemerkten ID des Sensors ersetzt werden. Nachdem der Sensor richtig mit dem Wlan-Chip verkabelt wurde, kann der Wlan-Chip über ein micro USB Kabel mit Strom versorgt werden.
 
-Verkabelung Sensor-Wlan-Chip
-Sensor(-) an Wlan-Chip(GND)
-Sensor(out) an Wlan-Chip(D4)
-Sensor(+) an Wlan-Chip(3V3)
+Verkabelung Sensor-Wlan-Chip: <br />
+Sensor(-) an Wlan-Chip(GND) <br />
+Sensor(out) an Wlan-Chip(D4) <br />
+Sensor(+) an Wlan-Chip(3V3) <br />
 
 ## 4.3 Administration im Webfrontend
 
