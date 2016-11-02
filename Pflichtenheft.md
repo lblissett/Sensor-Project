@@ -128,7 +128,12 @@ konfiguriert sein, damit sich der Wlan-Chip mit dem vorhandenen W-Lan-Netzwerk v
 
 `client.println("GET /info.php?chipid=ID&temperature=" + tstring + "&humidity=" + hstring);`
 
-muss noch "ID" mit der gemerkten ID des Sensors ersetzt werden. Nachdem der Sensor richtig mit dem Wlan-Chip verbunden wurde, kann der Wlan-Chip über ein micro USB Kabel mit Strom versorgt werden.
+muss noch "ID" mit der gemerkten ID des Sensors ersetzt werden. Nachdem der Sensor richtig mit dem Wlan-Chip verkabelt wurde, kann der Wlan-Chip über ein micro USB Kabel mit Strom versorgt werden.
+
+Verkabelung Sensor-Wlan-Chip
+Sensor(-) an Wlan-Chip(GND)
+Sensor(out) an Wlan-Chip(D4)
+Sensor(+) an Wlan-Chip(3V3)
 
 ## 4.3 Administration im Webfrontend
 
