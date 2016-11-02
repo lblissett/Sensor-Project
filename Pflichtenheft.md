@@ -112,7 +112,15 @@ Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eing
 
 ## 4.2 Einbinden neuer Sensoren
 
-Möchte man einen weiteren (bzw. ersten) Sensor in das Programm einbinden, muss man nichts weiter tun, als ihn mit Strom und einem funktionierenden WLan zu versorgen. Über das Webfrontend kann er dann integriert werden. 
+Möchte man einen weiteren (bzw. ersten) Sensor in das Programm einbinden, muss man ihn mit Strom und WLan versorgen und im Webfrontend registrieren. Dabei werden folgende Operationen ausgeführt:
+
+
+## 4.3 Administration im Webfrontend
+
+Die Webseite bietet eine Nutzerverwaltung (Nutzer hinzufügen, entfernen, verändern und mit Passwörtern versehen) und die Möglichkeit, Sensoren hinzuzufügen, zu entfernen und deren Metadaten zu verändern. Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet.
+
+##
+
 
 ![Activity-Diagram](/Bilder/ActivityDiagrammSensor Project.jpg "Activity-Diagram")
 
@@ -225,7 +233,7 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
 
 # 9 Integration in die Monitoringsoftware "Icinga2" (Jörg)
 
-Ein mögliches Anwendungsgebiet des Temperatursensors ist die Überwachung bspw. der Kühlung von Serverräumen. Dafür ist es sinnvoll, ihn in bestehende Monitoringsoftwarelösungen zu integrieren. Zu diesem Zweck wird ein Plugin für Icinga2, einer Weiterentwicklung von Nagios, entwickelt. Mithilfe des Addons Graphite werden die Daten innerhalb von Icinga2 visualisiert. Die Daten werden aus der bestehenden Datenbank entnommen.
+Ein mögliches Anwendungsgebiet des Temperatursensors ist die Überwachung bspw. der Kühlung von Serverräumen. Dafür ist es sinnvoll, ihn in bestehende Monitoringsoftwarelösungen zu integrieren. Zu diesem Zweck wird ein Plugin für Icinga2, einer Weiterentwicklung von Nagios, entwickelt. Mithilfe des Addons Graphite werden die Daten innerhalb von Icinga2 visualisiert. Die Daten werden der bestehenden Datenbank entnommen.
 
 ## 9.1 Realisierung mit Bash-Script
 
