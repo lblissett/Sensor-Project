@@ -2,15 +2,15 @@
 Die Bereitstellung eines Dockerimages mit einen Webserver + Datenbank, so konfiguriert, dass leicht neue Temperatursensoren in die Weboberfläche integriert werden können und die Daten dazu angezeigt werden.
 
 ## Musskriterien
-Es soll, ein funktionfähiges Skript für den Microcontroller, zur Verfügung gestellt werden, sodass dieser Daten vom Temperatursensor erhält und an einen Server schickt.
+Es soll ein funktionfähiges Skript für den Microcontroller zur Verfügung gestellt werden, sodass dieser Daten vom Temperatursensor erhält und an einen Server schickt.
 
-Der Sever der die ermittelten Daten erhält speichert diese in eine Datenbank.
+Der Sever, der die ermittelten Daten erhält, speichert diese in einer Datenbank.
 
 Die Messdaten soll man in der Weboberfläche anschaulich einsehen können.
 
 ## Kannkriterien
-Für die komplette Infrastruktur soll ein Icinga Plugin zur Verfügung gestellt werden, welches die Bereitschaft überprüft.
- 
+Für die komplette Infrastruktur soll ein Icinga2- bzw. Nagios-Plugin zur Verfügung gestellt werden, welches die Sensoren respektive die Werte der Datenbank in die entsprechende Monitoringsoftware integriert und so auch für Computerlandschaften interessant macht, die bereits mit Nagiosderivaten arbeiten.
+
 ## Abgrenzungskriterien
 Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
 
@@ -19,10 +19,10 @@ Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
 Das Einbinden und der Abruf von Sensordaten soll duch eine Weboberfläche möglich sein.
  
 ## Anwendungsbereiche
-Die Anwendung kann überall eingesetzt werden, sobald Strom und ein Wlan Netz zur Verfügung steht, d.h. es kann für die Messung von Temperaturen im Wohnbereich, in Serverräumen, in öffentlichen Gebäuden, etc. eingesetzt werden. 
+Die Anwendung kann überall eingesetzt werden, wo Strom und ein Wlan-Netz zur Verfügung steht, d.h. es kann für die Messung von Temperaturdaten im Wohnbereich, in Serverräumen und in öffentlichen Gebäuden etc. eingesetzt werden. 
  
 ## Zielgruppen
-Informatiker (und Informatikaffine Nutzer) die den ESP8266 zur Messung und Anzeige von Temperaturdaten nutzen wollen. Die größte Hürde stellt dabei die Programmierung des Microcontrollers dar. Ist der Microcontroller erst einmal korrekt in das System eingebunden sollen auch Laien dazu in der Lage sein sich den Temperaturverlauf in einer Weboberfläche anzeigen zu lassen. 
+Informatiker (und Informatikaffine Nutzer) die den ESP8266 zur Messung und Anzeige von Temperaturdaten nutzen wollen. Die größte Hürde stellt dabei die Programmierung des Microcontrollers dar. Ist der Microcontroller erst einmal korrekt in das System eingebunden, sollen auch Laien dazu in der Lage sein, sich den Temperaturverlauf in einer Weboberfläche anzeigen zu lassen. 
  
 ## Betriebsbedingungen
 - Betriebsbedingungen: der Einsatz der Technik sollte drinnen geschehen und aus Sicherheitsaspekten lediglich im Intranet betrieben werden
@@ -105,6 +105,9 @@ Orgware: Angabe der organisatorische Rahmenbedingungen, die vor Projektstart
 erfüllt sein müssen.
  
 # 4 Funktionalität (Jörg)
+
+
+
 Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
 detaillierter Beschreibung.
  
@@ -212,7 +215,7 @@ Ein mögliches Anwendungsgebiet des Temperatursensors ist die Überwachung bspw.
 
 ## 9.1 Realisierung mit Bash-Script
 
-Das Icinga2-Plugin wird mithilfe eines Bashscriptes realisiert, dass vom Icinga2-Server in wohldefinierten Intervallen aufgerufen wird und mit einem von folgenden Exitcodes schließt:
+Das Icinga2-Plugin wird mithilfe eines Bashscriptes realisiert, das vom Icinga2-Server in wohldefinierten Intervallen aufgerufen wird und mit einem von folgenden Exitcodes schließt:
 
 ![Alternativer Text](/Bilder/Tabelle_1.png "Exit-Codes")
 
@@ -226,7 +229,7 @@ Die Integration eines neuen Temperatursensors in Icinga2 soll so einfach wie mö
 
 ## 9.3 Visualisierung mit Graphite
 
-Dafür wird die Software „Graphite“ eingesetzt. Sie speichert die ermittelten Daten in einer weiteren Datenbank und gewährt so Einblicke in den zeitlichen Verlauf der Temperaturen in den Serverräumen. Graphite ist eine eigenständige Software, die dank vordefinierter Schnittstellen als Plugin in Icinga2 integriert werden kann. Zu beachten ist, dass die Maschine, auf der der Icinga2-Server mit Graphite läuft, mindestens 1 GB RAM vorweist. Graphite benötigt viel Hauptspeicher um seine Grafiken anzuzeigen. 
+Für die graphische Aufbereitung wird die Software „Graphite“ eingesetzt. Sie speichert die ermittelten Daten in einer weiteren Datenbank und gewährt so Einblicke in den zeitlichen Verlauf der Temperaturen in den Serverräumen. Graphite ist eine eigenständige Software, die dank vordefinierter Schnittstellen als Plugin in Icinga2 integriert werden kann. Zu beachten ist, dass die Maschine, auf der der Icinga2-Server mit Graphite läuft, mindestens 1 GB RAM vorweist. Graphite benötigt viel Hauptspeicher um seine Grafiken anzuzeigen. 
 
 ![Alternativer Text](/Bilder/Icinga2Graphite.png "Icinga2Graphite")
 
