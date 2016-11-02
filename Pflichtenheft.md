@@ -108,13 +108,13 @@ erfüllt sein müssen.
 
 ## 4.1 Installation: Organisation der Programmbestandteile in Docker-Images.
 
-Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eingesetzten Server in Docker-Containern ausgerollt werden. Der Nutzer benötigt dafür lediglich Kenntnisse über das Instanziieren von Docker-Containern. Diese können über das Internet leicht beschafft werden und sind überdies im Github-Repository dieses Projektes erklärt. Alles, was der Anwender an Dateien braucht, ist eine "Docker-Compose"-Datei, die er vom Github-Repository herunterladen und dann nach der Installation der Programme "Docker" und "Docker-Compose" einfach per Kommandozeile ausführen kann. Das Weitere geschieht automatisch: Die Docker-Images werden heruntergeladen, in die Dockerüblichen Verzeichnisse kopiert und orchestriert gestartet, so, dass die Anwendung ohne weiteres Zutun und in Gestalt des Webfrontends unter einem festgelegten Socket (Default ist localhost:80) bereit steht.
+Die Bestandteile des Programmes befinden sich in Docker-Images, die auf dem eingesetzten Server zu Docker-Containern ausgerollt werden. Der Nutzer benötigt dafür lediglich Kenntnisse über das Instanziieren von Docker-Containern. Diese Informationen können über das Internet leicht beschafft werden und sind überdies im Github-Repository dieses Projektes erklärt. Alles, was der Anwender an Dateien braucht, ist eine "Docker-Compose"-Datei, die er vom Github-Repository herunterladen und dann nach der Installation der Programme "Docker" und "Docker-Compose" einfach per Kommandozeile ausführen kann. Das Weitere geschieht automatisch: Die Docker-Images werden heruntergeladen, in die Dockerüblichen Verzeichnisse kopiert und orchestriert gestartet, so, dass die Anwendung ohne weiteres Zutun und in Gestalt des Webfrontends unter einem festgelegten Socket (Default ist localhost:80) bereit steht.
 
 ## 4.2 Einbinden neuer Sensoren
 
-Um neue Sensoren in die Infrasturktur zu integrieren, sind einige Vorbereitungen nötig. Es wird benötigt:
+Um neue Sensoren in die Infrastruktur zu integrieren, sind einige Vorbereitungen nötig. Es wird benötigt:
 - Sensor DHT22
-- Wlan-chip esp8266 development board
+- WLan-Chip esp8266 Development-Board
 - Software Arduino
 
 Als erstes wird ein neuer Sensor in der Weboberfläche erstellt. Dazu logt man sich in der Weboberfläche ein und navigiert zur Übersicht aller Sensoren. Dort erstellt man einen neuen Sensor. Nachdem man einen Namen und einen Ort vergeben hat, sieht man in der Tabelle einen neuen Eintrag mit dem erstellten Sensor. In der ersten Spalte steht die ihm zugewiesene Id. Diese merkt man sich.
@@ -128,27 +128,61 @@ konfiguriert sein, damit sich der Wlan-Chip mit dem vorhandenen W-Lan-Netzwerk v
 
 `client.println("GET /info.php?chipid=ID&temperature=" + tstring + "&humidity=" + hstring);`
 
-muss noch "ID" mit der gemerkten ID des Sensors ersetzt werden. Nachdem der Sensor richtig mit dem Wlan-Chip verkabelt wurde, kann der Wlan-Chip über ein micro USB Kabel mit Strom versorgt werden.
+muss noch "ID" durch die gemerkte ID des Sensors ersetzt werden. Nachdem der Sensor richtig mit dem Wlan-Chip verkabelt wurde, kann er über ein Micro-USB-Kabel mit Strom versorgt werden.
 
 Verkabelung Sensor-Wlan-Chip: <br />
+
 Sensor(-) an Wlan-Chip(GND) <br />
 Sensor(out) an Wlan-Chip(D4) <br />
 Sensor(+) an Wlan-Chip(3V3) <br />
 
+Alsdann ist der Chip in das System integriert und funkt seine Daten an die MariaDB-Datenbank, aus der wiederum das Webfrontend seine Daten bezieht.
+
 ## 4.3 Administration im Webfrontend
 
-Die Webseite bietet eine Nutzerverwaltung (Nutzer hinzufügen, entfernen, verändern und mit Passwörtern versehen) und die Möglichkeit, Sensoren hinzuzufügen, zu entfernen und deren Metadaten zu verändern. Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet. Konkret funktioniert der Austausch von Daten über Sockets. Die Dockercontainer kennen gegenseitig ihre IPs bzw. Namen, denen IPs zugeordnet sind und können daher gegenseitig per Kombination IP:Port interagieren.
+Die Webseite bietet eine Nutzerverwaltung (Nutzer hinzufügen, entfernen, verändern und mit Passwörtern versehen) und die Möglichkeit, Sensoren hinzuzufügen, zu entfernen und deren Metadaten zu verändern. Durch die Nutzerverwaltung soll die Sichtbarkeit der verschiedenen Sensoren auf bestimmte Personen begrenzbar sein.
+
+## 4.4 Interkommunikation der Dockercontainer
+
+Bei all diesen Tätigkeiten kommuniziert die Webapp mit einer MariaDB im Hintergrund, die sich in einem separaten Dockercontainer befindet. Konkret geschieht dies über Sockets. Die Dockercontainer kennen gegenseitig ihre IPs bzw. Namen, denen IPs zugeordnet sind und können gegenseitig per Kombination IP(bzw. Domain-Name):Port interagieren. Die DNS-Einträge sind als Links in der "docker-compose.yml" hinterlegt und erlauben eine unabhängige Erreichbarkeit der Container, falls sich die IP-Adressen einmal ändern sollten.
+
+Auszug aus der "docker-compose.yml":
+
+`mariadb:
+...
+
+phpmyadmin:
+...
+  ports:
+    - 8080:80
+  links:
+    - mariadb:db
+
+php:
+...
+  ports:
+    - 80:80
+  links:
+    - mariadb:mysql
+    
+ icinga2:
+ ...
+   ports:
+     - 60000:80
+   links:
+     - mariadb:mysql
+`
+Die Container Icinga2 und PHP können damit den Container MariaDB per DN erreichen und auf die Datenbank zugreifen.
+
+## 4.5 Typische Anwendungsabläufe anhand von UML-Diagrammen
+
+### 4.5.1 Aktivitätsdiagramm
 
 ![Activity-Diagram](/Bilder/ActivityDiagrammSensor Project.jpg "Activity-Diagram")
 
+### 4.5.2 Anwendungsfalldiagramm
+
 ![Usecase-Diagram](/Bilder/UseCaseSensorProject.jpg "Activity-Diagram")
-
-Funktionalität: Spezifikation der einzelnen Produktfunktionen mit genauer und
-detaillierter Beschreibung.
- 
-* Typische Arbeitsabläufe
-* Keine Angabe von typischen Verwaltungsfunktionen (Create, Read, Update, Delete)
-
  
 # 5 Daten (Martin)
 
