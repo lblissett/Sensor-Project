@@ -189,7 +189,7 @@ Die Container Icinga2 und PHP können damit den Container MariaDB per Domainname
 
 Nutzerdaten, Daten zum Sensor sowie die gesammelten Sensordaten werde in einer Datenbank gespeichert. 
 
-![Alternativer Text](Database.png "Datenbankstruktur")
+![Alternativer Text](/Bilder/Database.png "Datenbankstruktur")
 
 # 6 Leistungen
 Leistungen: Anforderungen bezüglich Zeit und Genauigkeit
