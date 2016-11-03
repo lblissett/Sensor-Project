@@ -273,7 +273,7 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
 
 
  
-# 8 Qualitätsziele (Martin)
+# 8 Qualitätsziele
 
 - Zuverlässigkeit: das Sytem soll in der Lage sein Temperaturen innerhalb des Toleranzbereiches des eingesetzten Sensores (DHT22) von +- 0.5 °C zu erfassen
 - Modularität: modularer Aufbau durch den Einsatz Docker, so dass die MariaDB Datenbank durch eine MySQL Datenbank ausgetauscht werden kann. 
