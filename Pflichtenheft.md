@@ -12,9 +12,13 @@ Die Messdaten soll man in der Weboberfläche anschaulich einsehen können.
 Für die komplette Infrastruktur soll ein Icinga2- bzw. Nagios-Plugin zur Verfügung gestellt werden, welches die Sensoren respektive die Werte der Datenbank in die entsprechende Monitoringsoftware integriert und so auch für Computerlandschaften interessant macht, die bereits mit Nagiosderivaten arbeiten.
 
 ## Abgrenzungskriterien
-Abgrenzungskriterien: Diese Kriterien sollen bewusst nicht erreicht werden.
+Abgrenzungskriterien: 
 
-# 2 Einsatz (Martin)
+- Portierbarkeit: Fokus auf x86-Architektur, keine Gewähr für den Einsatz auf ARM-Technologie (z.B. Raspberry Pi)
+- 
+
+
+# 2 Einsatz
 
 Das Einbinden und der Abruf von Sensordaten soll duch eine Weboberfläche möglich sein.
  
@@ -271,12 +275,10 @@ Für die Gestaltung der Webseite wurde das öffentlich zugängliche Bootstrap ve
  
 # 8 Qualitätsziele (Martin)
 
-- Zuverlässigkeit: das Sytem soll in der Lage sein Temperaturen innerhalb des Toleranzbereiches des eingesetzten Sensores (DHT22) von +- 0.5 °C anzuzeigen und zu speichern
-- Benutzerfreundlichkeit: 
-- Modularität: modularer Aufbau durch den Einsatz Docker, so dass die MariaDB Datenbank durch eine MySQL Datenbank mit geringfügigen Änderungen ausgetauscht werden kann. 
-- Preis/Leisung: Einsatz von Standardkomponenten mit geringen Energieverbrauch und geringen Kosten
-- Portierbarkeit: durch den Einsatz von Standardbibliotheken soll Andwendung portierbar gehalten werden
-- Robustheit: das System soll innerhalb von Gebäuden ohne Störung konstant funktionieren
+- Zuverlässigkeit: das Sytem soll in der Lage sein Temperaturen innerhalb des Toleranzbereiches des eingesetzten Sensores (DHT22) von +- 0.5 °C zu erfassen
+- Modularität: modularer Aufbau durch den Einsatz Docker, so dass die MariaDB Datenbank durch eine MySQL Datenbank ausgetauscht werden kann. 
+- Preis/Leisung: geringer Energieverbrauch, Kosten und Aufwand beim Erfassen der Temperaturwerte am Standort (Referenzwert: < 1 Watt Energieverbrauch, Kosten: < 20 Euro für Temperatursensor + Microcontroller)
+- Robustheit: das System soll innerhalb von Gebäuden mit funktionierendem WLAN dauerhaft wartungsfrei korrekt die Temperatur und Luftfeuchtigkeit am Standort messen und speichern (angestrebte Dauer: mindestens 2 Wochen konstante Erfassung von Daten).
 
 
 # 9 Integration in die Monitoringsoftware "Icinga2" (Jörg)
