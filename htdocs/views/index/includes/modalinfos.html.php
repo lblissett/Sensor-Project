@@ -21,7 +21,7 @@ $text = new AppTexts();
             </div>
             <div class="modal-body form-horizontal">
 
-
+            <!-- Hier kannst du deins eintragen-->
 
 
             </div>
