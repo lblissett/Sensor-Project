@@ -14,8 +14,6 @@ $(document).ready(function () {
         } else {
             removeContextMenu();
         }
-
-
     });
 
     $('#formdata').submit( function () {
