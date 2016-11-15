@@ -26,12 +26,24 @@ $text = new AppTexts();
 
                 <!-- Hier kannst du deins eintragen-->
 
+                <!-- SVG erstellen ... ???-->
 
                 <svg width="300" height="200"></svg>
 
-                <script src="/htdocs/assets/d3.js"></script>
-
                 <script>
+
+                    <!-- D3 Minimalbeispiel Test-->
+
+                    var dataset = [ 5, 10, 15, 20, 25, 30 ];
+
+                    d3.select("body").selectAll("p")
+                        .data(dataset)
+                        .enter()
+                        .append("p")
+                        .text("Your mom sucks*");
+
+                    <!-- Beispiel Ende -->
+
 
                     var svg = d3.select("svg"),
                         margin = {top: 20, right: 80, bottom: 30, left: 50},
@@ -139,7 +151,7 @@ $text = new AppTexts();
 
 
 
-            </div>
+            </div >
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php if ($_SESSION['language'] == "de") {
