@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f7ea9978-e31f-496f-aa8b-3a6b99a48052" name="local-git" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="$USER_HOME$/git/ba-leipzig/Sensor-Project" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
