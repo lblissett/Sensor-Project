@@ -43,6 +43,8 @@ $text = new AppTexts();
                         .text("Your mom sucks*");
 
                     <!-- Beispiel Ende -->
+                    <!-- Beispiel Ende -->
+
 
 
                     var svg = d3.select("svg"),
