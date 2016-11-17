@@ -43,6 +43,8 @@ $text = new AppTexts();
                         .text("Your mom sucks*");
 
                     <!-- Beispiel Ende -->
+                    <!-- Beispiel Ende -->
+
 
 
 
