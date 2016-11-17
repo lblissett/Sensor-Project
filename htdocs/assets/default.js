@@ -346,22 +346,13 @@ $(document).ready(function () {
                     })
                         .on('infosButtonEvent', function (e, row, uniqueid) {
                             var pkid = uniqueid;
-                            var data = {
-                                'action': 'infos',
-                                'pkid': pkid
-                            };
-                            $.ajax({
-                                type: "GET",
-                                url: '/index/getInfos',
-                                data: data
-                            }).done(function (response) {
-                                response = jQuery.parseJSON(response);
-                                var $modal = $('#InfoModal');
-                                // ---- Modal neu initialisieren ----
-                                $modal.modal();
-                                $('#labelInfoModal').text('Informationen zum Sensor "' + row.name + '"');
-                                setDiagram(response);
-                            });
+
+                            var $modal = $('#InfoModal');
+                            // ---- Modal neu initialisieren ----
+                            $modal.modal();
+                            $('#labelInfoModal').text('Informationen zum Sensor "' + row.name + '"');
+                            setDiagram(pkid);
+
 
                         }).on('click', '.infos', function () {
                         $(this).trigger('infosButtonEvent', [row, uniqueid]);
@@ -380,9 +371,12 @@ $(document).ready(function () {
 
 
     <!-- D3 Minimalbeispiel Test-->
-    function setDiagram(response) {
+    function setDiagram(idsensor) {
+    var string = "/index/getInfos?action=infos&pkid=" + idsensor;
 
-
+    d3.json(string, function (error, data) {
+        console.log(data);
+    })
 
     }
 
