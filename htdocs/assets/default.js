@@ -392,6 +392,11 @@ $(document).ready(function () {
             .x(function(d) { return x(d.time); })
             .y(function(d) { return y(d.humidity); });
 
+        // Define the line
+        var priceline2 = d3.line()
+            .x(function(d) { return x(d.time); })
+            .y(function(d) { return y(d.temperature); });
+
 // Adds the svg canvas
         var svg = d3.select("#testingdia")
             .append("svg")
@@ -406,6 +411,7 @@ $(document).ready(function () {
             data.forEach(function(d) {
                 d.time = parseDate(d.time);
                 d.humidity = +d.humidity;
+                d.temperature = +d.temperature;
             });
 
             // Scale the range of the data
@@ -428,6 +434,12 @@ $(document).ready(function () {
                     .style("stroke", function() { // Add the colours dynamically
                         return d.color = color(d.key); })
                     .attr("d", priceline(d.values));
+
+                svg.append("path")
+                    .attr("class", "line")
+                    .style("stroke", function() { // Add the colours dynamically
+                        return d.color = color(d.key); })
+                    .attr("d", priceline2(d.values));
 
             });
 
