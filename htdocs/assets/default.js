@@ -373,63 +373,107 @@ $(document).ready(function () {
     <!-- D3 Minimalbeispiel Test-->
     function setDiagram(idsensor) {
     var string = "/index/getInfos?action=infos&pkid=" + idsensor;
+        $( "svg" ).remove();
 
+        // Set the dimensions of the canvas / graph
+        var margin = {top: 30, right: 20, bottom: 30, left: 50},
+            width = 600 - margin.left - margin.right,
+            height = 270 - margin.top - margin.bottom;
+
+// Parse the date / time
+        var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
+
+// Set the ranges
+        var x = d3.scaleTime().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
+
+// Define the line
+        var priceline = d3.line()
+            .x(function(d) { return x(d.time); })
+            .y(function(d) { return y(d.humidity); });
+
+// Adds the svg canvas
+        var svg = d3.select("#testingdia")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+        d3.json(string, function(error, data) {
+            data.forEach(function(d) {
+                d.time = parseDate(d.time);
+                d.humidity = +d.humidity;
+            });
+
+            // Scale the range of the data
+            x.domain(d3.extent(data, function(d) { return d.time; }));
+            y.domain([0, d3.max(data, function(d) { return d.humidity; })]);
+
+            // Nest the entries by symbol
+            var dataNest = d3.nest()
+                .key(function(d) {return d.symbol;})
+                .entries(data);
+
+            // set the colour scale
+            var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            // Loop through each symbol / key
+            dataNest.forEach(function(d) {
+
+                svg.append("path")
+                    .attr("class", "line")
+                    .style("stroke", function() { // Add the colours dynamically
+                        return d.color = color(d.key); })
+                    .attr("d", priceline(d.values));
+
+            });
+
+            // Add the X Axis
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x));
+
+            // Add the Y Axis
+            svg.append("g")
+                .attr("class", "axis")
+                .call(d3.axisLeft(y));
+
+        });
+        /**
     d3.json(string, function (error, data) {
-        console.log(data[0].temperature);
+        console.log(data[0].humidity);
+        // define dimensions of graph
+        var canvas = d3.select("#testingdia").append("svg")
+            .attr("width", 500)
+            .attr("height", 500)
+            .attr("border", "black")
 
-        // X scale will fit all values from data[] within pixels 0-w
-        var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
-        // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-        var y = d3.scale.linear().domain([0, 10]).range([h, 0]);
-        // automatically determining max range can work something like this
-        // var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
+        var group = canvas.append("g")
+            .attr("transform", "translate(100,10)")
 
-        // create a line function that can convert data[] into x and y points
         var line = d3.svg.line()
-        // assign the X function to plot our line as we wish
-            .x(function(d,i) {
-                // verbose logging to show what's actually being done
-                console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
-                // return the X coordinate where we want to plot this datapoint
-                return x(i);
+            .x(function(d, i) {
+                return d.humidity;
             })
-            .y(function(d) {
-                // verbose logging to show what's actually being done
-                console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
-                // return the Y coordinate where we want to plot this datapoint
-                return y(d);
-            })
+            .y(function(d, i) {
+                return d.humidity;
+            });
 
-        // Add an SVG element with the desired dimensions and margin.
-        var graph = d3.select("svg").append("svg:svg")
-            .attr("width", w + m[1] + m[3])
-            .attr("height", h + m[0] + m[2])
-            .append("svg:g")
-            .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-
-        // create yAxis
-        var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
-        // Add the x-axis.
-        graph.append("svg:g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + h + ")")
-            .call(xAxis);
-
-
-        // create left yAxis
-        var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
-        // Add the y-axis to the left
-        graph.append("svg:g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(-25,0)")
-            .call(yAxisLeft);
-
-        // Add the line by appending an svg:path element with the data line we created above
-        // do this AFTER the axes above so that the line is above the tick-lines
-        graph.append("svg:path").attr("d", line(data));
+        group.selectAll("path")
+            .data(data).enter()
+            .append("path")
+            .attr("d", function(d){ return line(d) })
+            .attr("fill", "none")
+            .attr("stroke", "green")
+            .attr("stroke-width", 3);
 
     })
 
+         **/
     }
 
 

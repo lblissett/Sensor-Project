@@ -23,9 +23,10 @@ $text = new AppTexts();
 
                 <!-- Hier kannst du deins eintragen-->
 
-                <!-- SVG erstellen ... ???-->
+                <!-- SVG erstellen ... ???
+                <svg width="550" height="350"></svg>-->
+        <div id="testingdia"></div>
 
-                <svg width="550" height="350"></svg>
 
             </div >
 
