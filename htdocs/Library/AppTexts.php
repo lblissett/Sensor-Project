@@ -76,6 +76,23 @@ class AppTexts
     public $modifiedEN = "modified";
     public $infosensor = "Informationen zum Sensor";
     public $infosensorEN = "informations about the sensor";
+    public $welcome = "Herzlich Willkommen";
+    public $welcomeEN = "hello";
+    public $changepw = "Passwort ändern";
+    public $changepwEN = "Change password";
+    public $oldpassword = "Altes Passwort";
+    public $oldpasswordEN = "old password";
+    public $enteroldpassword = "Altes Passwort";
+    public $enteroldpasswordEN = "Enter your old password";
+    public $newpassword = "Neues Passwort";
+    public $newpasswordEN = "new password";
+    public $enternewpassword = "Neues Passwort";
+    public $enternewpasswordEN = "Enter your new password";
+    public $newpasswordagain = "Passwort wiederholen";
+    public $newpasswordagainEN = "confirm password";
+    public $enternewpasswordagain = "Neues Passwort bestätigen";
+    public $enternewpasswordagainEN = "Confirm new password";
+
 
 
     public $notloggedin = "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";
