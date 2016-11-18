@@ -388,12 +388,12 @@ $(document).ready(function () {
         var y = d3.scaleLinear().range([height, 0]);
 
 // Define the line
-        var priceline = d3.line()
+        var humidity = d3.line()
             .x(function(d) { return x(d.time); })
             .y(function(d) { return y(d.humidity); });
 
         // Define the line
-        var priceline2 = d3.line()
+        var temperature = d3.line()
             .x(function(d) { return x(d.time); })
             .y(function(d) { return y(d.temperature); });
 
@@ -410,6 +410,7 @@ $(document).ready(function () {
         d3.json(string, function(error, data) {
             data.forEach(function(d) {
                 d.time = parseDate(d.time);
+                d.key = +d.id_sensor;
                 d.humidity = +d.humidity;
                 d.temperature = +d.temperature;
             });
@@ -420,7 +421,7 @@ $(document).ready(function () {
 
             // Nest the entries by symbol
             var dataNest = d3.nest()
-                .key(function(d) {return d.symbol;})
+                .key(function(d) {return d.id_sensor;})
                 .entries(data);
 
             // set the colour scale
@@ -431,17 +432,17 @@ $(document).ready(function () {
 
                 svg.append("path")
                     .attr("class", "line")
-                    .style("stroke", function() { // Add the colours dynamically
-                        return d.color = color(d.key); })
-                    .attr("d", priceline(d.values));
+                    .style("stroke","#1595FF")
+                    .attr("d", humidity(d.values));
 
                 svg.append("path")
                     .attr("class", "line")
-                    .style("stroke", function() { // Add the colours dynamically
-                        return d.color = color(d.key); })
-                    .attr("d", priceline2(d.values));
+                    .style("stroke", "#FF8337")
+                    .attr("d", temperature(d.values));
 
             });
+
+
 
             // Add the X Axis
             svg.append("g")
