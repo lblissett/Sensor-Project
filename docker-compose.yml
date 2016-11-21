@@ -26,7 +26,7 @@ php:
   build: .
   container_name: php-apache
   volumes:
-      - $PWD/htdocs:/var/www/html
+      - ./htdocs:/var/www/html
   ports:
     - 80:80
   links:
