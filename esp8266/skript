@@ -43,7 +43,7 @@ void loop() {
   if (isnan(h) || isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
-  }
+  } else {
 
  String hstring = String(h);
  String tstring = String(t);
@@ -57,7 +57,7 @@ client.println("GET /info.php?chipid=**ID ALS ZAHL**&temperature=" + tstring + "
      Serial.print(" degrees Celcius Humidity: "); 
      Serial.print(h);
      Serial.println("% send to cs14.net");    
-  }
+  }}
   client.stop();
    
   Serial.println("Waiting...");    
