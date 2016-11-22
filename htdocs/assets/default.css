@@ -387,7 +387,7 @@
 }
 
 /*size of popup sensor data*/
-.modal-dialog{
-    width: 800px;
+#sensor-info.modal-dialog{
+    width: 1200px;
     height: 600px;
 }

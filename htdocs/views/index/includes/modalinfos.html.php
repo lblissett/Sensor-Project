@@ -10,7 +10,7 @@ $text = new AppTexts();
 ?>
 
 <div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="labelSensorModal">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" id="sensor-info" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
