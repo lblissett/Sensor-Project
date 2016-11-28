@@ -27,10 +27,16 @@ $text = new AppTexts();
                             } else {
                                 echo $text->usernameEN; }  ?>
                             <i class="fa fa-info-circle"
-                               data-original-title="Enter the username"
+                               data-original-title="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->enteruser;
+                               } else {
+                                   echo $text->enteruserEN; }  ?>"
                                data-toggle="popover"
                                title=""
-                               data-content="">
+                               data-content="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->helptextusername;
+                               } else {
+                                   echo $text->helptextusernameEN; }  ?>">
                             </i></label>
                         <div class="col-md-6" id="colusername">
                             <div class="input-group" >
@@ -47,10 +53,16 @@ $text = new AppTexts();
                     <div class="form-group" id="emailgroup">
                         <label for="email" class="col-md-4 control-label label-element">Email
                             <i class="fa fa-info-circle"
-                               data-original-title="Enter the email"
+                               data-original-title="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->enteremail;
+                               } else {
+                                   echo $text->enteremailEN; }  ?>"
                                data-toggle="popover"
                                title=""
-                               data-content="">
+                               data-content="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->helptextemail;
+                               } else {
+                                   echo $text->helptextemailEN; }  ?>">
                             </i></label>
                         <div class="col-md-6" id="colemail">
                             <div class="input-group" >
@@ -73,10 +85,16 @@ $text = new AppTexts();
                             } else {
                                 echo $text->passwordEN; }  ?>
                             <i class="fa fa-info-circle"
-                               data-original-title="Enter the password"
+                               data-original-title="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->enterpassword;
+                               } else {
+                                   echo $text->enterpasswordEN; }  ?>"
                                data-toggle="popover"
                                title=""
-                               data-content="">
+                               data-content="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->helptextpassword;
+                               } else {
+                                   echo $text->helptextpasswordEN; }  ?>">
                             </i></label>
                         <div class="col-md-6" id="colpassword">
                             <div class="input-group" >
@@ -97,10 +115,16 @@ $text = new AppTexts();
                             } else {
                                 echo $text->confirmtextpwEN; }  ?>
                             <i class="fa fa-info-circle"
-                               data-original-title="Confirm your password"
+                               data-original-title="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->confirmpassword;
+                               } else {
+                                   echo $text->confirmpasswordEN; }  ?>"
                                data-toggle="popover"
                                title=""
-                               data-content="">
+                               data-content="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->helptextconfirmpassword;
+                               } else {
+                                   echo $text->helptextconfirmpasswordEN; }  ?>">
                             </i></label>
                         <div class="col-md-6" id="colconfirmpassword">
                             <div class="input-group">

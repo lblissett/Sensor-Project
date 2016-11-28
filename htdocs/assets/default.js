@@ -1,6 +1,9 @@
 /**
  * Created by Leo on 09.10.2016.
+ *
+ * aus PHP-übergebene Variablen: sprache ("" für englisch und "de" für deutsch)
  */
+
 $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
@@ -106,6 +109,55 @@ $(document).ready(function () {
                     window.location.replace('/index/showLogin?site=table');
                 }
             });
+        }
+        return false;
+
+    });
+
+    //Password change
+    $('#formchangepw').submit( function () {
+        var testing = true;
+        testing = validatePasswordchange() && testing;
+        testing = validatePasswordchangeagain() && testing;
+
+        if (testing){
+            if (validatePasswordschange()){
+                var data = {
+                    'pwchange': $('#oldpassword').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: '/index/testpw',
+                    data: data
+                }).done(function (response) {
+                    response = jQuery.parseJSON(response);
+                    $('#oldpwfail').remove();
+                    if (response.pwerror == null) {
+                        var textErr = "Das alte Passwort ist nicht korrekt!";
+                        $('#oldpasswordgroup').removeClass("has-success has-feedback").addClass("has-error has-feedback");
+                        removeglyphicon("#glyphioldpassword");
+                        $('#cololdpassword').append(createglyphiconfailure("glyphioldpassword"));
+                        var label = $('<span></span>').addClass("help-block").attr('id', 'oldpwfail')
+                            .text(textErr);
+                        $('#cololdpassword').append(label);
+                    }
+                    if (response.pwerror == "erfolg") {
+                        $('#oldpasswordgroup').removeClass("has-error has-feedback").addClass("has-success has-feedback");
+                        removeglyphicon("#glyphioldpassword");
+                        $('#cololdpassword').append(createglyphiconsuccess("glyphioldpassword"));
+                        var data = {
+                            'pwchange': $('#passwordchange').val()
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/index/changepw',
+                            data: data
+                        }).done(function (response) {
+                            window.location.replace('/index/showLogin?site=home');
+                        });
+                    }
+                });
+            }
         }
         return false;
 
@@ -429,7 +481,6 @@ $(document).ready(function () {
 
             // Loop through each symbol / key
             dataNest.forEach(function(d) {
-
                 svg.append("path")
                     .attr("class", "line")
                     .style("stroke","#1595FF")
@@ -441,8 +492,6 @@ $(document).ready(function () {
                     .attr("d", temperature(d.values));
 
             });
-
-
 
             // Add the X Axis
             svg.append("g")
@@ -456,37 +505,6 @@ $(document).ready(function () {
                 .call(d3.axisLeft(y));
 
         });
-        /**
-    d3.json(string, function (error, data) {
-        console.log(data[0].humidity);
-        // define dimensions of graph
-        var canvas = d3.select("#testingdia").append("svg")
-            .attr("width", 500)
-            .attr("height", 500)
-            .attr("border", "black")
-
-        var group = canvas.append("g")
-            .attr("transform", "translate(100,10)")
-
-        var line = d3.svg.line()
-            .x(function(d, i) {
-                return d.humidity;
-            })
-            .y(function(d, i) {
-                return d.humidity;
-            });
-
-        group.selectAll("path")
-            .data(data).enter()
-            .append("path")
-            .attr("d", function(d){ return line(d) })
-            .attr("fill", "none")
-            .attr("stroke", "green")
-            .attr("stroke-width", 3);
-
-    })
-
-         **/
     }
 
 
@@ -953,6 +971,27 @@ function validatePasswordchangeagain() {
     return isValid;
 }
 
+function validatePasswordschange() {
+
+    $('#changeagainpwfail').remove();
+    if ($('#passwordchange').val() != $('#passwordchange2').val()) {
+        $('#passwordchange2group').removeClass("has-success has-feedback").addClass("has-error has-feedback");
+        removeglyphicon("#glyphichangeagainpassword");
+        $('#colpasswordchange2').append(createglyphiconfailure("glyphichangeagainpassword"));
+        var label = $('<span></span>').addClass("help-block").attr('id', 'changeagainpwfail')
+            .text("Beide Passwörter müssen gleich sein!");
+        $('#colpasswordchange2').append(label);
+        return false;
+    }
+    else {
+        $('#passwordchange2group').removeClass("has-error has-feedback").addClass("has-success has-feedback");
+        removeglyphicon("#glyphichangeagainpassword");
+        $('#colpasswordchange2').append(createglyphiconsuccess("glyphichangeagainpassword"));
+
+        return true;
+    }
+
+}
 /** Datesorter für Tabelle */
 function dateSorter(a, b) {
     var pattern = /(\d{4})\-(\d{2})\-(\d{2}).(\d{2}):(\d{2}):(\d{2})/;

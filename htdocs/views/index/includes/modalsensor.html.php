@@ -31,7 +31,10 @@
                                    echo $text->entersensornameEN; }  ?>"
                                data-toggle="popover"
                                title=""
-                               data-content="">
+                               data-content="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->helptextsensor;
+                               } else {
+                                   echo $text->helptextsensorEN; }  ?>">
                             </i></label>
                         <div class="col-md-6" id="colsensorname">
                             <div class="input-group" >
@@ -56,7 +59,10 @@
                                    echo $text->enterlocationsensorEN; }  ?>"
                                data-toggle="popover"
                                title=""
-                               data-content="">
+                               data-content="<?php if ($_SESSION['language'] == "de") {
+                                   echo $text->helptextlocation;
+                               } else {
+                                   echo $text->helptextlocationEN; }  ?>">
                             </i></label>
                         <div class="col-md-6" id="collocation">
                             <div class="input-group" >

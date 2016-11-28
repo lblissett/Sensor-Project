@@ -27,12 +27,15 @@ $text = new AppTexts();
                    echo $text->enteroldpasswordEN; }  ?>"
                data-toggle="popover"
                title=""
-               data-content="">
+               data-content="<?php if ($_SESSION['language'] == "de") {
+                   echo $text->helptextoldpw;
+               } else {
+                   echo $text->helptextoldpwEN; }  ?>">
             </i></label>
         <div class="col-md-6" id="cololdpassword">
             <div class="input-group" >
                 <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="oldpassword" id="oldpassword"  placeholder="<?php if ($_SESSION['language'] == "de") {
+                <input type="password" class="form-control" name="oldpassword" id="oldpassword"  placeholder="<?php if ($_SESSION['language'] == "de") {
                     echo $text->enteroldpassword;
                 } else {
                     echo $text->enteroldpasswordEN; }  ?>"
@@ -52,12 +55,15 @@ $text = new AppTexts();
                    echo $text->enternewpasswordEN; }  ?>"
                data-toggle="popover"
                title=""
-               data-content="">
+               data-content="<?php if ($_SESSION['language'] == "de") {
+                   echo $text->helptextnewpassword;
+               } else {
+                   echo $text->helptextnewpasswordEN; }  ?>">
             </i></label>
         <div class="col-md-6" id="colpasswordchange">
             <div class="input-group" >
                 <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="passwordchange" id="passwordchange"  placeholder="<?php if ($_SESSION['language'] == "de") {
+                <input type="password" class="form-control" name="passwordchange" id="passwordchange"  placeholder="<?php if ($_SESSION['language'] == "de") {
                     echo $text->enternewpassword;
                 } else {
                     echo $text->enternewpasswordEN; }  ?>"
@@ -77,12 +83,15 @@ $text = new AppTexts();
                    echo $text->enternewpasswordagainEN; }  ?>"
                data-toggle="popover"
                title=""
-               data-content="">
+               data-content="<?php if ($_SESSION['language'] == "de") {
+                   echo $text->helptextconfirmpassword;
+               } else {
+                   echo $text->helptextconfirmpasswordEN; }  ?>">
             </i></label>
         <div class="col-md-6" id="colpasswordchange2">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="passwordchange2" id="passwordchange2"  placeholder="<?php if ($_SESSION['language'] == "de") {
+                <input type="password" class="form-control" name="passwordchange2" id="passwordchange2"  placeholder="<?php if ($_SESSION['language'] == "de") {
                     echo $text->enternewpasswordagain;
                 } else {
                     echo $text->enternewpasswordagainEN; }  ?>"

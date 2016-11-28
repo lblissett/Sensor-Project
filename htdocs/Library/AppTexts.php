@@ -17,9 +17,9 @@ class AppTexts
     public $version = "1.0.0";
     public $dateversion = "21.10.2016";
     public $username = "Benutzername";
-    public $usernameEN = "username";
+    public $usernameEN = "Username";
     public $password = "Passwort";
-    public $passwordEN = "password";
+    public $passwordEN = "Password";
     public $login = "Einloggen";
     public $loginEN = "Login";
     public $noaccount = "Ich habe noch keinen Account!";
@@ -92,9 +92,28 @@ class AppTexts
     public $newpasswordagainEN = "confirm password";
     public $enternewpasswordagain = "Neues Passwort bestätigen";
     public $enternewpasswordagainEN = "Confirm new password";
-
-
-
+    public $wronguser = "Falscher Benutzer!";
+    public $wronguserEN = "wrong username!";
+    public $wrongpw = "Falsches Passwort";
+    public $wrongpwEN = "wrong password!";
+    public $userexists = "Benutzer existiert bereits!";
+    public $userexistsEN = "User exists already!";
+    public $helptextusername = "Tragen sie Ihren Benutzernamen ein. Folgende Zeichen sind erlaubt: a-zA-Z0-9 (mindestens 4 Zeichen)";
+    public $helptextusernameEN = "Enter your username. The following characters are allowed: a-zA-Z0-9 (at minimum 4 characters)";
+    public $helptextemail = "Tragen sie Ihre Email ein. Sie muss dem typischen Email-Format entsprechen (z.B test@test.de).";
+    public $helptextemailEN = "Enter your email. It has to be in the typical email-format (f.e. test@test.de).";
+    public $helptextpassword = "Tragen sie Ihr Passwort ein. Folgende Zeichen sind erlaubt: -a-zA-Z0-9_ (mindestens 8 Zeichen)";
+    public $helptextpasswordEN = "Enter your password. The following characters are allowed: -a-zA-Z0-9_ (at minimum 8 characters)";
+    public $helptextconfirmpassword = "Bestätigen sie Ihr Passwort. Folgende Zeichen sind erlaubt: -a-zA-Z0-9_ (mindestens 8 Zeichen)";
+    public $helptextconfirmpasswordEN = "Confirm your password. The following characters are allowed: -a-zA-Z0-9_ (at minimum 8 characters)";
+    public $helptextsensor = "Tragen Sie einen Namen für Ihren Sensor ein. Die folgenden Zeichen sind erlaubt: -a-zA-Z0-9_ (mindestens 4 Zeichen)";
+    public $helptextsensorEN = "Enter a name for your sensor. The following characters are allowed: -a-zA-Z0-9_ (at minimum 4 characters)";
+    public $helptextlocation = "Tragen Sie den Ort des Sensors ein. Wählen sie hierbei eine sinnvolle Bezeichnung. Folgende Zeichen sind erlaubt: -a-zA-Z0-9_ (mindestens 3 Zeichen)";
+    public $helptextlocationEN = "Enter a location for your sensor. Choose a useful title. The following characters are allowed: -a-zA-Z0-9_ (at minimum 3 characters)";
+    public $helptextoldpw = "Tragen sie ihr aktuelles Passwort ein.";
+    public $helptextoldpwEN = "Enter your old password.";
+    public $helptextnewpassword = "Tragen sie Ihr neues Passwort ein. Folgende Zeichen sind erlaubt: -a-zA-Z0-9_ (mindestens 8 Zeichen)";
+    public $helptextnewpasswordEN = "Enter your new password. The following characters are allowed: -a-zA-Z0-9_ (at minimum 8 characters)";
     public $notloggedin = "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";
     public $notloggedinEN = "You have to be logged in to access the protected area.";
 

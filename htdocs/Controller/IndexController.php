@@ -12,6 +12,7 @@ use Mvc\Model\SensorData;
 use Mvc\Model\User;
 use Mvc\Model\Sensor;
 use Mvc\Model\Site;
+use Mvc\Library\AppTexts;
 class IndexController extends BaseController implements Controller
 {
     /** @var \Mvc\Library\View */
@@ -72,6 +73,7 @@ class IndexController extends BaseController implements Controller
 
     public function existsUserAction()
     {
+        $text = new AppTexts();
         $username = $this->getParam('user');
         $site = new Site();
 
@@ -88,7 +90,11 @@ class IndexController extends BaseController implements Controller
                 if (empty($user)){
                     $site->usererror = null;
                 } else {
-                    $site->usererror = "Benutzer existiert bereits!";
+                    if ($_SESSION['language'] == "de") {
+                        $site->usererror = $text->userexists;
+                    } else {
+                        $site->usererror = $text->userexistsEN;
+                    }
                 }
 
             }
@@ -154,11 +160,11 @@ class IndexController extends BaseController implements Controller
 
     public function testUserAction()
     {
+        $text = new AppTexts();
         include ('./Library/password/password.php');
         $username = $this->getParam('loginuser');
         $password = $this->getParam('loginpw');
         $site = new Site();
-
         if (!$username || !$password) {
             throw new \Exception();
         }
@@ -170,14 +176,21 @@ class IndexController extends BaseController implements Controller
                 /** @var User $user */
                 $user = User::findOne("username = '" . $username . "'");
                 if (empty($user)){
-                    $site->usererror = "Falscher Benutzer!";
-
+                     if ($_SESSION['language'] == "de") {
+                         $site->usererror = $text->wronguser;
+                    } else {
+                         $site->usererror = $text->wronguserEN;
+                    }
                 } else {
                     if (password_verify($password,$user->password)){
                         $_SESSION['userid'] = $user->username;
                     }
                     else {
-                        $site->pwerror = "Falsches Passwort!";
+                        if ($_SESSION['language'] == "de") {
+                            $site->pwerror = $text->wrongpw;
+                        } else {
+                            $site->pwerror = $text->wrongpwEN;
+                        }
                     }
                 }
 
@@ -215,13 +228,13 @@ class IndexController extends BaseController implements Controller
                     throw new \Exception();
                 }
                 else {
-                    $sensordata = new SensorData();
-                    $sensordata->id_sensor = intval($idsensor);
-                    $sensordata->temperature = doubleval($temp);
-                    $sensordata->humidity = doubleval($humi);
-                    $sensordata->time = $created;
+                        $sensordata = new SensorData();
+                        $sensordata->id_sensor = intval($idsensor);
+                        $sensordata->temperature = doubleval($temp);
+                        $sensordata->humidity = doubleval($humi);
+                        $sensordata->time = $created;
 
-                    $sensordata->save();
+                        $sensordata->save();
                 }
 
             }
@@ -258,6 +271,48 @@ class IndexController extends BaseController implements Controller
     {
         $sensordatas = SensorData::find('id_sensor = '.$this->getParamGet('pkid'));
         $this->view->setVars($sensordatas);
+    }
+
+    public function testpwAction()
+    {
+        include ('./Library/password/password.php');
+        $oldpw = $this->getParam('pwchange');
+        $site = new Site();
+        if ($_SESSION['userid'] == ""){
+            throw new \Exception();
+
+        } else {
+            if ($oldpw){
+                if ($oldpw == ""){
+                    throw new \Exception();
+                } else {
+                    $user = User::findOne("username = '" . $_SESSION['userid'] . "'");
+                    if (password_verify($oldpw,$user->password)){
+                        $site->pwerror = "erfolg";
+                    }
+                }
+            }
+            else {
+                throw new \Exception();
+            }
+        }
+        $this->view->setVars($site);
+    }
+
+    public function changepwAction()
+    {
+        include ('./Library/password/password.php');
+        $newpw = $this->getParam('pwchange');
+
+        if (($newpw == "")||($_SESSION['userid'] == "")){
+            throw new \Exception();
+        } else {
+            $hashedpw = password_hash($newpw,PASSWORD_DEFAULT);
+            $user = User::findOne("username = '" . $_SESSION['userid'] . "'");
+            $user->password = $hashedpw;
+            $user->update($user->pkid);
+        }
+
     }
 }
 ?>

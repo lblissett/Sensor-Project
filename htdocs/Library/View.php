@@ -51,6 +51,13 @@ class View
                 include $this->path.DIRECTORY_SEPARATOR.'layouteng.phtml';
             }
             include $fileName;
+
+            /** Sprache an JavaScript übergeben */
+            echo "
+            <script type=\"text/javascript\">
+                var sprache = \"".$_SESSION['language']."\";
+            </script>
+            ";
         }
 
 
