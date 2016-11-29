@@ -396,3 +396,8 @@
     text-align: left;
     float: left;
 }
+
+kbd {
+    color: #ffffff;
+    background-color: #00589c;
+}

@@ -156,10 +156,10 @@ $(document).ready(function () {
     $('#modalApi').off('click').on('click', function () {
         var pkidsensor = $('#uniqueidinput').val();
         if (sprache == "de"){
-            var label = $('<div></div>').addClass("help-block").attr('id', 'testfooter')
+            var label = $('<kbd></kbd>').attr('id', 'testfooter')
                 .text(apisensor+": IPoderDomainderWebsite/index/returnParameters?sensor_id="+pkidsensor+"&temperature=..&humidity=..");
         } else {
-            var label = $('<div></div>').addClass("help-block").attr('id', 'testfooter')
+            var label = $('<kbd></kbd>').attr('id', 'testfooter')
                 .text(apisensorEN+": IPoderDomainderWebsite/index/returnParameters?sensor_id="+pkidsensor+"&temperature=..&humidity=..");
         }
         if ($('#testfooter').length){
@@ -506,7 +506,13 @@ $(document).ready(function () {
                             var $modal = $('#InfoModal');
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
-                            $('#InfoModal').prepend(label);
+                            $('#testfooter').remove();
+                            if($('#uniqueidinput').length) {
+
+                            } else {
+                                $('#InfoModal').prepend(label);
+                            }
+
 
                             $('#labelInfoModal').text(hilfetext+' "' + row.name + '"');
                             setDiagram(pkid);

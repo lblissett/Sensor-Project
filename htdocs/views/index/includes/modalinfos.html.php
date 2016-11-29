@@ -35,7 +35,7 @@ $text = new AppTexts();
                         echo $text->cancel;
                     } else {
                         echo $text->cancelEN; }  ?></button>
-                <button type="button" class="btn btn-info" id="modalApi" ><?php if ($_SESSION['language'] == "de") {
+                <button type="button" class="btn btn-primary" id="modalApi" ><?php if ($_SESSION['language'] == "de") {
                         echo $text->showApi;
                     } else {
                         echo $text->showApiEN; }  ?></button>
