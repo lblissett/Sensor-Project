@@ -3,7 +3,36 @@
  *
  * aus PHP-übergebene Variablen: sprache ("" für englisch und "de" für deutsch)
  */
-
+var emptyfield = "Feld darf nicht leer sein!";
+var emptyfieldEN = "field can not be empty!";
+var wrongformat = "Falsches Format!";
+var wrongformatEN = "wrong format!";
+var issaved = "Wird gespeichert";
+var issavedEN = "saving";
+var oldpw = "Das alte Passwort ist nicht korrekt!";
+var oldpwEN = "the old password is not correct!";
+var sensormanage = "Sensorverwaltung";
+var sensormanageEN = "Sensor management";
+var informations = "Informationen";
+var informationsEN = "Information";
+var edit = "Bearbeiten";
+var editEN = "Edit";
+var deletion = "Löschen";
+var deletionEN = "Delete";
+var deleteData = "Sensor und dazugehörige Daten wirklich löschen?";
+var deleteDataEN = "Really delete Sensor and its datas?";
+var informationSensor = "Informationen zum Sensor";
+var informationSensorEN = "Information about the sensor";
+var passwordsame = "Beide Passwörter müssen gleich sein!";
+var passwordsameEN = "Both passwords need to be identical!";
+var editsensor = "Sensor bearbeiten";
+var editsensorEN = "Edit sensor";
+var savetext = "Speichern";
+var savetextEN = "Save";
+var createsensor = "Neuen Sensor anlegen";
+var createsensorEN = "Create new sensor";
+var createtext = "Erstellen";
+var createtextEN = "Create";
 $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
@@ -45,7 +74,12 @@ $(document).ready(function () {
                 }
                 if ((response.usererror == null)){
                     var load = $('<i></i>').addClass("fa fa-spinner fa-spin");
-                    $('#modalSubmit').text('Wird gespeichert ').append(load);
+                    if (sprache == "de"){
+                        $('#modalSubmit').text(issaved).append(load);
+                    }else {
+                        $('#modalSubmit').text(issavedEN).append(load);
+                    }
+
                     var dataa = {
                         'username': $('#username').val(),
                         'email' : $('#email').val(),
@@ -137,8 +171,13 @@ $(document).ready(function () {
                         $('#oldpasswordgroup').removeClass("has-success has-feedback").addClass("has-error has-feedback");
                         removeglyphicon("#glyphioldpassword");
                         $('#cololdpassword').append(createglyphiconfailure("glyphioldpassword"));
-                        var label = $('<span></span>').addClass("help-block").attr('id', 'oldpwfail')
-                            .text(textErr);
+                        if (sprache == "de"){
+                            var label = $('<span></span>').addClass("help-block").attr('id', 'oldpwfail')
+                                .text(oldpw);
+                        }else{
+                            var label = $('<span></span>').addClass("help-block").attr('id', 'oldpwfail')
+                                .text(oldpwEN);
+                        }
                         $('#cololdpassword').append(label);
                     }
                     if (response.pwerror == "erfolg") {
@@ -187,7 +226,11 @@ $(document).ready(function () {
     $('#formsensor').submit(function () {
         if (validateAllSensor()){
             var load = $('<i></i>').addClass("fa fa-spinner fa-spin");
-            $('#modalSubmitsensor').text('Wird gespeichert ').append(load);
+            if (sprache == "de"){
+                $('#modalSubmitsensor').text(issaved).append(load);
+            }else {
+                $('#modalSubmitsensor').text(issavedEN).append(load);
+            }
             return true;
 
         }
@@ -305,28 +348,54 @@ $(document).ready(function () {
                      * Kontextmenü erstellen
                      * @type {*|HTMLElement}
                      */
-                    var ul = $([
-                        '<div id="js_ContextMenu" class="open" data-unique-rowid="' + uniqueid + '">',
-                        '<ul class="dropdown-menu" role="menu">',
-                        '<li role="presentation" class="dropdown-header">Sensorverwaltung</li>',
-                        '<li role="presentation">',
-                        '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
-                        '<i class="fa fa-fw fa-bar-chart"></i> Informationen',
-                        '</a>',
-                        '</li>',
-                        '<li class="divider"></li>',
-                        '<li role="presentation">',
-                        '<a class="edit modalActionButton" href="javascript:void(0)" data-function="edit" tabindex="-1" role="menuitem">',
-                        '<i class="fa fa-fw fa-pencil"></i> Bearbeiten',
-                        '</a>',
-                        '</li>',
-                        '<li role="presentation">',
-                        '<a class="remove ml10" href="javascript:void(0)" data-function="remove" tabindex="-1" role="menuitem">',
-                        '<i class="fa fa-fw fa-trash"></i> Löschen',
-                        '</a>',
-                        '</li>',
-                        '</div>'
-                    ].join(''));
+                    if (sprache == "de"){
+                        var ul = $([
+                            '<div id="js_ContextMenu" class="open" data-unique-rowid="' + uniqueid + '">',
+                            '<ul class="dropdown-menu" role="menu">',
+                            '<li role="presentation" class="dropdown-header">'+sensormanage+'</li>',
+                            '<li role="presentation">',
+                            '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
+                            '<i class="fa fa-fw fa-bar-chart"></i>'+informations+'',
+                            '</a>',
+                            '</li>',
+                            '<li class="divider"></li>',
+                            '<li role="presentation">',
+                            '<a class="edit modalActionButton" href="javascript:void(0)" data-function="edit" tabindex="-1" role="menuitem">',
+                            '<i class="fa fa-fw fa-pencil"></i> '+edit,
+                            '</a>',
+                            '</li>',
+                            '<li role="presentation">',
+                            '<a class="remove ml10" href="javascript:void(0)" data-function="remove" tabindex="-1" role="menuitem">',
+                            '<i class="fa fa-fw fa-trash"></i> '+deletion,
+                            '</a>',
+                            '</li>',
+                            '</div>'
+                        ].join(''));
+                    } else {
+                        var ul = $([
+                            '<div id="js_ContextMenu" class="open" data-unique-rowid="' + uniqueid + '">',
+                            '<ul class="dropdown-menu" role="menu">',
+                            '<li role="presentation" class="dropdown-header">'+sensormanageEN+'</li>',
+                            '<li role="presentation">',
+                            '<a class="infos modalActionButton" href="javascript:void(0)" data-function="infos" tabindex="-1" role="menuitem">',
+                            '<i class="fa fa-fw fa-bar-chart"></i>'+informationsEN+'',
+                            '</a>',
+                            '</li>',
+                            '<li class="divider"></li>',
+                            '<li role="presentation">',
+                            '<a class="edit modalActionButton" href="javascript:void(0)" data-function="edit" tabindex="-1" role="menuitem">',
+                            '<i class="fa fa-fw fa-pencil"></i> '+editEN,
+                            '</a>',
+                            '</li>',
+                            '<li role="presentation">',
+                            '<a class="remove ml10" href="javascript:void(0)" data-function="remove" tabindex="-1" role="menuitem">',
+                            '<i class="fa fa-fw fa-trash"></i> '+deletionEN,
+                            '</a>',
+                            '</li>',
+                            '</div>'
+                        ].join(''));
+                    }
+
 
                     // ---- Kontextmenü hinzufügen ----
                     $('#overviewTable').append(ul);
@@ -392,19 +461,28 @@ $(document).ready(function () {
                             });
 
                         }).on('click', '.remove', function () {
-                        if (window.confirm("Sensor und dazugehörige Daten wirklich löschen?")) {
+                            if (sprache == "de"){
+                                var hilfetext = deleteData;
+                            }else {
+                                var hilfetext = deleteDataEN;
+                            }
+                        if (window.confirm(hilfetext)) {
                             $(this).trigger('removeButtonEvent', [row, uniqueid]);
                         }
                     })
                         .on('infosButtonEvent', function (e, row, uniqueid) {
                             var pkid = uniqueid;
-
+                            if (sprache == "de"){
+                                var hilfetext = informationSensor;
+                            }else {
+                                var hilfetext = informationSensorEN;
+                            }
                             var $modal = $('#InfoModal');
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
-                            $('#labelInfoModal').text('Informationen zum Sensor "' + row.name + '"');
-                            setDiagram(pkid);
 
+                            $('#labelInfoModal').text(hilfetext+' "' + row.name + '"');
+                            setDiagram(pkid);
 
                         }).on('click', '.infos', function () {
                         $(this).trigger('infosButtonEvent', [row, uniqueid]);
@@ -429,7 +507,7 @@ $(document).ready(function () {
 
         // Set the dimensions of the canvas / graph
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
-            width = 600 - margin.left - margin.right,
+            width = 1000 - margin.left - margin.right,
             height = 270 - margin.top - margin.bottom;
 
 // Parse the date / time
@@ -529,6 +607,11 @@ function validateUsername() {
     $('#usernamefail').remove();
 
     if (($('#username').val()) == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -537,6 +620,11 @@ function validateUsername() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -565,6 +653,11 @@ function validateEmail() {
     $('#emailfail').remove();
 
     if ($('#email').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -573,6 +666,11 @@ function validateEmail() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -601,6 +699,11 @@ function validatePassword() {
     $('#pwfail').remove();
 
     if ($('#password').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -609,6 +712,11 @@ function validatePassword() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -635,6 +743,11 @@ function validateConfPassword() {
     var textErr = "Fehler";
     $('#confpwfail').remove();
     if ($('#confirmpassword').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -643,6 +756,11 @@ function validateConfPassword() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -669,8 +787,13 @@ function validatePasswords() {
         $('#confirmpasswordgroup').removeClass("has-success has-feedback").addClass("has-error has-feedback");
         removeglyphicon("#glyphiconfirmpassword");
         $('#colconfirmpassword').append(createglyphiconfailure("glyphiconfirmpassword"));
+        if (sprache == "de"){
+            var textErr = passwordsame;
+        } else {
+            var textErr = passwordsameEN;
+        }
         var label = $('<span></span>').addClass("help-block").attr('id', 'confpwfail')
-            .text("Beide Passwörter müssen gleich sein!");
+            .text(textErr);
         $('#colconfirmpassword').append(label);
         return false;
     }
@@ -744,6 +867,11 @@ function validateSensorname() {
     var textErr = "Fehler";
     $('#sensornamefail').remove();
     if ($('#sensorname').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -752,6 +880,11 @@ function validateSensorname() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -776,6 +909,11 @@ function validateLocation() {
     var textErr = "Fehler";
     $('#locationfail').remove();
     if ($('#location').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -784,6 +922,11 @@ function validateLocation() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -857,9 +1000,14 @@ function addLoading ($target) {
 
 function validateUserLogin() {
     var isValid = true;
-    var textErr = "Feld darf nicht leer sein!";
+    var textErr = "Fehler";
     $('#usernameloginfail').remove();
     if ($('#login-username').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
 
@@ -882,9 +1030,14 @@ function validateUserLogin() {
 
 function validatePasswordLogin() {
     var isValid = true;
-    var textErr = "Feld darf nicht leer sein!";
+    var textErr = "Fehler";
     $('#passwordloginfail').remove();
     if ($('#login-password').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
 
@@ -910,6 +1063,11 @@ function validatePasswordchange() {
     var textErr = "Fehler";
     $('#changepwfail').remove();
     if ($('#passwordchange').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -918,6 +1076,11 @@ function validatePasswordchange() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -943,6 +1106,11 @@ function validatePasswordchangeagain() {
     var textErr = "Fehler";
     $('#changeagainpwfail').remove();
     if ($('#passwordchange2').val() == "") {
+        if (sprache == "de"){
+            textErr = emptyfield;
+        } else {
+            textErr = emptyfieldEN;
+        }
         isValid = false;
     }
     else {
@@ -951,6 +1119,11 @@ function validatePasswordchangeagain() {
             isValid = true;
         }
         else {
+            if (sprache == "de"){
+                textErr = wrongformat;
+            } else {
+                textErr = wrongformatEN;
+            }
             isValid = false;
         }
     }
@@ -978,8 +1151,13 @@ function validatePasswordschange() {
         $('#passwordchange2group').removeClass("has-success has-feedback").addClass("has-error has-feedback");
         removeglyphicon("#glyphichangeagainpassword");
         $('#colpasswordchange2').append(createglyphiconfailure("glyphichangeagainpassword"));
+        if (sprache == "de"){
+            var textErr = passwordsame;
+        } else {
+            var textErr = passwordsameEN;
+        }
         var label = $('<span></span>').addClass("help-block").attr('id', 'changeagainpwfail')
-            .text("Beide Passwörter müssen gleich sein!");
+            .text(textErr);
         $('#colpasswordchange2').append(label);
         return false;
     }
@@ -1010,8 +1188,17 @@ function dateSorter(a, b) {
 
 function setModalEdit(response){
 
-    $('#labelSensorModal').text('Sensor bearbeiten');
-    $('#modalSubmitsensor').text('Speichern');
+    if (sprache == "de"){
+        $('#labelSensorModal').text(editsensor);
+    }else {
+        $('#labelSensorModal').text(editsensorEN);
+    }
+    if (sprache == "de"){
+        $('#modalSubmitsensor').text(savetext);
+    }else {
+        $('#modalSubmitsensor').text(savetextEN);
+    }
+
     $('#sensorname').val(response.name);
     $('#location').val(response.location);
     var lis = $('<input>').attr('id','fieldedit').attr('type','hidden').attr('value','edit').attr('name','field');
@@ -1023,8 +1210,16 @@ function setModalEdit(response){
 }
 
 function setModalCreate() {
-    $('#myModalLabel').text('Neuen Sensor anlegen');
-    $('#modalSubmitsensor').text('Erstellen');
+    if (sprache == "de"){
+        $('#myModalLabel').text(createsensor);
+    }else {
+        $('#myModalLabel').text(createsensorEN);
+    }
+    if (sprache == "de"){
+        $('#modalSubmitsensor').text(createtext);
+    }else {
+        $('#modalSubmitsensor').text(createtextEN);
+    }
     $('#fieldedit').remove();
     $('#fieldpk').remove();
 }
