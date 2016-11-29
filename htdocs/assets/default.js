@@ -33,6 +33,10 @@ var createsensor = "Neuen Sensor anlegen";
 var createsensorEN = "Create new sensor";
 var createtext = "Erstellen";
 var createtextEN = "Create";
+var apisensor = "API des Sensors";
+var apisensorEN = "API of the sensor";
+
+
 $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({trigger: "hover", html: true});
@@ -145,6 +149,24 @@ $(document).ready(function () {
             });
         }
         return false;
+
+    });
+
+    //Api anzeigen
+    $('#modalApi').off('click').on('click', function () {
+        var pkidsensor = $('#uniqueidinput').val();
+        if (sprache == "de"){
+            var label = $('<div></div>').addClass("help-block").attr('id', 'testfooter')
+                .text(apisensor+": IPoderDomainderWebsite/index/returnParameters?sensor_id="+pkidsensor+"&temperature=..&humidity=..");
+        } else {
+            var label = $('<div></div>').addClass("help-block").attr('id', 'testfooter')
+                .text(apisensorEN+": IPoderDomainderWebsite/index/returnParameters?sensor_id="+pkidsensor+"&temperature=..&humidity=..");
+        }
+        if ($('#testfooter').length){
+
+        }else {
+            $('#modalinfosfooter').prepend(label);
+        }
 
     });
 
@@ -315,6 +337,8 @@ $(document).ready(function () {
     });
 
 
+
+
     /* ---- Tabelle > Rechtsklick-Kontextmenü ---- */
 
         $('#overviewTable').off('mousedown').on('mousedown', function (e) {
@@ -477,9 +501,12 @@ $(document).ready(function () {
                             }else {
                                 var hilfetext = informationSensorEN;
                             }
+                            var label = $('<input>').addClass("help-block").attr('id', 'uniqueidinput').attr('type','hidden')
+                                .val(uniqueid);
                             var $modal = $('#InfoModal');
                             // ---- Modal neu initialisieren ----
                             $modal.modal();
+                            $('#InfoModal').prepend(label);
 
                             $('#labelInfoModal').text(hilfetext+' "' + row.name + '"');
                             setDiagram(pkid);

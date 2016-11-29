@@ -391,3 +391,8 @@
     width: 1200px;
     height: 600px;
 }
+
+#testfooter {
+    text-align: left;
+    float: left;
+}

@@ -116,5 +116,7 @@ class AppTexts
     public $helptextnewpasswordEN = "Enter your new password. The following characters are allowed: -a-zA-Z0-9_ (at minimum 8 characters)";
     public $notloggedin = "Sie müssen eingeloggt sein, um den geschützten Bereich zu betreten.";
     public $notloggedinEN = "You have to be logged in to access the protected area.";
+    public $showApi = "API anzeigen";
+    public $showApiEN = "Show API";
 
 }

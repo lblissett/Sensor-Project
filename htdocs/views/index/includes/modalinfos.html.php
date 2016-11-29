@@ -30,11 +30,15 @@ $text = new AppTexts();
 
             </div >
 
-            <div class="modal-footer">
+            <div class="modal-footer" id="modalinfosfooter">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php if ($_SESSION['language'] == "de") {
                         echo $text->cancel;
                     } else {
                         echo $text->cancelEN; }  ?></button>
+                <button type="button" class="btn btn-info" id="modalApi" ><?php if ($_SESSION['language'] == "de") {
+                        echo $text->showApi;
+                    } else {
+                        echo $text->showApiEN; }  ?></button>
             </div>
         </div>
     </div>
