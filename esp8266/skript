@@ -49,7 +49,9 @@ void loop() {
  String tstring = String(t);
   if (client.connect(server,80)) {  //   www.cs14.net
 
-client.println("GET /info.php?chipid=**ID ALS ZAHL**&temperature=" + tstring + "&humidity=" + hstring);
+//client.println("GET /info.php?chipid=**ID ALS ZAHL**&temperature=" + tstring + "&humidity=" + hstring);
+client.println("GET /index/returnParameters?sensor_id=**ID ALS ZAHL**&temperature=" + tstring + "&humidity=" + hstring);
+
 //client.println();
 
      Serial.print("Temperature: ");
