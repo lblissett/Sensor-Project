@@ -118,5 +118,9 @@ class AppTexts
     public $notloggedinEN = "You have to be logged in to access the protected area.";
     public $showApi = "API anzeigen";
     public $showApiEN = "Show API";
+    public $lasttemp = "Letzte Temperatur";
+    public $lasttempEN = "Last temperature";
+    public $lasthum = "Letzte Luftfeuchtigkeit";
+    public $lasthumEN = "Last humidity";
 
 }

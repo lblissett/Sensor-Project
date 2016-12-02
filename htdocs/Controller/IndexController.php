@@ -154,6 +154,15 @@ class IndexController extends BaseController implements Controller
     {
         /** @var Sensor $sensors */
         $sensors = Sensor::findAll();
+
+        /** @var Sensor $sensor */
+        foreach ($sensors as $sensor) {
+
+            /** @var SensorData $sensordata */
+            $sensordata = SensorData::findLast("id_sensor = '" . $sensor->pkid . "'");
+            $sensor->lasttemp = $sensordata->temperature;
+            $sensor->lasthum = $sensordata->humidity;
+        }
         $this->view->setVars($sensors);
 
     }

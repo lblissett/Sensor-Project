@@ -105,6 +105,26 @@ use Mvc\Library\AppTexts;
                         } else {
                             echo $text->modifiedEN; }  ?>
                     </th>
+                    <th
+                            data-field="lasttemp"
+                            data-sortable="true"
+                            data-halign="center"
+                            data-valign="middle"
+                            data-formatter="TempFormatter"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->lasttemp;
+                        } else {
+                            echo $text->lasttempEN; }  ?>
+                    </th>
+                    <th
+                            data-field="lasthum"
+                            data-sortable="true"
+                            data-halign="center"
+                            data-valign="middle"
+                            data-formatter="HumiFormatter"><?php if ($_SESSION['language'] == "de") {
+                            echo $text->lasthum;
+                        } else {
+                            echo $text->lasthumEN; }  ?>
+                    </th>
                 </tr>
                 </thead>
             </table>

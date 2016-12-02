@@ -540,8 +540,8 @@ $(document).ready(function () {
 
         // Set the dimensions of the canvas / graph
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
-            width = 1000 - margin.left - margin.right,
-            height = 270 - margin.top - margin.bottom;
+            width = 900 - margin.left - margin.right,
+            height = 450 - margin.top - margin.bottom;
 
 // Parse the date / time
         var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
@@ -1265,4 +1265,22 @@ function removeContextMenu() {
     if ($contextMenu.length > 0) {
         $contextMenu.remove();
     }
+}
+
+/**
+ * @return {string}
+ */
+function TempFormatter(value, row, index) {
+    return [
+        ''+row.lasttemp+' °C'
+    ].join('');
+}
+
+/**
+ * @return {string}
+ */
+function HumiFormatter(value, row, index) {
+    return [
+        ''+row.lasthum+' %'
+    ].join('');
 }

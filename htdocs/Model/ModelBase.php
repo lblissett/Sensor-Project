@@ -49,6 +49,17 @@ abstract class ModelBase
         return $stmt->fetchObject(get_class($model));
     }
 
+    public static function findLast($where)
+    {
+        $model = new static();
+        $table = $model->getSource();
+        /** @var \PDO $pdo */
+        $pdo = $model->getPdo();
+        $stmt = $pdo->prepare('SELECT * FROM `'.$table.'` WHERE '.$where.'ORDER BY pkid DESC LIMIT 1');
+        $stmt->execute();
+        return $stmt->fetchObject(get_class($model));
+
+    }
 
     /**
      * @return static
@@ -126,6 +137,8 @@ abstract class ModelBase
         }
         return $fields;
     }
+
+
     /**
      * The table name of the model.
      *
