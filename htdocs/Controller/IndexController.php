@@ -160,8 +160,24 @@ class IndexController extends BaseController implements Controller
 
             /** @var SensorData $sensordata */
             $sensordata = SensorData::findLast("id_sensor = '" . $sensor->pkid . "'");
-            $sensor->lasttemp = $sensordata->temperature;
-            $sensor->lasthum = $sensordata->humidity;
+            if (!($sensordata)){
+                $sensor->lasttemp = "null";
+                $sensor->lasthum = "null";
+            } else {
+                if ($sensordata->temperature){
+                    $sensor->lasttemp = $sensordata->temperature;
+                } else {
+                    $sensor->lasttemp = "null";
+                }
+
+                if ($sensordata->humidity){
+                    $sensor->lasthum = $sensordata->humidity;
+                } else {
+                    $sensor->lasthum = "null";
+                }
+            }
+
+
         }
         $this->view->setVars($sensors);
 
