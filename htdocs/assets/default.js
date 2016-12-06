@@ -35,6 +35,8 @@ var createtext = "Erstellen";
 var createtextEN = "Create";
 var apisensor = "API des Sensors";
 var apisensorEN = "API of the sensor";
+var nodata = "Keine Daten";
+var nodataEN = "no datas";
 
 
 $(document).ready(function () {
@@ -1271,16 +1273,40 @@ function removeContextMenu() {
  * @return {string}
  */
 function TempFormatter(value, row, index) {
-    return [
-        ''+row.lasttemp+' °C'
-    ].join('');
+
+    if (row.lasttemp == "null"){
+        if (sprache == "de"){
+            var text = nodata
+        } else {
+            var text = nodataEN
+        }
+        return [
+            text
+        ].join('');
+    } else {
+        return [
+            ''+row.lasttemp+' °C'
+        ].join('');
+    }
+
 }
 
 /**
  * @return {string}
  */
 function HumiFormatter(value, row, index) {
-    return [
-        ''+row.lasthum+' %'
-    ].join('');
+    if (row.lasthum == "null"){
+        if (sprache == "de"){
+            var text = nodata
+        } else {
+            var text = nodataEN
+        }
+        return [
+            text
+        ].join('');
+    } else {
+        return [
+            ''+row.lasthum+' %'
+        ].join('');
+    }
 }

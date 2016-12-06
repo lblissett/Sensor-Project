@@ -1,10 +1,11 @@
-.panel-info { border-color: rgba(57, 65, 27, 0.96)}
-
-.panel-info > .panel-heading {background-color: rgba(57, 65, 27, 0.96) }
-
+.panel-info { border-color: #004e5c
+}
+.panel-info > .panel-heading {background-color: #004e5c
+}
+a {
+    color : #004e5c
+}
 .panel-title {color: #f7f7f7}
-
-#btn-login {background-color: darkcyan}
 
 .flag-de {
     margin-left: 360px;
@@ -47,7 +48,7 @@
 
 #tabellenkontext .loadingIcon {
     margin-top: 30px;
-    color: #00589c;
+    color: #004e5c;
     font-weight: 600;
     font-size: 16px;
     text-align: center;
@@ -118,12 +119,12 @@
 }
 
 #tabellenkontext th {
-    background-color: #337ab7;
+    background-color: #004e5c;
     color: #ffffff;
 }
 
 #tabellenkontext #ReloadButton,#ShowColumnsButton,#ExportButton,#newDataModalSensor{
-    color: #337ab7;
+    color: #004e5c;
 }
 
 #tabellenkontext .fixed-table-toolbar {
@@ -151,7 +152,7 @@
 }
 
 #tabellenkontext .has-feedback-left > i {
-    color: #337ab7;
+    color: #004e5c;
 }
 
 #tabellenkontext .has-feedback-left .form-control {
@@ -244,7 +245,7 @@
 .container1 > div, .container2 > div, .container3 > div {
     width: 14px;
     height: 14px;
-    color: #337ab7;
+    color: #004e5c;
     border-radius: 100%;
     position: absolute;
     -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
@@ -399,5 +400,5 @@
 
 kbd {
     color: #ffffff;
-    background-color: #00589c;
+    background-color: #004e5c;
 }
