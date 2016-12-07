@@ -14,7 +14,11 @@ Alles im Icinga2-Container:
 
 Dann muss Folgendes ausgeführt werden: (Achtung: Python2 nicht Python3)
 `python /usr/lib/nagios/plugins/integrate_all_sensors.py`
+
 `icinga2 feature enable graphite`
+
 `service icinga2 restart`
+
 `service icinga2 checkconfig`
+
 `service icinga2 reload`
