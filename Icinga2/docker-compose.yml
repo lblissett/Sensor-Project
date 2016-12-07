@@ -1,0 +1,55 @@
+mariadb:
+  image: mariadb:10.1
+  container_name: mariadb
+  ports:
+    - 3306:3306
+  volumes:
+    - ./db:/docker-entrypoint-initdb.d
+  environment:
+    - MYSQL_ROOT_PASSWORD=mypass
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=mypass
+
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  container_name: phpmyadmin
+  ports:
+    - 8080:80
+  links:
+    - mariadb:db
+  environment:
+    - MYSQL_ROOT_PASSWORD:mypass
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=mypass
+
+php:
+  build: .
+  container_name: php-apache
+  volumes:
+      - ./htdocs:/var/www/html
+  ports:
+    - 80:80
+  links:
+    - mariadb:mysql
+
+icinga2:
+  image: mpibach/icinga2:latest
+  container_name: icinga2
+  ports:
+    - 60000:80
+  links:
+    - mariadb:mysql
+    - graphite:graphite
+  environment:
+    - ICINGA_PASSWORD=icinga
+    - ICINGA_WEB_LOGIN=icingaadmin
+    - ICINGA2_FEATURE_GRAPHITE=true
+    - ICINGA2_FEATURE_GRAPHITE_HOST=graphite
+    - ICINGA2_FEATURE_GRAPHITE_PORT=2003
+
+graphite:
+  image: mpibach/graphite:latest
+  container_name: graphite
+  ports:
+    - 2003:2003
+    - 9090:80
