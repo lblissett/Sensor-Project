@@ -13,6 +13,7 @@ Alles im Icinga2-Container:
 "/usr/share/icingaweb2/modules/graphite/library/Graphite/"
 
 Dann muss Folgendes ausgeführt werden: (Achtung: Python2 nicht Python3)
+
 `python /usr/lib/nagios/plugins/integrate_all_sensors.py`
 
 `icinga2 feature enable graphite`
