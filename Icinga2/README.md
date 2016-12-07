@@ -1,4 +1,4 @@
-# Icinga2
+# Tempsensoren in Icinga2
 
 Alles im Icinga2-Container:
 
