@@ -24,7 +24,7 @@ Alles im Icinga2-Container:
 
 ## Erreichbarkeit
 
-Das Icinga2-Frontend ist dann erreichbar unter 127.0.0.1:60000 (siehe docker-compose.yml). Unter "Configuration -> Modules -> graphite -> enable" muss das Graphit-Plugin aktiviert werden (Das erfordert, dass die obenstehenden Schritte ausgeführt wurden.). Credentials:
+Das Icinga2-Frontend ist dann erreichbar unter 127.0.0.1:60000 (siehe docker-compose.yml). Unter "Configuration -> Modules -> graphite -> enable" muss das Graphite-Plugin aktiviert werden (Das erfordert, dass die obenstehenden Schritte ausgeführt wurden.). Credentials:
 
 - Login: "icingaadmin"
 - Passwort: "icinga"
