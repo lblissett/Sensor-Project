@@ -20,7 +20,7 @@ Features
 - Portabilität: Appentwicklung in Dockercontainer
 
 More Features
-- NagiosPlugin 
+- Icinga2Plugin: http://moinwikileipzig.ddns.net/wikimain/DockerUndIcinga2PluginTempSensor
 - unterschiedliche Loggerdaten integrieren z.B. Feinstaubmessung wie beim OpenData Projekt in Stuttgart https://github.com/opendata-stuttgart/meta/wiki bzw. http://luftdaten.info/
 - Android App
 - Updates über Wlan, OTA-Updates: http://esp8266.github.io/Arduino/versions/2.0.0/doc/ota_updates/ota_updates.html
