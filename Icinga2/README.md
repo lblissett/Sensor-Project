@@ -2,6 +2,22 @@
 
 Alles im Icinga2-Container:
 
+`cd /usr/share/icingaweb2/modules/
+
+mkdir graphite
+
+cd graphite
+
+wget https://github.com/findmypast/icingaweb2-module-graphite/archive/master.zip
+
+unzip master.zip
+
+mv icingaweb2-module-graphite-master/* .
+
+rm -rf icingaweb2-module-graphite-master
+
+rm master.zip`
+
 - "check_sensor_mariadb.py" und "integrate_all_sensors.py" müssen nach: "/usr/lib/nagios/plugins/"
 
 - "graphite.conf" muss nach: "/etc/icinga2/features-available/"
