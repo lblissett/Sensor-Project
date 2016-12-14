@@ -23,7 +23,7 @@ class AppTexts
     public $login = "Einloggen";
     public $loginEN = "Login";
     public $noaccount = "Ich habe noch keinen Account!";
-    public $noaccountEN = "Don't have an account!";
+    public $noaccountEN = "I don't have an account!";
     public $registerhere = "Hier registrieren";
     public $registerhereEN = "Register here";
     public $createacc = "Neuen Account erstellen";
