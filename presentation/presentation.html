@@ -116,17 +116,30 @@
 
         </section>
 
-        <section  data-background="background.jpg">
+        <section  data-background="background.jpg" data-transition-speed="fast">
 
             <section>
 
                 <h2>4. Adding extensions</h2>
+                <div style="position:relative; width:800px; height:650px; margin:0 auto;">
+                   <img class="fragment" src="./images/Icinga2.png" style="position:absolute;top:-20px;left:80px;" />
+                </div>
+
+            </section>
+
+            <section>
+                <h2>Exit-Codes for Testscript</h2>
+                <ul>
+
+                    <li class="fragment" data-fragment-index="1"><span style="color:green; font-weight:bold"> Exit 0: OK</span> (below 25°C)</li>
+                    <li class="fragment" data-fragment-index="2"><span style="color:orange; font-weight:bold">Exit 1: Warning</span> (25,01°C till 35°C)</li>
+                    <li class="fragment" data-fragment-index="3"><span style="color:red; font-weight:bold">Exit 2: Critical</span> (over 35,01° C)</li>
+                    <li class="fragment" data-fragment-index="4">Exit 3: Unknown (everything else)</li></l>
+
+                </ul>
 
             </section>
         </section>
-
-
-
         <section data-background="background.jpg">
 
 
